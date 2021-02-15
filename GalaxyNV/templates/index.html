@@ -1,12 +1,31 @@
 {% extends "layout.html" %}
 
 {% block content %}
-
+<link rel="stylesheet" href="../force/force.css" type="text/css" />
+<script src="../scripts/jquery.js"></script>
+<script src="d3js/d3.min.js"></script>
+<script src="d3js/d3.geom.min.js"></script>
+<script src="d3js/d3.layout.min.js"></script>
 <div class="jumbotron">
     {{ test }}
-    <h1>Flask</h1>
-    <p class="lead">Flask is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://flask.pocoo.org/" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+    <table align="left" style="margin-left: 0px">
+        <tr>
+            <td width="60%">
+                <blockquote>
+                    <p>
+                        NetworkX is a Python package for the creation, manipulation, and
+                        study of the structure, dynamics, and functions of complex networks.
+                    </p>
+                </blockquote>
+            </td>
+            <td width="40%">
+                <div id="chart"></div>
+                <script type="text/javascript" src="../static/force/force.js"></script>
+            </td>
+        </tr>
+    </table>
+    <h1>Galaxy Network Visualization</h1>
+    <p class="lead">GUI application for Galaxy.</p>
 </div>
 
 <div class="row">
