@@ -40,18 +40,13 @@
     <Folder Include="GalaxyNV\static\" />
     <Folder Include="GalaxyNV\static\content\" />
     <Folder Include="GalaxyNV\static\fonts\" />
-    <Folder Include="GalaxyNV\static\force\" />
-    <Folder Include="GalaxyNV\static\force\d3js\" />
     <Folder Include="GalaxyNV\static\scripts\" />
     <Folder Include="GalaxyNV\templates\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="GalaxyNV\static\force\force.css" />
-    <Content Include="GalaxyNV\static\force\force.js" />
-    <Content Include="GalaxyNV\static\force\d3-force.js" />
-    <Content Include="GalaxyNV\static\force\d3-force.min.js" />
-    <Content Include="GalaxyNV\static\force\force.json" />
     <Content Include="GalaxyNV\static\scripts\jquery.js" />
+    <Content Include="GalaxyNV\templates\force.json" />
+    <Content Include="GalaxyNV\templates\VotacionesSenado2017.json" />
     <Content Include="requirements.txt" />
     <Content Include="GalaxyNV\static\content\bootstrap.css" />
     <Content Include="GalaxyNV\static\content\bootstrap.min.css" />

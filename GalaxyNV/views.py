@@ -39,3 +39,13 @@ def about():
         year=datetime.now().year,
         message='Your application description page.'
     )
+
+@app.route('/json')
+def json():
+    """Renders the about page."""
+    return render_template(
+        'VotacionesSenado2017.json',
+        title='About',
+        year=datetime.now().year,
+        message='Your application description page.'
+    )
