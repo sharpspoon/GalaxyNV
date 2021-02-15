@@ -12,7 +12,7 @@ from GalaxyNV import app, gnx
 @app.route('/home')
 def home():
     """Renders the home page."""
-    a = gnx.b
+    a = gnx.a()
     return render_template(
         'index.html',
         title='Home Page',
