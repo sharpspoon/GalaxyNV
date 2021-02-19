@@ -7,11 +7,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha512-3n19xznO0ubPpSwYCRRBgHh63DrV+bdZfHK52b1esvId4GsfwStQNPJFjeQos2h3JwCmZl0/LgLxSKMAI55hgw==" crossorigin="anonymous"></script>
-    <script>
-        function resizeIframe(obj) {
-            obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
-        }
-    </script>
 </head>
 
 <body>
@@ -19,16 +14,25 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
-                <img src="../static/img/cosmos.svg" alt="" width="30" height="30" class="d-inline-block align-top">
+                <img src="../static/img/cosmos.svg" alt="Galaxy Logo" width="30" height="30" class="d-inline-block align-top">
                 Galaxy
             </a>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('home') }}">Features</a>
+                        <a class="nav-link" href="{{ url_for('home') }}">network.yml</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('about') }}">Pricing</a>
+                        <a class="nav-link" href="{{ url_for('home') }}">Force-Directed</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('home') }}">Disjoint Force-Directed</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('home') }}">Force-Directed Tree</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -39,7 +43,7 @@
         {% block content %}{% endblock %}
         <hr />
         <footer>
-            <p>&copy; {{ year }} - Galaxy NV</p>
+            <p>&copy; {{ year }} - Galaxy</p>
         </footer>
     </div>
 
