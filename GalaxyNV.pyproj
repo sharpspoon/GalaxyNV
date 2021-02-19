@@ -46,6 +46,7 @@
   <ItemGroup>
     <Content Include="GalaxyNV\static\scripts\jquery.js" />
     <Content Include="GalaxyNV\templates\force.json" />
+    <Content Include="GalaxyNV\templates\miserables.json" />
     <Content Include="GalaxyNV\templates\VotacionesSenado2017.json" />
     <Content Include="requirements.txt" />
     <Content Include="GalaxyNV\static\content\bootstrap.css" />
