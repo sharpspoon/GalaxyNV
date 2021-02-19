@@ -44,8 +44,12 @@ def about():
 def json():
     """Renders the about page."""
     return render_template(
-        'miserables.json',
-        title='About',
-        year=datetime.now().year,
-        message='Your application description page.'
+        'miserables.json'
+    )
+
+@app.route('/fdg')
+def fdg():
+    """Renders the about page."""
+    return render_template(
+        'ForceDirectedGraph.html'
     )
