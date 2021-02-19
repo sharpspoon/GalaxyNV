@@ -4,11 +4,8 @@ from GalaxyNV import app
 import networkx as nx
 import matplotlib.pyplot as plt
 
-def a():
-    G = nx.petersen_graph()
-    #plt.subplot(121)
-    #plt.show()
-    nx.draw(G, with_labels=True, font_weight='bold')
+def subheader1():
+    return ("Welcome to Galaxy. To get started, upload a network.yml file.")
 
 def b():
     G = nx.graph
