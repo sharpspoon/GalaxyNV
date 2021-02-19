@@ -23,7 +23,7 @@
                 .force("charge", d3.forceManyBody()
                     .strength(-20))
                 .force("link", d3.forceLink()
-                    .id(function (d) { return d.name; }));
+                    .id(function (d) { return d.name; }));  
 
 
         d3.json("json", function (err, graph) {
@@ -103,7 +103,7 @@
     <p class="lead">GUI application for Galaxy.</p>
 </div>
 
-<div class="row">
+<!--<div class="row">
     <div class="col-md-4">
         <h2>Getting started</h2>
         <p>
@@ -123,6 +123,6 @@
         <p>You can easily publish to Microsoft Azure using Visual Studio. Find out how you can host your application using a free trial today.</p>
         <p><a class="btn btn-default" href="http://azure.microsoft.com">Learn more &raquo;</a></p>
     </div>
-</div>
+</div>-->
 
 {% endblock %}
