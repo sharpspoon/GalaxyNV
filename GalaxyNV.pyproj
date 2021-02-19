@@ -40,10 +40,12 @@
     <Folder Include="GalaxyNV\static\" />
     <Folder Include="GalaxyNV\static\content\" />
     <Folder Include="GalaxyNV\static\fonts\" />
+    <Folder Include="GalaxyNV\static\img\" />
     <Folder Include="GalaxyNV\static\scripts\" />
     <Folder Include="GalaxyNV\templates\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="GalaxyNV\static\img\cosmos.svg" />
     <Content Include="GalaxyNV\static\scripts\jquery.js" />
     <Content Include="GalaxyNV\templates\ForceDirectedGraph.html" />
     <Content Include="GalaxyNV\templates\miserables.json" />
