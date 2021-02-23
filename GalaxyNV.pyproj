@@ -50,7 +50,6 @@
     <Content Include="GalaxyNV\templates\Demo.html" />
     <Content Include="GalaxyNV\templates\ForceDirectedGraph.html" />
     <Content Include="GalaxyNV\templates\fdg.html" />
-    <Content Include="GalaxyNV\templates\index.json" />
     <Content Include="GalaxyNV\templates\demo.json" />
     <Content Include="GalaxyNV\templates\miserables.json" />
     <Content Include="requirements.txt" />
