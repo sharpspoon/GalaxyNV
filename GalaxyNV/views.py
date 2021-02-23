@@ -74,3 +74,10 @@ def fdg():
     return render_template(
         'fdg.html'
     )
+
+@app.route('/networkyaml')
+def networkyaml():
+    """Renders the about page."""
+    return render_template(
+        'networkyaml.html'
+    )

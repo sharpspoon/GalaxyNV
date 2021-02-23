@@ -51,6 +51,7 @@
     <Content Include="GalaxyNV\templates\ForceDirectedGraph.html" />
     <Content Include="GalaxyNV\templates\fdg.html" />
     <Content Include="GalaxyNV\templates\demo.json" />
+    <Content Include="GalaxyNV\templates\networkyaml.html" />
     <Content Include="GalaxyNV\templates\miserables.json" />
     <Content Include="requirements.txt" />
     <Content Include="GalaxyNV\static\content\bootstrap.css" />
