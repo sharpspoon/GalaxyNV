@@ -47,9 +47,30 @@ def json():
         'miserables.json'
     )
 
+@app.route('/fdgiframe')
+def fdgiframe():
+    """Renders the about page."""
+    return render_template(
+        'ForceDirectedGraph.html'
+    )
+
+@app.route('/demoiframe')
+def demoiframe():
+    """Renders the about page."""
+    return render_template(
+        'Demo.html'
+    )
+
+@app.route('/demojson')
+def demojson():
+    """Renders the about page."""
+    return render_template(
+        'demo.json'
+    )
+
 @app.route('/fdg')
 def fdg():
     """Renders the about page."""
     return render_template(
-        'ForceDirectedGraph.html'
+        'fdg.html'
     )
