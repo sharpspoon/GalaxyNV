@@ -7,3 +7,10 @@ app = Flask(__name__)
 
 import GalaxyNV.views
 import GalaxyNV.gnx
+import os
+import yaml
+
+try:
+    os.mkdir("./NetworkYMLFiles")
+except:
+    print("NetworkYMLFiles already exists. Proceeding.")
