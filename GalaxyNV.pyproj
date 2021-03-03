@@ -38,6 +38,7 @@
   <ItemGroup>
     <Folder Include="GalaxyNV\" />
     <Folder Include="GalaxyNV\networkx\" />
+    <Folder Include="GalaxyNV\NetworkYMLFiles\" />
     <Folder Include="GalaxyNV\static\" />
     <Folder Include="GalaxyNV\static\content\" />
     <Folder Include="GalaxyNV\static\fonts\" />
@@ -46,6 +47,9 @@
     <Folder Include="GalaxyNV\templates\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="GalaxyNV\NetworkYMLFiles\miserables.json" />
+    <Content Include="GalaxyNV\NetworkYMLFiles\network.txt" />
+    <Content Include="GalaxyNV\NetworkYMLFiles\network.yml" />
     <Content Include="GalaxyNV\static\img\cosmos.svg" />
     <Content Include="GalaxyNV\static\scripts\jquery.js" />
     <Content Include="GalaxyNV\templates\Demo.html" />
@@ -53,7 +57,6 @@
     <Content Include="GalaxyNV\templates\fdg.html" />
     <Content Include="GalaxyNV\templates\demo.json" />
     <Content Include="GalaxyNV\templates\networkyaml.html" />
-    <Content Include="GalaxyNV\templates\miserables.json" />
     <Content Include="requirements.txt" />
     <Content Include="GalaxyNV\static\content\bootstrap.css" />
     <Content Include="GalaxyNV\static\content\bootstrap.min.css" />
