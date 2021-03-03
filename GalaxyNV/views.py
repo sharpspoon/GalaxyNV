@@ -1,17 +1,12 @@
-"""
-Routes and views for the flask application.
-"""
-
 from datetime import datetime
 from flask import render_template
-from GalaxyNV import app, gnx
+from GalaxyNV import app, gnx, networkfiles
 
 
 
 @app.route('/')
 @app.route('/home')
 def home():
-    """Renders the home page."""
     subheader1 = gnx.subheader1()
     return render_template(
         'index.html',
@@ -22,7 +17,6 @@ def home():
 
 @app.route('/contact')
 def contact():
-    """Renders the contact page."""
     return render_template(
         'contact.html',
         title='Contact',
@@ -32,7 +26,6 @@ def contact():
 
 @app.route('/about')
 def about():
-    """Renders the about page."""
     return render_template(
         'about.html',
         title='About',
@@ -42,42 +35,38 @@ def about():
 
 @app.route('/json')
 def json():
-    """Renders the about page."""
     return render_template(
         'miserables.json'
     )
 
 @app.route('/fdgiframe')
 def fdgiframe():
-    """Renders the about page."""
     return render_template(
         'ForceDirectedGraph.html'
     )
 
 @app.route('/demoiframe')
 def demoiframe():
-    """Renders the about page."""
     return render_template(
         'Demo.html'
     )
 
 @app.route('/demojson')
 def demojson():
-    """Renders the about page."""
     return render_template(
         'demo.json'
     )
 
 @app.route('/fdg')
 def fdg():
-    """Renders the about page."""
     return render_template(
         'fdg.html'
     )
 
 @app.route('/networkyaml')
 def networkyaml():
-    """Renders the about page."""
+    content = networkfiles.loadfiles()
     return render_template(
-        'networkyaml.html'
+        'networkyaml.html',
+        c = content
     )
