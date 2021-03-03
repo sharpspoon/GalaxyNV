@@ -36,7 +36,7 @@ def about():
 @app.route('/json')
 def json():
     return render_template(
-        'miserables.json'
+        'network.json'
     )
 
 @app.route('/fdgiframe')
