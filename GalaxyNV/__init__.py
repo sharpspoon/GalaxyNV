@@ -11,3 +11,4 @@ import GalaxyNV.networkfiles
 
 networkfiles.createfolders()
 networkfiles.loadfiles()
+networkfiles.convert()
