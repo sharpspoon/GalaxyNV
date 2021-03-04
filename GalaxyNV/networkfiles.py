@@ -18,11 +18,23 @@ def loadfiles():
         with open(r'NetworkYMLFiles\network.yml') as networkfile:
             network_list = yaml.load(networkfile, Loader=yaml.FullLoader)
 
+        return (network_list)
+    except:
+        return("Failed to open network.yml file. Are you sure it is named correctly?")
+
+def convert():
+    try:
         with open(r'NetworkYMLFiles\network.yml') as yaml_in, open(r'GalaxyNV\templates\network.json', "w") as json_out:
             yaml_object = yaml.safe_load(yaml_in) # yaml_object will be a list or a dict
             json.dump(yaml_object, json_out)
-
-        return (network_list)
     except:
-        #print("Failed to open network.yml file. Are you sure it is named correctly?")
-        return("Failed to open network.yml file. Are you sure it is named correctly?")
+        print("Error: Failed to convert yml to json.")
+
+def loadjsonfiles():
+    try:
+        with open(r'GalaxyNV\templates\network.json', "w") as networkfile:
+            network_list = yaml.load(networkfile, Loader=yaml.FullLoader)
+
+        return (json.dumps({'4': 5, '6': 7}, sort_keys=True, indent=4))
+    except:
+        return("Failed to open network.json file. Are you sure it is named correctly?")
