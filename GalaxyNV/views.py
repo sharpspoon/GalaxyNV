@@ -65,8 +65,9 @@ def fdg():
 
 @app.route('/networkyaml')
 def networkyaml():
-    content = networkfiles.loadfiles()
+    ymlcontent = networkfiles.loadfiles()
     return render_template(
         'networkyaml.html',
-        c = content
+        yc = ymlcontent,
+        jc = "coming soon"
     )
