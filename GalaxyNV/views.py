@@ -59,8 +59,10 @@ def demojson():
 
 @app.route('/fdg')
 def fdg():
+    jsoncontent = networkfiles.create_d3json()
     return render_template(
-        'fdg.html'
+        'fdg.html',
+        jc = jsoncontent
     )
 
 @app.route('/networkyaml')
