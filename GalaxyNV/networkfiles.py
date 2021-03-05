@@ -41,3 +41,16 @@ def loadjsonfiles():
             return json2html.convert(json = parsed)
     except:
         return("Failed to open network.json file. Are you sure it is named correctly?")
+
+def create_d3json():
+    try:
+        with open(r'GalaxyNV\templates\network.json', 'r') as networkfile:
+            data = networkfile.read()
+            parsed = json.loads(data)
+            try:
+                value_admin_fw = (parsed["nodes"]["admin-fw"])
+            except:
+                value_admin_fw = "no admin-fw"
+            return value_admin_fw
+    except:
+        return ("Failed to open network.json file. Are you sure it is named correctly?")
