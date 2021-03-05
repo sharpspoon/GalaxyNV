@@ -1,0 +1,165 @@
+{
+    "links": {
+        "admin0-br": {
+            "type": "lxd"
+        },
+        "control-br": {
+            "type": "lxd"
+        },
+        "dmz-br": {
+            "type": "lxd"
+        },
+        "server0-br": {
+            "type": "lxd"
+        },
+        "upstream-br": {
+            "type": "lxd"
+        },
+        "user0-br": {
+            "type": "lxd"
+        },
+        "user1-br": {
+            "type": "lxd"
+        },
+        "user200-br": {
+            "type": "lxd"
+        }
+    },
+    "nodes": {
+        "admin-fw": {
+            "agents": [
+                "drone"
+            ],
+            "image": "admin-fw",
+            "links": {
+                "admin0-br": {},
+                "control-br": {},
+                "dmz-br": {}
+            },
+            "priority": 0,
+            "type": "lxd"
+        },
+        "admin0": {
+            "agents": [
+                "admin",
+                "drone"
+            ],
+            "image": "admin0",
+            "links": {
+                "admin0-br": {},
+                "control-br": {}
+            },
+            "priority": 60,
+            "type": "lxd"
+        },
+        "border-fw": {
+            "agents": [
+                "drone"
+            ],
+            "image": "border-fw",
+            "links": {
+                "control-br": {},
+                "dmz-br": {},
+                "upstream-br": {}
+            },
+            "priority": 0,
+            "type": "lxd"
+        },
+        "server-fw": {
+            "agents": [
+                "drone"
+            ],
+            "image": "server-fw",
+            "links": {
+                "control-br": {},
+                "dmz-br": {},
+                "server0-br": {}
+            },
+            "priority": 0,
+            "type": "lxd"
+        },
+        "server-http": {
+            "agents": [
+                "drone"
+            ],
+            "hostname": "downloadmoreram",
+            "image": "server-http",
+            "links": {
+                "control-br": {},
+                "server0-br": {}
+            },
+            "priority": 70,
+            "type": "lxd"
+        },
+        "server-https": {
+            "agents": [
+                "drone"
+            ],
+            "hostname": "downloadmoresecurity",
+            "image": "server-https",
+            "links": {
+                "control-br": {},
+                "server0-br": {}
+            },
+            "priority": 70,
+            "type": "lxd"
+        },
+        "user-fw": {
+            "agents": [
+                "drone"
+            ],
+            "image": "user-fw",
+            "links": {
+                "control-br": {},
+                "dmz-br": {},
+                "user0-br": {},
+                "user1-br": {},
+                "user200-br": {}
+            },
+            "priority": 0,
+            "type": "lxd"
+        },
+        "user0": {
+            "agents": [
+                "user",
+                "drone"
+            ],
+            "image": "user0",
+            "links": {
+                "control-br": {},
+                "user0-br": {}
+            },
+            "priority": 80,
+            "replicas": 3,
+            "type": "lxd"
+        },
+        "user1": {
+            "agents": [
+                "user",
+                "drone"
+            ],
+            "image": "user1",
+            "links": {
+                "control-br": {},
+                "user1-br": {}
+            },
+            "priority": 90,
+            "replicas": 3,
+            "type": "lxd"
+        },
+        "user200": {
+            "agents": [
+                "user",
+                "drone"
+            ],
+            "image": "user200",
+            "links": {
+                "control-br": {},
+                "user200-br": {}
+            },
+            "priority": 100,
+            "replicas": 5,
+            "type": "lxd"
+        }
+    }
+}
