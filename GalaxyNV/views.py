@@ -67,6 +67,7 @@ def fdg():
 def networkyaml():
     ymlcontent = networkfiles.loadfiles()
     jsoncontent = networkfiles.loadjsonfiles()
+
     return render_template(
         'networkyaml.html',
         yc = ymlcontent,
