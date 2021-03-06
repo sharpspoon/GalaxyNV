@@ -44,10 +44,16 @@ def loadjsonfiles():
 
 
 
-d = {}
-d['nodes'] = {}
-d['nodes']['id'] = {}
-d['nodes']['group'] = {}
+d = { 'nodes': []}
+
+#d['nodes': []] = {}
+#d['nodes']['id'] = {}
+#d['nodes']['group'] = {}
+
+#d['links'] = {}
+#d['links']['source'] = {}
+#d['links']['target'] = {}
+#d['links']['value'] = {}
 
 def create_d3json():
     try:
@@ -61,8 +67,9 @@ def create_d3json():
                 value.append(item)
                 #additem("id", item, "group", 1)
                 #d.update({'nodes': 'id': item})
-                d['nodes']['id'] = item
-                d['nodes']['group'] = i
+                dtemp = {}
+                #d['nodes'] = {'id': []}
+                d['nodes'].append({'id':item, 'group':1})
             #for item in value:
 
                 #d.update({'id': item, "group": 1})
