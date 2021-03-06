@@ -47,10 +47,9 @@ def create_d3json():
         with open(r'GalaxyNV\templates\network.json', 'r') as networkfile:
             data = networkfile.read()
             parsed = json.loads(data)
-            try:
-                value_admin_fw = (parsed["nodes"]["admin-fw"])
-            except:
-                value_admin_fw = "no admin-fw"
-            return value_admin_fw
+            value = []
+            for item in parsed["nodes"]:
+                value.append(item)
+            return value
     except:
         return ("Failed to open network.json file. Are you sure it is named correctly?")
