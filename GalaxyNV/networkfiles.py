@@ -8,7 +8,7 @@ import os
 import yaml
 import json
 import pprint
-#from ruamel import yaml
+from collections import defaultdict
 
 def createfolders():
     try:
@@ -42,14 +42,39 @@ def loadjsonfiles():
     except:
         return("Failed to open network.json file. Are you sure it is named correctly?")
 
+
+
+d = {}
+d['nodes'] = {}
+d['nodes']['id'] = {}
+d['nodes']['group'] = {}
+
 def create_d3json():
     try:
         with open(r'GalaxyNV\templates\network.json', 'r') as networkfile:
             data = networkfile.read()
             parsed = json.loads(data)
             value = []
+            i = 0
             for item in parsed["nodes"]:
+                i = i+1
                 value.append(item)
-            return value
+                #additem("id", item, "group", 1)
+                #d.update({'nodes': 'id': item})
+                d['nodes']['id'] = item
+                d['nodes']['group'] = i
+            #for item in value:
+
+                #d.update({'id': item, "group": 1})
+             #   d["id"] = item
+
+
+            with open (r'GalaxyNV\templates\fdg.json', "w") as fdg_json_out:
+                json.dump(value, fdg_json_out, indent=4, sort_keys=True)
+            return d
     except:
         return ("Failed to open network.json file. Are you sure it is named correctly?")
+
+
+def additem(k1, v1, k2, v2):
+    d[k1] = v1
