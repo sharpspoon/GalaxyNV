@@ -9,24 +9,17 @@
 </div>
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <h2>Force-Directed</h2>
         <p>
-            Flask gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            When using the D3 force layout with a disjoint graph, you typically want the positioning forces (d3.forceX and d3.forceY) instead of the centering force (d3.forceCenter). The positioning forces, unlike the centering force, prevent detached subgraphs from escaping the viewport.
         </p>
-        <p><a class="btn btn-default" href="http://flask.pocoo.org/docs/">Learn more &raquo;</a></p>
+        <p><a class="btn btn-default" href="{{ url_for('fdg') }}">Learn more &raquo;</a></p>
     </div>
-    <div class="col-md-4">
-        <h2>Disjoint Force-Directed</h2>
-        <p>The Python Package Index is a repository of software for the Python programming language.</p>
-        <p><a class="btn btn-default" href="https://pypi.python.org/pypi">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Force-Directed Tree</h2>
-        <p>You can easily publish to Microsoft Azure using Visual Studio. Find out how you can host your application using a free trial today.</p>
-        <p><a class="btn btn-default" href="http://azure.microsoft.com">Learn more &raquo;</a></p>
+    <div class="col-md-6">
+        <h2>Arc</h2>
+        <p>This diagram places nodes in a horizontal or vertical line, with circular arcs for links. Unlike other network visualizations such as a force layout, the appearance (and usefulness) of an arc diagram is highly dependent on the order of nodes. Hover over a node below to inspect its connections.</p>
+        <p><a class="btn btn-default" href="{{ url_for('arc') }}">Learn more &raquo;</a></p>
     </div>
 </div>
 {% endblock %}
