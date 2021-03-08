@@ -44,26 +44,36 @@ def loadjsonfiles():
 
 
 
-d = { 'nodes': [], 'links': []}
+
 
 def create_d3json():
+    #Create an empty new dict
+    d = { 'nodes': [], 'links': []}
     try:
+        #Create the network.json file
         with open(r'GalaxyNV\templates\network.json', 'r') as networkfile:
-            data = networkfile.read()
-            parsed = json.loads(data)
-            value = []
-            for item in parsed["nodes"]:
-                value.append(item)
+            parsed = json.loads(networkfile.read())
 
-                d['nodes'].append({'id':item, 'group':1})
+            nodes = []
+            for n in parsed["nodes"]:
+                nodes.append(n)
+            for n in parsed["links"]:
+                nodes.append(n)
 
-                for l in parsed["nodes"][item]["links"]:
-                    d['links'].append({'source':item, 'target':l, 'value':1})
+            for node in parsed["links"]:
+                d['nodes'].append({'id':node, 'group':1})
+
+            for node in parsed["nodes"]:
+                d['nodes'].append({'id':node, 'group':2})
+
+                for link in parsed["nodes"][node]["links"]:
+                    if(link in nodes):
+                        d['links'].append({'source':node, 'target':link, 'value':1})
 
             with open (r'GalaxyNV\templates\fdg.json', "w") as fdg_json_out:
                 json.dump(d, fdg_json_out, indent=4, sort_keys=False)
 
-            return d
+            return "Build success."
     except:
         return ("Failed to open network.json file. Are you sure it is named correctly?")
 

@@ -1,44 +1,76 @@
 {
     "nodes": [
         {
-            "id": "admin-fw",
+            "id": "admin0-br",
             "group": 1
+        },
+        {
+            "id": "control-br",
+            "group": 1
+        },
+        {
+            "id": "dmz-br",
+            "group": 1
+        },
+        {
+            "id": "server0-br",
+            "group": 1
+        },
+        {
+            "id": "upstream-br",
+            "group": 1
+        },
+        {
+            "id": "user0-br",
+            "group": 1
+        },
+        {
+            "id": "user1-br",
+            "group": 1
+        },
+        {
+            "id": "user200-br",
+            "group": 1
+        },
+        {
+            "id": "admin-fw",
+            "group": 2
         },
         {
             "id": "admin0",
-            "group": 1
+            "group": 2
         },
         {
             "id": "border-fw",
-            "group": 1
+            "group": 2
         },
         {
             "id": "server-fw",
-            "group": 1
+            "group": 2
         },
         {
             "id": "server-http",
-            "group": 1
+            "group": 2
         },
         {
             "id": "server-https",
-            "group": 1
+            "group": 2
         },
         {
             "id": "user-fw",
-            "group": 1
+            "group": 2
         },
         {
             "id": "user0",
-            "group": 1
+            "group": 2
         },
         {
             "id": "user1",
-            "group": 1
+            "group": 2
         },
         {
             "id": "user200",
-            "group": 1
+            "group": 2
         }
     ],
     "links": [
