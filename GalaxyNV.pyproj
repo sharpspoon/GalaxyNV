@@ -53,6 +53,8 @@
     <Content Include="GalaxyNV\static\img\cosmos.svg" />
     <Content Include="GalaxyNV\static\scripts\jquery.js" />
     <Content Include="GalaxyNV\templates\Demo.html" />
+    <Content Include="GalaxyNV\templates\arc.html" />
+    <Content Include="GalaxyNV\templates\ArcGraph.html" />
     <Content Include="GalaxyNV\templates\ForceDirectedGraph.html" />
     <Content Include="GalaxyNV\templates\fdg.html" />
     <Content Include="GalaxyNV\templates\demo.json" />

@@ -39,12 +39,6 @@ def json():
         'fdg.json'
     )
 
-@app.route('/fdgiframe')
-def fdgiframe():
-    return render_template(
-        'ForceDirectedGraph.html'
-    )
-
 @app.route('/demoiframe')
 def demoiframe():
     return render_template(
@@ -63,6 +57,26 @@ def fdg():
     return render_template(
         'fdg.html',
         jc = jsoncontent
+    )
+
+@app.route('/fdgiframe')
+def fdgiframe():
+    return render_template(
+        'ForceDirectedGraph.html'
+    )
+
+@app.route('/arc')
+def arc():
+    jsoncontent = networkfiles.create_d3json()
+    return render_template(
+        'arc.html',
+        jc = jsoncontent
+    )
+
+@app.route('/arciframe')
+def arciframe():
+    return render_template(
+        'ArcGraph.html'
     )
 
 @app.route('/networkyaml')
