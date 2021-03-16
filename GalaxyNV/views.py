@@ -15,6 +15,22 @@ def home():
         sh1=subheader1
     )
 
+@app.route('/image')
+def image():
+    return render_template(
+        'image.html',
+        title='Galaxy Image and Network Configuration',
+        year=datetime.now().year
+    )
+
+@app.route('/creation')
+def creation():
+    return render_template(
+        'creation.html',
+        title='Galaxy Image and Network Configuration',
+        year=datetime.now().year
+    )
+
 @app.route('/contact')
 def contact():
     return render_template(
