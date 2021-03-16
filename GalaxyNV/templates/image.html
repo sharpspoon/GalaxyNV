@@ -1,40 +1,13 @@
-{% extends 'template.html' %} {% block title %} Galaxy {%endblock %} {% block
+{% extends 'layout.html' %} {% block title %} Galaxy {%endblock %} {% block
 content %}
 
-<form id="regForm" method="post">
-  <div>
-    <h2>Welcome</h2>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in
-      culpa qui officia deserunt mollit anim id est laborum consectetur
-      adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-      laboris nisi ut aliquip ex ea commodo consequat.
-    </p>
-  </div>
-
-  <!-- <div class="formGroup">
-    <label class="switch">
-      <input type="checkbox" id="slider" value="on" />
-      <span class="slider round"></span>
-    </label>
-    <label for="slider"> Use template</label>
-  </div> -->
-  <div class="formGroup" id="load_in">
-    <label>Path to configuration to load in:</label>
-    <input
-      id="path_to_load"
-      name="path_to_load"
-      class="form-control"
-      type="text"
-      value="configuration/infrastructure"
-    />
-  </div>
-  <button type="submit" class="btn btn-primary" id="loader">Start</button>
-</form>
+    <form id="regForm" method="post">
+        <div class="input-group mb-3" id="load_in">
+            <span class="input-group-text" id="basic-addon3">Configuration Path</span>
+            <input id="path_to_load" name="path_to_load" type="text"  class="form-control" placeholder="path/to/configuration" aria-describedby="basic-addon3">
+        </div>
+        <button type="submit" class="btn btn-primary" id="loader">Start</button>
+    </form>
 <script
   type="text/javascript"
   src="{{ url_for('static', filename='index.js') }}"

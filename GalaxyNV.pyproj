@@ -58,7 +58,6 @@
     <Content Include="GalaxyNV\static\img\cosmos.svg" />
     <Content Include="GalaxyNV\static\index.js" />
     <Content Include="GalaxyNV\static\scripts\jquery.js" />
-    <Content Include="GalaxyNV\static\style.css" />
     <Content Include="GalaxyNV\templates\config_template.j2" />
     <Content Include="GalaxyNV\templates\creation.html" />
     <Content Include="GalaxyNV\templates\Demo.html" />
