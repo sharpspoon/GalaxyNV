@@ -1,0 +1,17 @@
+---
+{%- if parentServer %}
+parent_server: {{ parentServer }}
+{%- endif %}
+parent: {{ parent }}
+{%- if preBuilds %}
+prebuild:
+    {% for pre in preBuilds -%}
+    - {{pre}}
+    {% endfor %}
+{%- endif %}
+{%- if postBuilds %}
+postbuild:
+    {% for post in postBuilds -%}
+    - {{post}}
+    {% endfor %}
+{%- endif %}
