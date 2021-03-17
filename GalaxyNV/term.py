@@ -1,6 +1,6 @@
 import os
 import yaml
-import config
+from GalaxyNV import config
 
 
 def build_master_base():

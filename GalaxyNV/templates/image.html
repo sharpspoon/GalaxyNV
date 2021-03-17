@@ -1,51 +1,94 @@
 {% extends 'layout.html' %} {% block title %} Galaxy {%endblock %} {% block content %}
-<form id="regForm" method="post">
-    <div class="input-group mb-3" id="load_in">
-        <span class="input-group-text" id="basic-addon3">Configuration Path</span>
-        <input id="path_to_load" name="path_to_load" type="text" class="form-control" placeholder="path/to/configuration" aria-describedby="basic-addon3">
-    </div>
-    <button type="submit" class="btn btn-primary" id="loader">Start</button>
-</form>
-<form id="regForm" onsubmit="return confirm('Do you really want to submit');" class="needs-validation" novalidate method="post" enctype=multipart/form-data>
-    <!-- One "tab" for each step in the form: -->
-    <label id='result' readonly hidden>{{ result }}</label>
-    <div class="tab" id='base_tab'>
-        <h1>Base Image Creation</h1>
-        <div class="form-group" hidden>
-            <input type="text" class="form-control" value="0" name="baseCounter" id="baseCounter" onchange="modifyBase()" readonly />
+<div class="container-fluid">
+    <h2>Load existing configuration...</h2>
+    <form id="regForm" method="post">
+        <div class="input-group mb-3" id="load_in">
+            <span class="input-group-text" id="basic-addon3">Configuration Path</span>
+            <input id="path_to_load" name="path_to_load" type="text" class="form-control" placeholder="path/to/configuration" aria-describedby="basic-addon3">
         </div>
-        <div id="addBase">
-            <input type="button" class="btn btn-secondary" onclick="addBase()" value="Add New Base Image" />
+        <button type="submit" class="btn btn-primary" id="loader">Load</button>
+    </form>
+</div>
+<br />
+<div class="container-fluid">
+    <h2>Create new or edit existing configuration...</h2>
+    <form id="regForm" onsubmit="return confirm('Do you really want to submit');" class="needs-validation" novalidate method="post" enctype=multipart/form-data>
+        <!-- One "tab" for each step in the form: -->
+        <label id='result' readonly hidden>{{ result }}</label>
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Base Image Creation
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="tab" id='base_tab'>
+                            <div class="form-group" hidden>
+                                <input type="text" class="form-control" value="0" name="baseCounter" id="baseCounter" onchange="modifyBase()" readonly />
+                            </div>
+                            <div id="addBase">
+                                <input type="button" class="btn btn-secondary" onclick="addBase()" value="Add New Base Image" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Node Image Creation
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="tab">
+                            <div class="form-group" hidden>
+                                <input type="text" class="form-control" value="0" name="nodeCounter" id="nodeCounter" readonly />
+                            </div>
+                            <div id="addNode">
+                                <input type="button" class="btn btn-secondary" onclick="addNode()" value="Add New Node Image" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Network Configuration
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="tab">
+                            <div class="form-group" hidden>
+                                <input type="text" class="form-control" value="0" name="networkCounter" id="networkCounter" readonly />
+                            </div>
+                            <div id="addNetwork">
+                                <input type="button" class="btn btn-secondary" onclick="addNetwork()" value="Add New Network Node" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="tab">
-        <h1>Node Image Creation</h1>
-        <div class="form-group" hidden>
-            <input type="text" class="form-control" value="0" name="nodeCounter" id="nodeCounter" readonly />
-        </div>
-        <div id="addNode">
-            <input type="button" class="btn btn-secondary" onclick="addNode()" value="Add New Node Image" />
-        </div>
-    </div>
-    <div class="tab">
-        <h1>Network Configuration</h1>
-        <div class="form-group" hidden>
-            <input type="text" class="form-control" value="0" name="networkCounter" id="networkCounter" readonly />
-        </div>
-        <div id="addNetwork">
-            <input type="button" class="btn btn-secondary" onclick="addNetwork()" value="Add New Network Node" />
-        </div>
-    </div>
-    <!-- Buttons -->
-    <div style="overflow: auto">
+
+
+
+        <!-- Buttons -->
+        <!--<div style="overflow: auto">
         <div style="float: right">
             <button type="button" class="btn btn-secondary" id="prevBtn" onclick="nextPrev(-1)"> Previous </button>
             <button type="button" class="btn btn-primary" id="nextBtn" onclick="nextPrev(1)"> Next </button>
         </div>
-    </div>
-    <!-- Circles which indicates the steps of the form: -->
-    <div style="text-align: center; margin-top: 40px"> <span class="step"></span> <span class="step"></span> <span class="step"></span> </div>
-</form>
+    </div>-->
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+
 <script type="text/javascript" src="{{ url_for('static', filename='creation.js') }}"></script> {% if base %}
 <script type="text/javascript">
     load({

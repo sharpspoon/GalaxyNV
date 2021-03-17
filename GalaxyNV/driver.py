@@ -5,8 +5,7 @@ Uses the argparse library to help with passing of command line arguments"""
 
 import argparse
 import logging
-import app
-import term
+from GalaxyNV import app, term
 
 parser = argparse.ArgumentParser(
     description="Interactive application for creating configuration files for\
