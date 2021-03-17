@@ -1,15 +1,65 @@
-{% extends 'layout.html' %} {% block title %} Galaxy {%endblock %} {% block
-content %}
-
-    <form id="regForm" method="post">
-        <div class="input-group mb-3" id="load_in">
-            <span class="input-group-text" id="basic-addon3">Configuration Path</span>
-            <input id="path_to_load" name="path_to_load" type="text"  class="form-control" placeholder="path/to/configuration" aria-describedby="basic-addon3">
+{% extends 'layout.html' %} {% block title %} Galaxy {%endblock %} {% block content %}
+<form id="regForm" method="post">
+    <div class="input-group mb-3" id="load_in">
+        <span class="input-group-text" id="basic-addon3">Configuration Path</span>
+        <input id="path_to_load" name="path_to_load" type="text" class="form-control" placeholder="path/to/configuration" aria-describedby="basic-addon3">
+    </div>
+    <button type="submit" class="btn btn-primary" id="loader">Start</button>
+</form>
+<form id="regForm" onsubmit="return confirm('Do you really want to submit');" class="needs-validation" novalidate method="post" enctype=multipart/form-data>
+    <!-- One "tab" for each step in the form: -->
+    <label id='result' readonly hidden>{{ result }}</label>
+    <div class="tab" id='base_tab'>
+        <h1>Base Image Creation</h1>
+        <div class="form-group" hidden>
+            <input type="text" class="form-control" value="0" name="baseCounter" id="baseCounter" onchange="modifyBase()" readonly />
         </div>
-        <button type="submit" class="btn btn-primary" id="loader">Start</button>
-    </form>
-<script
-  type="text/javascript"
-  src="{{ url_for('static', filename='index.js') }}"
-></script>
-{% endblock %}
+        <div id="addBase">
+            <input type="button" class="btn btn-secondary" onclick="addBase()" value="Add New Base Image" />
+        </div>
+    </div>
+    <div class="tab">
+        <h1>Node Image Creation</h1>
+        <div class="form-group" hidden>
+            <input type="text" class="form-control" value="0" name="nodeCounter" id="nodeCounter" readonly />
+        </div>
+        <div id="addNode">
+            <input type="button" class="btn btn-secondary" onclick="addNode()" value="Add New Node Image" />
+        </div>
+    </div>
+    <div class="tab">
+        <h1>Network Configuration</h1>
+        <div class="form-group" hidden>
+            <input type="text" class="form-control" value="0" name="networkCounter" id="networkCounter" readonly />
+        </div>
+        <div id="addNetwork">
+            <input type="button" class="btn btn-secondary" onclick="addNetwork()" value="Add New Network Node" />
+        </div>
+    </div>
+    <!-- Buttons -->
+    <div style="overflow: auto">
+        <div style="float: right">
+            <button type="button" class="btn btn-secondary" id="prevBtn" onclick="nextPrev(-1)"> Previous </button>
+            <button type="button" class="btn btn-primary" id="nextBtn" onclick="nextPrev(1)"> Next </button>
+        </div>
+    </div>
+    <!-- Circles which indicates the steps of the form: -->
+    <div style="text-align: center; margin-top: 40px"> <span class="step"></span> <span class="step"></span> <span class="step"></span> </div>
+</form>
+<script type="text/javascript" src="{{ url_for('static', filename='creation.js') }}"></script> {% if base %}
+<script type="text/javascript">
+    load({
+    {
+            base | tojson
+    }
+}, {
+    {
+            node | tojson
+    }
+}, {
+    {
+            network | tojson
+    }
+})
+</script> {% endif %}
+<script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script> {% endblock %}
