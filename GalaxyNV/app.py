@@ -7,7 +7,7 @@ from flask.helpers import url_for
 from waitress import serve
 import flask
 import yaml
-import config
+from GalaxyNV import config
 
 
 app = flask.Flask(__name__)
