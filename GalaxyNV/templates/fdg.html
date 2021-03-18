@@ -2,10 +2,13 @@
 
 {% block content %}
 
-
+<h1>Force Directed</h1>
+<div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-primary active">Hide Bridge</button>
+    <button type="button" class="btn btn-primary">Show Bridge</button>
+</div>
 <div class="jumbotron">
-    <h1>Force Directed</h1>
-    {{ jc }}
     <iframe src="fdgiframe" frameborder="0" scrolling="no" width="960" height="600"></iframe>
 </div>
+{{ jc }}
 {% endblock %}

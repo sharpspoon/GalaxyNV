@@ -23,14 +23,6 @@ def image():
         year=datetime.now().year
     )
 
-@app.route('/creation')
-def creation():
-    return render_template(
-        'creation.html',
-        title='Galaxy Image and Network Configuration',
-        year=datetime.now().year
-    )
-
 @app.route('/contact')
 def contact():
     return render_template(
