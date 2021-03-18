@@ -5,7 +5,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 
 def subheader1():
-    return ("Welcome to Galaxy. To get started, upload a network.yml file.")
+    return ("Welcome to Galaxy. It is recommended to check the Image and Network Configuration first.")
 
 def b():
     G = nx.graph
