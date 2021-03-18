@@ -81,12 +81,27 @@
         },
         {
             "source": "admin-fw",
+            "target": "control-br",
+            "value": 1
+        },
+        {
+            "source": "admin-fw",
             "target": "dmz-br",
             "value": 1
         },
         {
             "source": "admin0",
             "target": "admin0-br",
+            "value": 1
+        },
+        {
+            "source": "admin0",
+            "target": "control-br",
+            "value": 1
+        },
+        {
+            "source": "border-fw",
+            "target": "control-br",
             "value": 1
         },
         {
@@ -101,6 +116,11 @@
         },
         {
             "source": "server-fw",
+            "target": "control-br",
+            "value": 1
+        },
+        {
+            "source": "server-fw",
             "target": "dmz-br",
             "value": 1
         },
@@ -111,12 +131,27 @@
         },
         {
             "source": "server-http",
+            "target": "control-br",
+            "value": 1
+        },
+        {
+            "source": "server-http",
             "target": "server0-br",
             "value": 1
         },
         {
             "source": "server-https",
+            "target": "control-br",
+            "value": 1
+        },
+        {
+            "source": "server-https",
             "target": "server0-br",
+            "value": 1
+        },
+        {
+            "source": "user-fw",
+            "target": "control-br",
             "value": 1
         },
         {
@@ -141,12 +176,27 @@
         },
         {
             "source": "user0",
+            "target": "control-br",
+            "value": 1
+        },
+        {
+            "source": "user0",
             "target": "user0-br",
             "value": 1
         },
         {
             "source": "user1",
+            "target": "control-br",
+            "value": 1
+        },
+        {
+            "source": "user1",
             "target": "user1-br",
+            "value": 1
+        },
+        {
+            "source": "user200",
+            "target": "control-br",
             "value": 1
         },
         {

@@ -62,6 +62,8 @@
     <Content Include="GalaxyNV\templates\Demo.html" />
     <Content Include="GalaxyNV\templates\arc.html" />
     <Content Include="GalaxyNV\templates\ArcGraph.html" />
+    <Content Include="GalaxyNV\templates\fdgbridge.html" />
+    <Content Include="GalaxyNV\templates\ForceDirectedGraphBridge.html" />
     <Content Include="GalaxyNV\templates\ForceDirectedGraph.html" />
     <Content Include="GalaxyNV\templates\fdg.html" />
     <Content Include="GalaxyNV\templates\demo.json" />

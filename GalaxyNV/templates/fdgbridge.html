@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>Force Directed</h1>
+<div class="btn-group">
+    <a href="{{ url_for('fdg') }}" class="btn btn-primary" aria-current="page">Hide Bridge</a>
+    <a href="{{ url_for('fdgbridge') }}" class="btn btn-primary active">Show Bridge</a>
+</div>
+<div class="jumbotron">
+    <iframe src="fdgbridgeiframe" frameborder="0" scrolling="no" width="960" height="600"></iframe>
+</div>
+{{ jc }}
+{% endblock %}

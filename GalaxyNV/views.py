@@ -47,6 +47,12 @@ def json():
         'fdg.json'
     )
 
+@app.route('/jsonbridge')
+def jsonbridge():
+    return render_template(
+        'fdgbridge.json'
+    )
+
 @app.route('/demoiframe')
 def demoiframe():
     return render_template(
@@ -58,7 +64,7 @@ def demojson():
     return render_template(
         'demo.json'
     )
-
+#Force directed graph with no bridge display
 @app.route('/fdg')
 def fdg():
     jsoncontent = networkfiles.create_d3json()
@@ -71,6 +77,21 @@ def fdg():
 def fdgiframe():
     return render_template(
         'ForceDirectedGraph.html'
+    )
+
+#Force directed graph with a bridge display
+@app.route('/fdgbridge')
+def fdgbridge():
+    jsoncontent = networkfiles.create_d3jsonbridge()
+    return render_template(
+        'fdgbridge.html',
+        jc = jsoncontent
+    )
+
+@app.route('/fdgbridgeiframe')
+def fdgbridgeiframe():
+    return render_template(
+        'ForceDirectedGraphBridge.html'
     )
 
 @app.route('/arc')
