@@ -68,17 +68,18 @@ def graph():
     #nx_graph = nx.cycle_graph(3)
     i = 0
     for node in parsed["links"]:
-        i+=1
         if node != "control-br":
+            i+=1
             net.add_node(i, label=node, shape='image', image=r'img_laptop', size=25)
 
     for node in parsed["nodes"]:
-        i+=1
         if node != "control-br":
+            i+=1
             net.add_node(i, label=node, shape='image', image=r'img_server', size=25)
     
     #net.from_nx(nx_graph)
     net.show_buttons()
+    net.add_edge(1, 2)
     
     #for e in range(1):
     #nt.add_node(11, shape='image', image=r'img_comp', size=25)
