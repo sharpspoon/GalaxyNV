@@ -71,7 +71,6 @@
     <Content Include="GalaxyNV\templates\fdg.html" />
     <Content Include="GalaxyNV\templates\demo.json" />
     <Content Include="GalaxyNV\templates\image.html" />
-    <Content Include="GalaxyNV\templates\img_lights.jpg" />
     <Content Include="GalaxyNV\templates\networkyaml.html" />
     <Content Include="requirements.txt" />
     <Content Include="GalaxyNV\static\fonts\glyphicons-halflings-regular.eot" />
