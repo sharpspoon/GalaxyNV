@@ -64,6 +64,21 @@ def demojson():
     return render_template(
         'demo.json'
     )
+
+#Pyvis graph
+@app.route('/graph')
+def graph():
+    return render_template(
+        'graph.html'
+    )
+
+@app.route('/graphiframe')
+def graphiframe():
+    networkfiles.graph()
+    return render_template(
+        'PyvisGraph.html'
+    )
+
 #Force directed graph with no bridge display
 @app.route('/fdg')
 def fdg():
