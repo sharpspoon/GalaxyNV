@@ -51,11 +51,15 @@
     <Folder Include="GalaxyNV\templates\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="GalaxyNV\img_lights.jpg" />
+    <Content Include="GalaxyNV\laptop.png" />
     <Content Include="GalaxyNV\NetworkYMLFiles\miserables.json" />
     <Content Include="GalaxyNV\NetworkYMLFiles\network.txt" />
     <Content Include="GalaxyNV\NetworkYMLFiles\network.yml" />
     <Content Include="GalaxyNV\static\creation.js" />
     <Content Include="GalaxyNV\static\img\cosmos.svg" />
+    <Content Include="GalaxyNV\static\img\laptop.png" />
+    <Content Include="GalaxyNV\static\img\laptop.svg" />
     <Content Include="GalaxyNV\static\index.js" />
     <Content Include="GalaxyNV\static\scripts\jquery.js" />
     <Content Include="GalaxyNV\templates\config_template.j2" />
@@ -69,6 +73,7 @@
     <Content Include="GalaxyNV\templates\fdg.html" />
     <Content Include="GalaxyNV\templates\demo.json" />
     <Content Include="GalaxyNV\templates\image.html" />
+    <Content Include="GalaxyNV\templates\img_lights.jpg" />
     <Content Include="GalaxyNV\templates\networkyaml.html" />
     <Content Include="requirements.txt" />
     <Content Include="GalaxyNV\static\fonts\glyphicons-halflings-regular.eot" />
