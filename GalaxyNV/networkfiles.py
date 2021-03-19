@@ -70,12 +70,24 @@ def graph():
     for node in parsed["links"]:
         if node != "control-br":
             id+=1
-            net.add_node(node, label=node, shape='image', image=r'img_laptop', size=25)
+            net.add_node(node, label=node, shape='image', image=r'img_server', size=25)
 
     for node in parsed["nodes"]:
         if node != "control-br":
             id+=1
-            net.add_node(node, label=node, shape='image', image=r'img_server', size=25)
+            net.add_node(node, label=node, shape='image', image=r'img_laptop', size=25)
+
+            try:
+                replica_count = parsed["nodes"][node]["replicas"]
+                rep_label = 'asdf'+str(replica_count)
+
+                #for r in replica_count:
+                 #   net.add_node(r, label=rep_label, shape='image', image=r'img_laptop', size=20)
+
+                net.add_node(replica_count, label=rep_label, shape='image', image=r'img_laptop', size=20)
+            except:
+                replica_count = 0
+
             for link in parsed["nodes"][node]["links"]:
                 if(link in nodes):
                     net.add_edge(node, link)
