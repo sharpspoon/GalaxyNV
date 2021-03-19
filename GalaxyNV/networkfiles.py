@@ -46,15 +46,40 @@ def loadjsonfiles():
 
 
 def graph():
-    nx_graph = nx.cycle_graph(10)
-    nx_graph.nodes[1]['title'] = 'Number 1'
-    nt = Network('500px', '1000px')#HxW
-    nt.from_nx(nx_graph)
-    nt.show_buttons()
-    img = [r'GalaxyNV\static\laptop.svg']
+    #Create an empty new dict
+    d = { 'nodes': [], 'links': []}
+
+    net = Network('500px', '1000px')#HxW
+    try:
+        with open(r'GalaxyNV\templates\network.json', 'r') as networkfile:
+            parsed = json.loads(networkfile.read())
+            nodes = []
+
+            for n in parsed["nodes"]:
+                if n != "control-br":
+                    nodes.append(n)
+            for n in parsed["links"]:
+                if n != "control-br":
+                    nodes.append(n)
+    except:
+        return ('failed to access json file')
+
+
+    #nx_graph = nx.cycle_graph(3)
+    i = 0
+    for node in parsed["links"]:
+        i+=1
+        if node != "control-br":
+            net.add_node(i, shape='image', image=r'img_comp', size=25)
+
+            #nx_graph.nodes[1]['title'] = 'Number 1'
+    
+    #net.from_nx(nx_graph)
+    net.show_buttons()
+    
     #for e in range(1):
-    nt.add_node(11, shape='image', image=r'img_comp', size=25)
-    nt.save_graph(r'GalaxyNV\templates\PyvisGraph.html')
+    #nt.add_node(11, shape='image', image=r'img_comp', size=25)
+    net.save_graph(r'GalaxyNV\templates\PyvisGraph.html')
     return ("success")
 
 
