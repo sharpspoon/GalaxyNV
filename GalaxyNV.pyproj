@@ -33,12 +33,12 @@
     <Compile Include="GalaxyNV\app.py" />
     <Compile Include="GalaxyNV\config.py" />
     <Compile Include="GalaxyNV\driver.py" />
+    <Compile Include="GalaxyNV\views.py" />
     <Compile Include="GalaxyNV\networkfiles.py" />
     <Compile Include="GalaxyNV\gnx.py" />
     <Compile Include="GalaxyNV\term.py" />
     <Compile Include="runserver.py" />
     <Compile Include="GalaxyNV\__init__.py" />
-    <Compile Include="GalaxyNV\views.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="GalaxyNV\" />
@@ -57,7 +57,7 @@
     <Content Include="GalaxyNV\static\creation.js" />
     <Content Include="GalaxyNV\static\img\cosmos.svg" />
     <Content Include="GalaxyNV\static\img\laptop.png" />
-    <Content Include="GalaxyNV\static\img\laptop.svg" />
+    <Content Include="GalaxyNV\static\img\server.png" />
     <Content Include="GalaxyNV\static\index.js" />
     <Content Include="GalaxyNV\static\scripts\jquery.js" />
     <Content Include="GalaxyNV\templates\config_template.j2" />
