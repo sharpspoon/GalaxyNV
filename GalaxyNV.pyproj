@@ -51,8 +51,6 @@
     <Folder Include="GalaxyNV\templates\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="GalaxyNV\img_lights.jpg" />
-    <Content Include="GalaxyNV\laptop.png" />
     <Content Include="GalaxyNV\NetworkYMLFiles\miserables.json" />
     <Content Include="GalaxyNV\NetworkYMLFiles\network.txt" />
     <Content Include="GalaxyNV\NetworkYMLFiles\network.yml" />

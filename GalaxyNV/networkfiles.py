@@ -53,7 +53,7 @@ def graph():
     nt.show_buttons()
     img = [r'GalaxyNV\static\laptop.svg']
     #for e in range(1):
-    nt.add_node(11, shape='image', image=r'img_comp', size=400)
+    nt.add_node(11, shape='image', image=r'img_comp', size=25)
     nt.save_graph(r'GalaxyNV\templates\PyvisGraph.html')
     return ("success")
 
