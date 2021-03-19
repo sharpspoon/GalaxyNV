@@ -65,10 +65,16 @@ def demojson():
         'demo.json'
     )
 
-@app.route('/img_comp')
-def img_comp():
+@app.route('/img_laptop')
+def img_laptop():
     return send_file(
-        'static\img\laptop.png', mimetype='image/jpg'
+        'static\img\laptop.png', mimetype='image/png'
+    )
+
+@app.route('/img_server')
+def img_server():
+    return send_file(
+        'static\img\server.png', mimetype='image/png'
     )
 
 #Pyvis graph

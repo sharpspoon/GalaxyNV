@@ -70,9 +70,12 @@ def graph():
     for node in parsed["links"]:
         i+=1
         if node != "control-br":
-            net.add_node(i, shape='image', image=r'img_comp', size=25)
+            net.add_node(i, label=node, shape='image', image=r'img_laptop', size=25)
 
-            #nx_graph.nodes[1]['title'] = 'Number 1'
+    for node in parsed["nodes"]:
+        i+=1
+        if node != "control-br":
+            net.add_node(i, label=node, shape='image', image=r'img_server', size=25)
     
     #net.from_nx(nx_graph)
     net.show_buttons()
