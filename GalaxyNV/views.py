@@ -68,7 +68,7 @@ def demojson():
 @app.route('/img_comp')
 def img_comp():
     return send_file(
-        'laptop.png', mimetype='image/jpg'
+        'static\img\laptop.png', mimetype='image/jpg'
     )
 
 #Pyvis graph
