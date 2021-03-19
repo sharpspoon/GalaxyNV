@@ -9,6 +9,8 @@ import yaml
 import json
 import pprint
 from collections import defaultdict
+from pyvis.network import Network
+
 
 def createfolders():
     try:
@@ -43,7 +45,14 @@ def loadjsonfiles():
         return("Failed to open network.json file. Are you sure it is named correctly?")
 
 
-
+def graph():
+    nx_graph = nx.cycle_graph(10)
+    nx_graph.nodes[1]['title'] = 'Number 1'
+    nt = Network('500px', '1000px')#HxW
+    nt.from_nx(nx_graph)
+    nt.show_buttons()
+    nt.save_graph(r'GalaxyNV\templates\PyvisGraph.html')
+    return ("success")
 
 
 def create_d3json():
