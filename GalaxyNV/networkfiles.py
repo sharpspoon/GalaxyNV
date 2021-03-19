@@ -63,7 +63,8 @@ def create_d3json():
                     nodes.append(n)
 
             for node in parsed["links"]:
-                d['nodes'].append({'id':node, 'group':1})
+                if node != "control-br":
+                    d['nodes'].append({'id':node, 'group':1})
 
             for node in parsed["nodes"]:
                 d['nodes'].append({'id':node, 'group':2})
