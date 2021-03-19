@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import render_template
+from flask import render_template, send_file
 from GalaxyNV import app, gnx, networkfiles
 
 
@@ -63,6 +63,12 @@ def demoiframe():
 def demojson():
     return render_template(
         'demo.json'
+    )
+
+@app.route('/img_comp')
+def img_comp():
+    return send_file(
+        'laptop.png', mimetype='image/jpg'
     )
 
 #Pyvis graph
