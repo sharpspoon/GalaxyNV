@@ -79,12 +79,12 @@ def graph():
 
             try:
                 replica_count = parsed["nodes"][node]["replicas"]
-                rep_label = 'asdf'+str(replica_count)
+                
+                for r in range(0, replica_count):
+                    rep_label = node+'_'+str(r)
+                    net.add_node(rep_label, label=rep_label, shape='image', image=r'img_laptop', size=20)
 
-                #for r in replica_count:
-                 #   net.add_node(r, label=rep_label, shape='image', image=r'img_laptop', size=20)
-
-                net.add_node(replica_count, label=rep_label, shape='image', image=r'img_laptop', size=20)
+                #net.add_node(replica_count, label=rep_label, shape='image', image=r'img_laptop', size=20)
             except:
                 replica_count = 0
 
