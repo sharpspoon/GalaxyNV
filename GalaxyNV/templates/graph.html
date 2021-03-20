@@ -21,7 +21,23 @@
                     </h2>
                     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <strong>This is the first item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                            <form>
+                                <div class="mb-3">
+                                    <label for="nodeName" class="form-label">Name you new node</label>
+                                    <input type="text" class="form-control" id="nodeName" aria-describedby="nodeHelp" required>
+                                    <div id="nodeHelp" class="form-text">Type the name of the new node. If the node already exists, it will add to that node replica.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nodeName" class="form-label">Name the node you want to link to</label>
+                                    <input type="text" class="form-control" id="nodeName" aria-describedby="nodeHelp">
+                                    <div id="nodeHelp" class="form-text">Type the name of an existing node to link to. This is optional.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="numberOfNodes" class="form-label">Number of replicas</label>
+                                    <input type="number" class="form-control" id="numberOfNodes" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Add</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -45,30 +61,29 @@
                     </h2>
                     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Node</th>
+                                        <th scope="col">Links to</th>
+                                        <th scope="col"># of Replicas</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">user200</th>
+                                        <td>dmz-br</td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">user1</th>
+                                        <td>dmz-br</td>
+                                        <td>5</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="btn-group-vertical">
-                <button type="button" class="btn btn-primary">1</button>
-                <div class="btn-group" role="group">
-                    <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        Add
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                        <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-                        <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-                    </ul>
-                </div>
-                <div class="btn-group" role="group">
-                    <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        Remove
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                        <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-                        <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-                    </ul>
                 </div>
             </div>
         </div>

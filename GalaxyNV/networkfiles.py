@@ -49,12 +49,18 @@ def graph():
     #Create an empty new dict
     d = { 'nodes': [], 'links': []}
 
+    #Setting the size of the graph
     net = Network('500px', '1000px')#HxW
+
+    #Open the network.json file and begin to parse it
     try:
         with open(r'GalaxyNV\templates\network.json', 'r') as networkfile:
             parsed = json.loads(networkfile.read())
+
+            #Create empty node list
             nodes = []
 
+            #Add all links and nodes to the nodes list
             for n in parsed["nodes"]:
                 if n != "control-br":
                     nodes.append(n)
@@ -64,33 +70,37 @@ def graph():
     except:
         return ('failed to access json file')
 
-
-    #nx_graph = nx.cycle_graph(3)
-    id = 0
+    #Begin to iterate through the nodes list and create the nodes on the graph
     for node in parsed["links"]:
+        #Check to make sure that the control-br is NOT being used
         if node != "control-br":
-            id+=1
             net.add_node(node, label=node, shape='image', image=r'img_server', size=25)
 
+
     for node in parsed["nodes"]:
+        #Check to make sure that the control-br is NOT being used
         if node != "control-br":
-            id+=1
             net.add_node(node, label=node, shape='image', image=r'img_laptop', size=25)
 
+            for link in parsed["nodes"][node]["links"]:
+                if(link in nodes):
+                    net.add_edge(node, link)
+
+    #Iterate through the nodes again and add any replicas and replica links
+    for node in parsed["nodes"]:
+        if node != "control-br":
             try:
                 replica_count = parsed["nodes"][node]["replicas"]
                 
                 for r in range(0, replica_count):
                     rep_label = node+'_'+str(r)
-                    net.add_node(rep_label, label=rep_label, shape='image', image=r'img_laptop', size=20)
+                    net.add_node(rep_label, label=rep_label, shape='image', image=r'img_laptop', size=15)
 
-                #net.add_node(replica_count, label=rep_label, shape='image', image=r'img_laptop', size=20)
+                    for link in parsed["nodes"][node]["links"]:
+                        if(link in nodes):
+                            net.add_edge(rep_label, link)
             except:
                 replica_count = 0
-
-            for link in parsed["nodes"][node]["links"]:
-                if(link in nodes):
-                    net.add_edge(node, link)
 
     net.show_buttons()
     net.save_graph(r'GalaxyNV\templates\PyvisGraph.html')
