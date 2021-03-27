@@ -1,0 +1,154 @@
+{
+    "nodes": [
+        {
+            "id": "admin0-br",
+            "group": 1
+        },
+        {
+            "id": "dmz-br",
+            "group": 1
+        },
+        {
+            "id": "server0-br",
+            "group": 1
+        },
+        {
+            "id": "upstream-br",
+            "group": 1
+        },
+        {
+            "id": "user0-br",
+            "group": 1
+        },
+        {
+            "id": "user1-br",
+            "group": 1
+        },
+        {
+            "id": "user200-br",
+            "group": 1
+        },
+        {
+            "id": "admin-fw",
+            "group": 2
+        },
+        {
+            "id": "admin0",
+            "group": 2
+        },
+        {
+            "id": "border-fw",
+            "group": 2
+        },
+        {
+            "id": "server-fw",
+            "group": 2
+        },
+        {
+            "id": "server-http",
+            "group": 2
+        },
+        {
+            "id": "server-https",
+            "group": 2
+        },
+        {
+            "id": "user-fw",
+            "group": 2
+        },
+        {
+            "id": "user0",
+            "group": 2
+        },
+        {
+            "id": "user1",
+            "group": 2
+        },
+        {
+            "id": "user200",
+            "group": 2
+        }
+    ],
+    "links": [
+        {
+            "source": "admin-fw",
+            "target": "admin0-br",
+            "value": 1
+        },
+        {
+            "source": "admin-fw",
+            "target": "dmz-br",
+            "value": 1
+        },
+        {
+            "source": "admin0",
+            "target": "admin0-br",
+            "value": 1
+        },
+        {
+            "source": "border-fw",
+            "target": "dmz-br",
+            "value": 1
+        },
+        {
+            "source": "border-fw",
+            "target": "upstream-br",
+            "value": 1
+        },
+        {
+            "source": "server-fw",
+            "target": "dmz-br",
+            "value": 1
+        },
+        {
+            "source": "server-fw",
+            "target": "server0-br",
+            "value": 1
+        },
+        {
+            "source": "server-http",
+            "target": "server0-br",
+            "value": 1
+        },
+        {
+            "source": "server-https",
+            "target": "server0-br",
+            "value": 1
+        },
+        {
+            "source": "user-fw",
+            "target": "dmz-br",
+            "value": 1
+        },
+        {
+            "source": "user-fw",
+            "target": "user0-br",
+            "value": 1
+        },
+        {
+            "source": "user-fw",
+            "target": "user1-br",
+            "value": 1
+        },
+        {
+            "source": "user-fw",
+            "target": "user200-br",
+            "value": 1
+        },
+        {
+            "source": "user0",
+            "target": "user0-br",
+            "value": 1
+        },
+        {
+            "source": "user1",
+            "target": "user1-br",
+            "value": 1
+        },
+        {
+            "source": "user200",
+            "target": "user200-br",
+            "value": 1
+        }
+    ]
+}

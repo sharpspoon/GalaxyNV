@@ -11,9 +11,17 @@ import pprint
 from collections import defaultdict
 from pyvis.network import Network
 
+#Globals
+#Directories
 network_dir="./GalaxyNV/NetworkFiles"
 yml_dir="./GalaxyNV/NetworkFiles/yml"
 json_dir="./GalaxyNV/NetworkFiles/json"
+
+#Files
+network_json_file=json_dir+"/network.json"
+d3_json_file=json_dir+"/d3.json"
+d3bridge_json_file=json_dir+"/d3bridge.json"
+network_yml_file=yml_dir+"/network.yml"
 
 def createfolders():
     try:
@@ -22,7 +30,7 @@ def createfolders():
         os.mkdir(json_dir)
 
     except:
-        print("Folder 'NetworkYMLFiles' already exists. Proceeding.")
+        print("Necessary folders already exists. Proceeding.")
 
 #am i using this?
 def loadfiles():
@@ -36,7 +44,7 @@ def loadfiles():
 
 def convert():
     try:
-        with open('./GalaxyNV/NetworkYMLFiles/network.yml') as yaml_in, open(r'GalaxyNV\templates\network.json', "w") as json_out:
+        with open(network_yml_file) as yaml_in, open(network_json_file, "w") as json_out:
             yaml_object = yaml.safe_load(yaml_in) # yaml_object will be a list or a dict
             json.dump(yaml_object, json_out, indent=4, sort_keys=True)
     except:
@@ -119,7 +127,7 @@ def create_d3json():
     d = { 'nodes': [], 'links': []}
     try:
         #Create the network.json file
-        with open(r'GalaxyNV\templates\network.json', 'r') as networkfile:
+        with open(network_json_file, 'r') as networkfile:
             parsed = json.loads(networkfile.read())
 
             nodes = []
@@ -141,7 +149,7 @@ def create_d3json():
                     if(link in nodes):
                         d['links'].append({'source':node, 'target':link, 'value':1})
 
-            with open (r'GalaxyNV\templates\d3.json', "w") as d3_json_out:
+            with open (d3_json_file, "w") as d3_json_out:
                 json.dump(d, d3_json_out, indent=4, sort_keys=False)
 
             return "Build success."
@@ -153,7 +161,7 @@ def create_d3jsonbridge():
     d = { 'nodes': [], 'links': []}
     try:
         #Create the network.json file
-        with open(r'GalaxyNV\templates\network.json', 'r') as networkfile:
+        with open(network_json_file, 'r') as networkfile:
             parsed = json.loads(networkfile.read())
 
             nodes = []
@@ -172,7 +180,7 @@ def create_d3jsonbridge():
                     if(link in nodes):
                         d['links'].append({'source':node, 'target':link, 'value':1})
 
-            with open (r'GalaxyNV\templates\d3bridge.json', "w") as d3_json_out:
+            with open (d3bridge_json_file, "w") as d3_json_out:
                 json.dump(d, d3_json_out, indent=4, sort_keys=False)
 
             return "Build success."
