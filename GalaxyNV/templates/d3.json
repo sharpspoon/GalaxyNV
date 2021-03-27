@@ -117,11 +117,6 @@
         },
         {
             "source": "user-fw",
-            "target": "dmz-br",
-            "value": 1
-        },
-        {
-            "source": "user-fw",
             "target": "user0-br",
             "value": 1
         },

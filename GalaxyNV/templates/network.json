@@ -111,7 +111,6 @@
             "image": "user-fw",
             "links": {
                 "control-br": {},
-                "dmz-br": {},
                 "user0-br": {},
                 "user1-br": {},
                 "user200-br": {}
