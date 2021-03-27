@@ -15,7 +15,6 @@ nodes:
     priority: 0
     links:
       control-br: {}
-      dmz-br: {}
       user0-br: {}
       user1-br: {}
       user200-br: {}

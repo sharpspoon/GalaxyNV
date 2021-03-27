@@ -51,7 +51,6 @@
     <Folder Include="GalaxyNV\templates\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="GalaxyNV\NetworkYMLFiles\miserables.json" />
     <Content Include="GalaxyNV\NetworkYMLFiles\network.txt" />
     <Content Include="GalaxyNV\NetworkYMLFiles\network.yml" />
     <Content Include="GalaxyNV\static\creation.js" />
@@ -64,6 +63,7 @@
     <Content Include="GalaxyNV\templates\Demo.html" />
     <Content Include="GalaxyNV\templates\arc.html" />
     <Content Include="GalaxyNV\templates\ArcGraph.html" />
+    <Content Include="GalaxyNV\templates\graphbridge.html" />
     <Content Include="GalaxyNV\templates\graph.html" />
     <Content Include="GalaxyNV\templates\fdgbridge.html" />
     <Content Include="GalaxyNV\templates\ForceDirectedGraphBridge.html" />

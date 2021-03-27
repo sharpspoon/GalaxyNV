@@ -41,16 +41,28 @@ def about():
         message='Your application description page.'
     )
 
+@app.route('/d3json')
+def d3json():
+    return render_template(
+        'd3.json'
+    )
+
+@app.route('/d3jsonbridge')
+def d3jsonbridge():
+    return render_template(
+        'd3bridge.json'
+    )
+
 @app.route('/json')
 def json():
     return render_template(
-        'fdg.json'
+        'network.json'
     )
 
 @app.route('/jsonbridge')
 def jsonbridge():
     return render_template(
-        'fdgbridge.json'
+        'networkbridge.json'
     )
 
 @app.route('/demoiframe')
