@@ -11,16 +11,23 @@ import pprint
 from collections import defaultdict
 from pyvis.network import Network
 
+network_dir="./GalaxyNV/NetworkFiles"
+yml_dir="./GalaxyNV/NetworkFiles/yml"
+json_dir="./GalaxyNV/NetworkFiles/json"
 
 def createfolders():
     try:
-        os.mkdir("./NetworkYMLFiles")
+        os.mkdir(network_dir)
+        os.mkdir(yml_dir)
+        os.mkdir(json_dir)
+
     except:
         print("Folder 'NetworkYMLFiles' already exists. Proceeding.")
 
+#am i using this?
 def loadfiles():
     try:
-        with open(r'NetworkYMLFiles\network.yml') as networkfile:
+        with open('./GalaxyNV/NetworkFiles/network.yml') as networkfile:
             network_list = yaml.load(networkfile, Loader=yaml.FullLoader)
 
         return (network_list)
@@ -29,7 +36,7 @@ def loadfiles():
 
 def convert():
     try:
-        with open(r'NetworkYMLFiles\network.yml') as yaml_in, open(r'GalaxyNV\templates\network.json', "w") as json_out:
+        with open('./GalaxyNV/NetworkYMLFiles/network.yml') as yaml_in, open(r'GalaxyNV\templates\network.json', "w") as json_out:
             yaml_object = yaml.safe_load(yaml_in) # yaml_object will be a list or a dict
             json.dump(yaml_object, json_out, indent=4, sort_keys=True)
     except:
