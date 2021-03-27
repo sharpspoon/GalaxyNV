@@ -134,8 +134,8 @@ def create_d3json():
                     if(link in nodes):
                         d['links'].append({'source':node, 'target':link, 'value':1})
 
-            with open (r'GalaxyNV\templates\fdg.json', "w") as fdg_json_out:
-                json.dump(d, fdg_json_out, indent=4, sort_keys=False)
+            with open (r'GalaxyNV\templates\d3.json', "w") as d3_json_out:
+                json.dump(d, d3_json_out, indent=4, sort_keys=False)
 
             return "Build success."
     except:
@@ -165,8 +165,8 @@ def create_d3jsonbridge():
                     if(link in nodes):
                         d['links'].append({'source':node, 'target':link, 'value':1})
 
-            with open (r'GalaxyNV\templates\fdgbridge.json', "w") as fdg_json_out:
-                json.dump(d, fdg_json_out, indent=4, sort_keys=False)
+            with open (r'GalaxyNV\templates\d3bridge.json', "w") as d3_json_out:
+                json.dump(d, d3_json_out, indent=4, sort_keys=False)
 
             return "Build success."
     except:
