@@ -13,9 +13,9 @@ from pyvis.network import Network
 
 #Globals
 #Directories
-network_dir="./GalaxyNV/NetworkFiles"
-yml_dir="./GalaxyNV/NetworkFiles/yml"
-json_dir="./GalaxyNV/NetworkFiles/json"
+network_dir="./GalaxyNV/templates/NetworkFiles"
+yml_dir=network_dir+"/yml"
+json_dir=network_dir+"/json"
 
 #Files
 network_json_file=json_dir+"/network.json"
@@ -32,10 +32,10 @@ def createfolders():
     except:
         print("Necessary folders already exists. Proceeding.")
 
-#am i using this?
+#am i using this?yes
 def loadfiles():
     try:
-        with open('./GalaxyNV/NetworkFiles/network.yml') as networkfile:
+        with open(network_yml_file) as networkfile:
             network_list = yaml.load(networkfile, Loader=yaml.FullLoader)
 
         return (network_list)
@@ -52,12 +52,12 @@ def convert():
 
 def loadjsonfiles():
     try:
-        with open(r'GalaxyNV\templates\network.json', 'r') as networkfile:
+        with open(network_json_file, 'r') as networkfile:
             data = networkfile.read()
             parsed = json.loads(data)
             return json2html.convert(json = parsed)
     except:
-        return("Failed to open network.json file. Are you sure it is named correctly?")
+        return("Fafiled to open network.json file. Are you sure it is named correctly?")
 
 
 def graph():
@@ -69,7 +69,7 @@ def graph():
 
     #Open the network.json file and begin to parse it
     try:
-        with open(r'GalaxyNV\templates\network.json', 'r') as networkfile:
+        with open(network_json_file, 'r') as networkfile:
             parsed = json.loads(networkfile.read())
 
             #Create empty node list

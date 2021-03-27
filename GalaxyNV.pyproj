@@ -43,7 +43,6 @@
   <ItemGroup>
     <Folder Include="GalaxyNV\" />
     <Folder Include="GalaxyNV\networkx\" />
-    <Folder Include="GalaxyNV\NetworkYMLFiles\" />
     <Folder Include="GalaxyNV\static\" />
     <Folder Include="GalaxyNV\static\fonts\" />
     <Folder Include="GalaxyNV\static\img\" />
@@ -51,8 +50,6 @@
     <Folder Include="GalaxyNV\templates\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="GalaxyNV\NetworkYMLFiles\network.txt" />
-    <Content Include="GalaxyNV\NetworkYMLFiles\network.yml" />
     <Content Include="GalaxyNV\static\creation.js" />
     <Content Include="GalaxyNV\static\img\cosmos.svg" />
     <Content Include="GalaxyNV\static\img\laptop.png" />
@@ -69,7 +66,6 @@
     <Content Include="GalaxyNV\templates\ForceDirectedGraphBridge.html" />
     <Content Include="GalaxyNV\templates\ForceDirectedGraph.html" />
     <Content Include="GalaxyNV\templates\fdg.html" />
-    <Content Include="GalaxyNV\templates\demo.json" />
     <Content Include="GalaxyNV\templates\image.html" />
     <Content Include="GalaxyNV\templates\networkyaml.html" />
     <Content Include="requirements.txt" />
