@@ -89,6 +89,12 @@ def img_server():
         'static\img\server.png', mimetype='image/png'
     )
 
+@app.route('/img_firewall')
+def img_firewall():
+    return send_file(
+        'static\img\firewall.png', mimetype='image/png'
+    )
+
 #Pyvis graph
 @app.route('/graph')
 def graph():

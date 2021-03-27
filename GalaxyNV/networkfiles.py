@@ -95,7 +95,10 @@ def graph():
     for node in parsed["nodes"]:
         #Check to make sure that the control-br is NOT being used
         if node != "control-br":
-            net.add_node(node, label=node, shape='image', image=r'img_laptop', size=25)
+            if "-fw" in node:
+                net.add_node(node, label=node, shape='image', image=r'img_firewall', size=25)
+            else:
+                net.add_node(node, label=node, shape='image', image=r'img_laptop', size=25)
 
             for link in parsed["nodes"][node]["links"]:
                 if(link in nodes):
