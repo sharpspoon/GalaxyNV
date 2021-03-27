@@ -44,13 +44,13 @@ def about():
 @app.route('/d3json')
 def d3json():
     return render_template(
-        'd3.json'
+        'NetworkFiles/json/d3.json'
     )
 
 @app.route('/d3jsonbridge')
 def d3jsonbridge():
     return render_template(
-        'd3bridge.json'
+        'NetworkFiles/json/d3bridge.json'
     )
 
 @app.route('/json')
@@ -74,7 +74,7 @@ def demoiframe():
 @app.route('/demojson')
 def demojson():
     return render_template(
-        'demo.json'
+        'NetworkFiles/json/demo.json'
     )
 
 @app.route('/img_laptop')
