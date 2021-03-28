@@ -21,7 +21,7 @@
                     </h2>
                     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <form>
+                            <form action="{{ url_for("addnode")}}" method="post">
                                 <div class="mb-3">
                                     <label for="nodeName" class="form-label">Name you new node</label>
                                     <input type="text" class="form-control" id="nodeName" aria-describedby="nodeHelp" required>
@@ -31,6 +31,11 @@
                                     <label for="nodeName" class="form-label">Name the node you want to link to</label>
                                     <input type="text" class="form-control" id="nodeName" aria-describedby="nodeHelp">
                                     <div id="nodeHelp" class="form-text">Type the name of an existing node to link to. This is optional.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nodeName" class="form-label">Which image will you use?</label>
+                                    <input type="text" class="form-control" id="nodeName" aria-describedby="nodeHelp" required>
+                                    <div id="nodeHelp" class="form-text">Type the name of an existing image to use.</div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="numberOfNodes" class="form-label">Number of replicas</label>
@@ -89,7 +94,6 @@
         </div>
     </div>
 </div>
-
 
 {{ jc }}
 {% endblock %}

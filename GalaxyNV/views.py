@@ -1,6 +1,7 @@
 from datetime import datetime
-from flask import render_template, send_file
+from flask import Flask, request, render_template, send_file
 from GalaxyNV import app, gnx, networkfiles
+import yaml
 
 
 
@@ -181,3 +182,10 @@ def networkyaml():
         yc = ymlcontent,
         jc = jsoncontent
     )
+
+@app.route('/addnode', methods =["GET", "POST"])
+def addnode():
+    networkfiles.add_node()
+    return render_template(
+        'graph.html'
+        )
