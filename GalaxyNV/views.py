@@ -80,19 +80,37 @@ def demojson():
 @app.route('/img_laptop')
 def img_laptop():
     return send_file(
-        'static\img\laptop.png', mimetype='image/png'
+        r'static\img\laptop.png', mimetype='image/png'
+    )
+
+@app.route('/img_computer')
+def img_computer():
+    return send_file(
+        r'static\img\computer.png', mimetype='image/png'
     )
 
 @app.route('/img_server')
 def img_server():
     return send_file(
-        'static\img\server.png', mimetype='image/png'
+        r'static\img\server.png', mimetype='image/png'
+    )
+
+@app.route('/img_database')
+def img_database():
+    return send_file(
+        r'static\img\database.png', mimetype='image/png'
+    )
+
+@app.route('/img_security')
+def img_security():
+    return send_file(
+        r'static\img\security.png', mimetype='image/png'
     )
 
 @app.route('/img_firewall')
 def img_firewall():
     return send_file(
-        'static\img\firewall.png', mimetype='image/png'
+        r'static\img\firewall.png', mimetype='image/png'
     )
 
 #Pyvis graph
