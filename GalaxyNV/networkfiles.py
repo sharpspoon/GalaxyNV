@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import render_template
+from flask import request, render_template
 from GalaxyNV import app
 from json2html import *
 import networkx as nx
@@ -32,7 +32,6 @@ def createfolders():
     except:
         print("Necessary folders already exists. Proceeding.")
 
-#am i using this?yes
 def loadfiles():
     try:
         with open(network_yml_file) as networkfile:
@@ -197,3 +196,14 @@ def create_d3jsonbridge():
     except:
         return ("Failed to open network.json file. Are you sure it is named correctly?")
 
+def add_node():
+    if request.method=="POST":
+        data = dict(
+        A = 'a',
+        B = dict(
+            C = 'c',
+            D = 'd',
+            E = 'e',))
+
+        with open(yml_dir+'/data.yml', 'w') as outfile:
+            yaml.dump(data, outfile, default_flow_style=False)
