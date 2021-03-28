@@ -51,9 +51,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="GalaxyNV\static\creation.js" />
+    <Content Include="GalaxyNV\static\img\computer.png" />
     <Content Include="GalaxyNV\static\img\cosmos.svg" />
+    <Content Include="GalaxyNV\static\img\database.png" />
     <Content Include="GalaxyNV\static\img\firewall.png" />
     <Content Include="GalaxyNV\static\img\laptop.png" />
+    <Content Include="GalaxyNV\static\img\security.png" />
     <Content Include="GalaxyNV\static\img\server.png" />
     <Content Include="GalaxyNV\static\index.js" />
     <Content Include="GalaxyNV\static\scripts\jquery.js" />

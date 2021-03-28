@@ -95,8 +95,15 @@ def graph():
     for node in parsed["nodes"]:
         #Check to make sure that the control-br is NOT being used
         if node != "control-br":
+            #Add the firewall image to the node
             if "-fw" in node:
                 net.add_node(node, label=node, shape='image', image=r'img_firewall', size=25)
+            if "-https" in node:
+                net.add_node(node, label=node, shape='image', image=r'img_security', size=25)
+            if "-http" in node:
+                net.add_node(node, label=node, shape='image', image=r'img_database', size=25)
+            if "admin" in node:
+                net.add_node(node, label=node, shape='image', image=r'img_computer', size=25)
             else:
                 net.add_node(node, label=node, shape='image', image=r'img_laptop', size=25)
 
