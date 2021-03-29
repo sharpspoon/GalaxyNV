@@ -198,15 +198,14 @@ def create_d3jsonbridge():
 
 def add_node(node_name, node_link, image_name, number_of_nodes):
     if request.method=="POST":
-        data = dict(
-        name = node_name,
-        link = node_link,
-        image = image_name,
-        nodeNumber = number_of_nodes,
-        B = dict(
-            C = 'c',
-            D = 'd',
-            E = 'e',))
+        d={ 'nodes': {
+            node_name:{
+                'image':image_name,
+                'type':'lxd',
+                'priority':0,
+                'links':{
+                    node_link:{}},
+                'agents':['drone']}}}
 
         with open(yml_dir+'/data.yml', 'w') as outfile:
-            yaml.dump(data, outfile, default_flow_style=False)
+            yaml.dump(d, outfile, default_flow_style=False, sort_keys=False)
