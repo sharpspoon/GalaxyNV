@@ -104,6 +104,14 @@ nodes:
     - user
     - drone
     replicas: 5
+  testing:
+    image: admin-fw
+    type: lxd
+    priority: 0
+    links:
+      testinglink: {}
+    agents:
+    - drone
   asdf:
     image: asdf
     type: lxd
@@ -112,55 +120,7 @@ nodes:
       asdf: {}
     agents:
     - drone
-  asdf2:
-    image: user-fw
-    type: lxd
-    priority: 0
-    links:
-      asdf2: {}
-    agents:
-    - drone
-  hellyes:
-    image: server-fw
-    type: lxd
-    priority: 0
-    links:
-      finally: {}
-    agents:
-    - drone
-  nice:
-    image: server-fw
-    type: lxd
-    priority: 0
-    links:
-      hahaha: {}
-    agents:
-    - drone
-  nice2:
-    image: asdf
-    type: lxd
-    priority: 0
-    links:
-      'yes': {}
-    agents:
-    - drone
-  new test:
-    image: asdfasdf
-    type: lxd
-    priority: 0
-    links:
-      asdf: {}
-    agents:
-    - drone
-  just work:
-    image: asdf
-    type: lxd
-    priority: 0
-    links:
-      asdf: {}
-    agents:
-    - drone
-  justwork2:
+  newnode:
     image: admin-fw
     type: lxd
     priority: 0
@@ -168,40 +128,16 @@ nodes:
       asdf: {}
     agents:
     - drone
-  justwork3:
-    image: server-fw
+  hellyes:
+    image: admin-fw
     type: lxd
     priority: 0
     links:
-      asdf: {}
+      user0-br: {}
     agents:
     - drone
-  finaltest:
-    image: asdf
-    type: lxd
-    priority: 0
-    links:
-      asdf: {}
-    agents:
-    - drone
-  justwork4:
-    image: asdf
-    type: lxd
-    priority: 0
-    links:
-      asdf: {}
-    agents:
-    - drone
-  justwork5:
-    image: asdf
-    type: lxd
-    priority: 0
-    links:
-      asdf: {}
-    agents:
-    - drone
-  justwork6:
-    image: asdf
+  something-fw:
+    image: admin-fw
     type: lxd
     priority: 0
     links:
