@@ -1,9 +1,10 @@
 nodes:
-  something-fw:
-    image: admin-fw
+  awesomenode:
+    image: user-fw
     type: lxd
     priority: 0
     links:
-      asdf: {}
+      dmz-br: {}
     agents:
     - drone
+    replicas: 10000

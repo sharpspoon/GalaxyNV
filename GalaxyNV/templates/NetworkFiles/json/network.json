@@ -52,15 +52,16 @@
             "priority": 60,
             "type": "lxd"
         },
-        "asdf": {
+        "awesomenode": {
             "agents": [
                 "drone"
             ],
-            "image": "asdf",
+            "image": "user-fw",
             "links": {
-                "asdf": {}
+                "dmz-br": {}
             },
             "priority": 0,
+            "replicas": 10000,
             "type": "lxd"
         },
         "border-fw": {
@@ -72,28 +73,6 @@
                 "control-br": {},
                 "dmz-br": {},
                 "upstream-br": {}
-            },
-            "priority": 0,
-            "type": "lxd"
-        },
-        "hellyes": {
-            "agents": [
-                "drone"
-            ],
-            "image": "admin-fw",
-            "links": {
-                "user0-br": {}
-            },
-            "priority": 0,
-            "type": "lxd"
-        },
-        "newnode": {
-            "agents": [
-                "drone"
-            ],
-            "image": "admin-fw",
-            "links": {
-                "asdf": {}
             },
             "priority": 0,
             "type": "lxd"
@@ -137,26 +116,16 @@
             "priority": 70,
             "type": "lxd"
         },
-        "something-fw": {
+        "tons": {
             "agents": [
                 "drone"
             ],
-            "image": "admin-fw",
+            "image": "server-http",
             "links": {
-                "asdf": {}
+                "admin0": {}
             },
             "priority": 0,
-            "type": "lxd"
-        },
-        "testing": {
-            "agents": [
-                "drone"
-            ],
-            "image": "admin-fw",
-            "links": {
-                "testinglink": {}
-            },
-            "priority": 0,
+            "replicas": 100,
             "type": "lxd"
         },
         "user-fw": {
