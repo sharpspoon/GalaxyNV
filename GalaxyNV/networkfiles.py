@@ -209,7 +209,8 @@ def add_node(node_name, node_link, image_name, number_of_nodes):
                 'priority':0,
                 'links':{
                     node_link:{}},
-                'agents':['drone']}}}
+                'agents':['drone'],
+                'replicas':int(number_of_nodes)}}}
 
         with open(yml_dir+'/newnode.yml', 'w') as outfile:
             yaml.dump(d, outfile, default_flow_style=False, sort_keys=False)
