@@ -52,6 +52,28 @@
             "priority": 60,
             "type": "lxd"
         },
+        "asdf": {
+            "agents": [
+                "drone"
+            ],
+            "image": "asdf",
+            "links": {
+                "asdf": {}
+            },
+            "priority": 0,
+            "type": "lxd"
+        },
+        "asdf2": {
+            "agents": [
+                "drone"
+            ],
+            "image": "user-fw",
+            "links": {
+                "asdf2": {}
+            },
+            "priority": 0,
+            "type": "lxd"
+        },
         "border-fw": {
             "agents": [
                 "drone"
@@ -61,6 +83,127 @@
                 "control-br": {},
                 "dmz-br": {},
                 "upstream-br": {}
+            },
+            "priority": 0,
+            "type": "lxd"
+        },
+        "finaltest": {
+            "agents": [
+                "drone"
+            ],
+            "image": "asdf",
+            "links": {
+                "asdf": {}
+            },
+            "priority": 0,
+            "type": "lxd"
+        },
+        "hellyes": {
+            "agents": [
+                "drone"
+            ],
+            "image": "server-fw",
+            "links": {
+                "finally": {}
+            },
+            "priority": 0,
+            "type": "lxd"
+        },
+        "just work": {
+            "agents": [
+                "drone"
+            ],
+            "image": "asdf",
+            "links": {
+                "asdf": {}
+            },
+            "priority": 0,
+            "type": "lxd"
+        },
+        "justwork2": {
+            "agents": [
+                "drone"
+            ],
+            "image": "admin-fw",
+            "links": {
+                "asdf": {}
+            },
+            "priority": 0,
+            "type": "lxd"
+        },
+        "justwork3": {
+            "agents": [
+                "drone"
+            ],
+            "image": "server-fw",
+            "links": {
+                "asdf": {}
+            },
+            "priority": 0,
+            "type": "lxd"
+        },
+        "justwork4": {
+            "agents": [
+                "drone"
+            ],
+            "image": "asdf",
+            "links": {
+                "asdf": {}
+            },
+            "priority": 0,
+            "type": "lxd"
+        },
+        "justwork5": {
+            "agents": [
+                "drone"
+            ],
+            "image": "asdf",
+            "links": {
+                "asdf": {}
+            },
+            "priority": 0,
+            "type": "lxd"
+        },
+        "justwork6": {
+            "agents": [
+                "drone"
+            ],
+            "image": "asdf",
+            "links": {
+                "asdf": {}
+            },
+            "priority": 0,
+            "type": "lxd"
+        },
+        "new test": {
+            "agents": [
+                "drone"
+            ],
+            "image": "asdfasdf",
+            "links": {
+                "asdf": {}
+            },
+            "priority": 0,
+            "type": "lxd"
+        },
+        "nice": {
+            "agents": [
+                "drone"
+            ],
+            "image": "server-fw",
+            "links": {
+                "hahaha": {}
+            },
+            "priority": 0,
+            "type": "lxd"
+        },
+        "nice2": {
+            "agents": [
+                "drone"
+            ],
+            "image": "asdf",
+            "links": {
+                "yes": {}
             },
             "priority": 0,
             "type": "lxd"

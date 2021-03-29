@@ -200,15 +200,6 @@ def create_d3jsonbridge():
 
 
     
-def merge(user, default):
-    if isinstance(user,dict) and isinstance(default,dict):
-        for k,v in default.iteritems():
-            if k not in user:
-                user[k] = v
-            else:
-                user[k] = merge(user[k],v)
-    return user
-    
 def add_node(node_name, node_link, image_name, number_of_nodes):
     if request.method=="POST":
         d={ 'nodes': {
@@ -234,4 +225,7 @@ def add_node(node_name, node_link, image_name, number_of_nodes):
 
         with open(yml_dir+'/network.yml', 'w') as outfile:
             yaml.dump(conf, outfile, default_flow_style=False, sort_keys=False)
+
+        loadfiles()
+        convert()
     return 'success'
