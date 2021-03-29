@@ -1,9 +1,9 @@
 nodes:
-  asdf:
-    image: server-fw
+  asdf2:
+    image: user-fw
     type: lxd
     priority: 0
     links:
-      asdfasfd: {}
+      asdf2: {}
     agents:
     - drone

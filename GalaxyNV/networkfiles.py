@@ -10,6 +10,8 @@ import json
 import pprint
 from collections import defaultdict
 from pyvis.network import Network
+#import ruamel.yaml as yaml2
+import hiyapyco
 
 #Globals
 #Directories
@@ -196,6 +198,17 @@ def create_d3jsonbridge():
     except:
         return ("Failed to open network.json file. Are you sure it is named correctly?")
 
+
+    
+def merge(user, default):
+    if isinstance(user,dict) and isinstance(default,dict):
+        for k,v in default.iteritems():
+            if k not in user:
+                user[k] = v
+            else:
+                user[k] = merge(user[k],v)
+    return user
+    
 def add_node(node_name, node_link, image_name, number_of_nodes):
     if request.method=="POST":
         d={ 'nodes': {
@@ -207,5 +220,18 @@ def add_node(node_name, node_link, image_name, number_of_nodes):
                     node_link:{}},
                 'agents':['drone']}}}
 
-        with open(yml_dir+'/data.yml', 'w') as outfile:
+        with open(yml_dir+'/newnode.yml', 'w') as outfile:
             yaml.dump(d, outfile, default_flow_style=False, sort_keys=False)
+
+
+        with open(network_yml_file) as networkfile:
+            data1 = yaml.load(networkfile, Loader=yaml.FullLoader)
+
+        with open(yml_dir+'/newnode.yml') as newnode:
+            data2 = yaml.load(newnode, Loader=yaml.FullLoader)
+
+        conf = hiyapyco.load(network_yml_file, yml_dir+'/newnode.yml', method=hiyapyco.METHOD_MERGE, interpolate=True, failonmissingfiles=True, usedefaultyamlloader=True)
+
+        with open(yml_dir+'/network.yml', 'w') as outfile:
+            yaml.dump(conf, outfile, default_flow_style=False, sort_keys=False)
+    return 'success'

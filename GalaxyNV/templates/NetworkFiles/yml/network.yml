@@ -8,7 +8,7 @@ nodes:
       dmz-br: {}
       upstream-br: {}
     agents:
-      - drone
+    - drone
   user-fw:
     image: user-fw
     type: lxd
@@ -20,7 +20,7 @@ nodes:
       user1-br: {}
       user200-br: {}
     agents:
-      - drone
+    - drone
   server-fw:
     image: server-fw
     type: lxd
@@ -30,7 +30,7 @@ nodes:
       dmz-br: {}
       server0-br: {}
     agents:
-      - drone
+    - drone
   admin-fw:
     image: admin-fw
     type: lxd
@@ -40,7 +40,7 @@ nodes:
       dmz-br: {}
       admin0-br: {}
     agents:
-      - drone
+    - drone
   admin0:
     image: admin0
     priority: 60
@@ -49,8 +49,8 @@ nodes:
       control-br: {}
       admin0-br: {}
     agents:
-      - admin
-      - drone
+    - admin
+    - drone
   server-http:
     hostname: downloadmoreram
     image: server-http
@@ -60,7 +60,7 @@ nodes:
       control-br: {}
       server0-br: {}
     agents:
-      - drone
+    - drone
   server-https:
     hostname: downloadmoresecurity
     image: server-https
@@ -70,7 +70,7 @@ nodes:
       control-br: {}
       server0-br: {}
     agents:
-      - drone
+    - drone
   user0:
     image: user0
     type: lxd
@@ -79,8 +79,8 @@ nodes:
       control-br: {}
       user0-br: {}
     agents:
-      - user
-      - drone
+    - user
+    - drone
     replicas: 3
   user1:
     image: user1
@@ -90,8 +90,8 @@ nodes:
       control-br: {}
       user1-br: {}
     agents:
-      - user
-      - drone
+    - user
+    - drone
     replicas: 3
   user200:
     image: user200
@@ -101,9 +101,25 @@ nodes:
       control-br: {}
       user200-br: {}
     agents:
-      - user
-      - drone
+    - user
+    - drone
     replicas: 5
+  asdf:
+    image: asdf
+    type: lxd
+    priority: 0
+    links:
+      asdf: {}
+    agents:
+    - drone
+  asdf2:
+    image: user-fw
+    type: lxd
+    priority: 0
+    links:
+      asdf2: {}
+    agents:
+    - drone
 links:
   control-br:
     type: lxd
