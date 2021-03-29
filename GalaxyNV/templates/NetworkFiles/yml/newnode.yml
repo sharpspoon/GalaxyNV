@@ -1,6 +1,6 @@
 nodes:
-  justwork6:
-    image: asdf
+  something-fw:
+    image: admin-fw
     type: lxd
     priority: 0
     links:
