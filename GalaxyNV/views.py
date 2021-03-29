@@ -185,7 +185,11 @@ def networkyaml():
 
 @app.route('/addnode', methods =["GET", "POST"])
 def addnode():
-    networkfiles.add_node()
+    node_name = request.form.get("nodeName")
+    node_link = request.form.get("nodeLink")
+    image_name = request.form.get("imageName")
+    number_of_nodes = request.form.get("numberOfNodes")
+    networkfiles.add_node(node_name, node_link, image_name, number_of_nodes)
     return render_template(
         'graph.html'
         )

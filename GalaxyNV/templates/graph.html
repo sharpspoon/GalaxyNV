@@ -23,23 +23,30 @@
                         <div class="accordion-body">
                             <form action="{{ url_for("addnode")}}" method="post">
                                 <div class="mb-3">
-                                    <label for="nodeName" class="form-label">Name you new node</label>
-                                    <input type="text" class="form-control" id="nodeName" aria-describedby="nodeHelp" required>
+                                    <label for="nodeName" class="form-label">Name your new node</label>
+                                    <input type="text" class="form-control" id="nodeNameId" name="nodeName" aria-describedby="nodeHelp" required>
                                     <div id="nodeHelp" class="form-text">Type the name of the new node. If the node already exists, it will add to that node replica.</div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="nodeName" class="form-label">Name the node you want to link to</label>
-                                    <input type="text" class="form-control" id="nodeName" aria-describedby="nodeHelp">
+                                    <input type="text" class="form-control" id="nodeLinkId" name="nodeLink" aria-describedby="nodeHelp">
                                     <div id="nodeHelp" class="form-text">Type the name of an existing node to link to. This is optional.</div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="nodeName" class="form-label">Which image will you use?</label>
-                                    <input type="text" class="form-control" id="nodeName" aria-describedby="nodeHelp" required>
-                                    <div id="nodeHelp" class="form-text">Type the name of an existing image to use.</div>
+                                    <label for="exampleDataList" class="form-label">Which image will you use?</label>
+                                    <input class="form-control" list="datalistOptions" id="imageNameId" name="imageName" placeholder="Type to search...">
+                                    <datalist id="datalistOptions">
+                                        <option value="border-fw">
+                                        <option value="user-fw">
+                                        <option value="server-fw">
+                                        <option value="admin-fw">
+                                        <option value="server-http">
+                                        <option value="server-https">
+                                    </datalist>
                                 </div>
                                 <div class="mb-3">
                                     <label for="numberOfNodes" class="form-label">Number of replicas</label>
-                                    <input type="number" class="form-control" id="numberOfNodes" required>
+                                    <input type="number" class="form-control" id="numberOfNodesId" name="numberOfNodes" required>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Add</button>
                             </form>

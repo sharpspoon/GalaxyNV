@@ -1,5 +1,8 @@
-A: a
 B:
   C: c
   D: d
   E: e
+image: server-fw
+link: assdf
+name: asdf
+nodeNumber: '1'

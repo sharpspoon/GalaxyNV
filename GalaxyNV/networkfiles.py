@@ -196,10 +196,13 @@ def create_d3jsonbridge():
     except:
         return ("Failed to open network.json file. Are you sure it is named correctly?")
 
-def add_node():
+def add_node(node_name, node_link, image_name, number_of_nodes):
     if request.method=="POST":
         data = dict(
-        A = 'a',
+        name = node_name,
+        link = node_link,
+        image = image_name,
+        nodeNumber = number_of_nodes,
         B = dict(
             C = 'c',
             D = 'd',
