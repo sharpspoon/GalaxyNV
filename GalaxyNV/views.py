@@ -4,6 +4,17 @@ from GalaxyNV import app, gnx, networkfiles
 import yaml
 
 
+@app.after_request
+def add_header(r):
+    """
+    Add headers to both force latest IE rendering engine or Chrome Frame,
+    and also to cache the rendered page for 10 minutes.
+    """
+    r.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    r.headers["Pragma"] = "no-cache"
+    r.headers["Expires"] = "0"
+    r.headers['Cache-Control'] = 'public, max-age=0'
+    return r
 
 @app.route('/')
 @app.route('/home')
@@ -190,6 +201,7 @@ def addnode():
     image_name = request.form.get("imageName")
     number_of_nodes = request.form.get("numberOfNodes")
     networkfiles.add_node(node_name, node_link, image_name, number_of_nodes)
+    graphiframe()
     return render_template(
         'graph.html'
         )

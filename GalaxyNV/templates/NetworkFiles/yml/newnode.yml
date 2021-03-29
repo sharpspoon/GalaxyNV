@@ -1,9 +1,9 @@
 nodes:
-  asdf2:
-    image: user-fw
+  justwork6:
+    image: asdf
     type: lxd
     priority: 0
     links:
-      asdf2: {}
+      asdf: {}
     agents:
     - drone
