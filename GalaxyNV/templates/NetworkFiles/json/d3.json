@@ -37,10 +37,6 @@
             "group": 2
         },
         {
-            "id": "asdf",
-            "group": 2
-        },
-        {
             "id": "border-fw",
             "group": 2
         },
@@ -57,7 +53,7 @@
             "group": 2
         },
         {
-            "id": "testing",
+            "id": "testNode",
             "group": 2
         },
         {
@@ -94,11 +90,6 @@
             "value": 1
         },
         {
-            "source": "asdf",
-            "target": "asdf",
-            "value": 1
-        },
-        {
             "source": "border-fw",
             "target": "dmz-br",
             "value": 1
@@ -126,6 +117,11 @@
         {
             "source": "server-https",
             "target": "server0-br",
+            "value": 1
+        },
+        {
+            "source": "testNode",
+            "target": "admin0",
             "value": 1
         },
         {

@@ -1,10 +1,10 @@
 nodes:
-  awesomenode:
-    image: user-fw
+  serverHost:
+    image: ''
     type: lxd
     priority: 0
     links:
-      dmz-br: {}
+      server-http: {}
     agents:
     - drone
-    replicas: 10000
+    replicas: 50

@@ -60,7 +60,14 @@
                     </h2>
                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                            <form action="{{ url_for("removenode")}}" method="post">
+                                <div class="mb-3">
+                                    <label for="nodeName" class="form-label">Type the node to remove</label>
+                                    <input type="text" class="form-control" id="nodeNameId" name="nodeName" aria-describedby="nodeHelp" required>
+                                    <div id="nodeHelp" class="form-text">Type the name of the node to remove. Please note, this will remove all replicas tied to this node.</div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Remove</button>
+                            </form>
                         </div>
                     </div>
                 </div>

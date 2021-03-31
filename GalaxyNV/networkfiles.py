@@ -230,3 +230,19 @@ def add_node(node_name, node_link, image_name, number_of_nodes):
         loadfiles()
         convert()
     return 'success'
+
+def remove_node(node_name):
+    if request.method=="POST":
+
+
+        with open(network_yml_file) as networkfile:
+            data1 = yaml.load(networkfile, Loader=yaml.FullLoader)
+
+        del data1['nodes'][node_name]
+
+        with open(yml_dir+'/network.yml', 'w') as outfile:
+            yaml.dump(data1, outfile, default_flow_style=False, sort_keys=False)
+
+        loadfiles()
+        convert()
+    return 'success'

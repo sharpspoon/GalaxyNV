@@ -39,31 +39,6 @@
             "priority": 0,
             "type": "lxd"
         },
-        "admin0": {
-            "agents": [
-                "admin",
-                "drone"
-            ],
-            "image": "admin0",
-            "links": {
-                "admin0-br": {},
-                "control-br": {}
-            },
-            "priority": 60,
-            "type": "lxd"
-        },
-        "awesomenode": {
-            "agents": [
-                "drone"
-            ],
-            "image": "user-fw",
-            "links": {
-                "dmz-br": {}
-            },
-            "priority": 0,
-            "replicas": 10000,
-            "type": "lxd"
-        },
         "border-fw": {
             "agents": [
                 "drone"
@@ -75,6 +50,18 @@
                 "upstream-br": {}
             },
             "priority": 0,
+            "type": "lxd"
+        },
+        "coolNode": {
+            "agents": [
+                "drone"
+            ],
+            "image": "server-http",
+            "links": {
+                "upstream-br": {}
+            },
+            "priority": 0,
+            "replicas": 25,
             "type": "lxd"
         },
         "server-fw": {
@@ -114,18 +101,6 @@
                 "server0-br": {}
             },
             "priority": 70,
-            "type": "lxd"
-        },
-        "tons": {
-            "agents": [
-                "drone"
-            ],
-            "image": "server-http",
-            "links": {
-                "admin0": {}
-            },
-            "priority": 0,
-            "replicas": 100,
             "type": "lxd"
         },
         "user-fw": {
