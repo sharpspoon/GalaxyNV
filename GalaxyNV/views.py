@@ -115,8 +115,10 @@ def img_firewall():
 #Pyvis graph
 @app.route('/graph')
 def graph():
+    loadnodes=networkfiles.load_nodes_to_edit()
     return render_template(
-        'graph.html'
+        'graph.html',
+        nodes=loadnodes
     )
 
 @app.route('/graphiframe')
