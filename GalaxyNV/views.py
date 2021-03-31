@@ -192,3 +192,12 @@ def addnode():
     return render_template(
         'graph.html'
         )
+
+@app.route('/removenode', methods =["GET", "POST"])
+def removenode():
+    node_name = request.form.get("nodeName")
+    networkfiles.remove_node(node_name)
+    graphiframe()
+    return render_template(
+        'graph.html'
+        )
