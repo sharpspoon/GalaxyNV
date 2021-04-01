@@ -254,8 +254,32 @@ def load_nodes_to_edit():
 
             nodes = ""
             for n in data1["nodes"]:
-                nodes+=(r'''<tr><th scope="row">'''+str(n)+r'''</th><td>dmz-br</td><td>3</td></tr>''')
-                #nodes.append(r'''<tr><th scope="row">'''+n+r'''</th><td>dmz-br</td><td>3</td></tr>''')
+                links=""
+                try:
+                    replicas=data1["nodes"][n]["replicas"]
+                except:
+                    replicas=0
+
+                for l in data1["nodes"][n]["links"]:
+                    links+=(r'''<table><tr><td>'''+str(l)+'''</td></tr></table>''')
+                
+                nodes+=(r'''<tr><th scope="row"><input type="text" class="form-control" id="nodeNameId" name="nodeName" aria-describedby="nodeHelp" value="'''+str(n)+r'''" required></th><td>'''+str(links)+r'''</td><td>'''+str(replicas)+'''</td></tr>''')
             return nodes
     except:
         return ("Failed to open network.json file. Are you sure it is named correctly?")
+
+def edit_nodes(node_name):
+    if request.method=="POST":
+
+
+        with open(network_yml_file) as networkfile:
+            data1 = yaml.load(networkfile, Loader=yaml.FullLoader)
+
+        del data1['nodes'][node_name]
+
+        with open(yml_dir+'/network.yml', 'w') as outfile:
+            yaml.dump(data1, outfile, default_flow_style=False, sort_keys=False)
+
+        loadfiles()
+        convert()
+    return 'success'
