@@ -79,18 +79,26 @@
                     </h2>
                     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Node</th>
-                                        <th scope="col">Links to</th>
-                                        <th scope="col"># of Replicas</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {{ nodes | safe }}
-                                </tbody>
-                            </table>
+                            <form action="{{ url_for("editnodes")}}" method="post">
+                                <div class="mb-3">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Node</th>
+                                                <th scope="col">Links to</th>
+                                                <th scope="col"># of Replicas</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {{ nodes | safe }}
+                                        </tbody>
+                                    </table>
+                                    <label for="nodeName" class="form-label">Type the node to remove</label>
+                                    <input type="text" class="form-control" id="nodeNameId" name="nodeName" aria-describedby="nodeHelp" value="asdf" required>
+                                    <div id="nodeHelp" class="form-text">Type the name of the node to remove. Please note, this will remove all replicas tied to this node.</div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit Changes</button>
+                            </form>
                         </div>
                     </div>
                 </div>

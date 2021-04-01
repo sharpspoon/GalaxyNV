@@ -203,3 +203,15 @@ def removenode():
     return render_template(
         'graph.html'
         )
+
+@app.route('/editnodes', methods =["GET", "POST"])
+def editnodes():
+    node_name = request.form.get("nodeName")
+    node_link = request.form.get("nodeLink")
+    image_name = request.form.get("imageName")
+    number_of_nodes = request.form.get("numberOfNodes")
+    networkfiles.add_node(node_name, node_link, image_name, number_of_nodes)
+    graphiframe()
+    return render_template(
+        'graph.html'
+        )
