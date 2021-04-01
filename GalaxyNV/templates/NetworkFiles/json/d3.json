@@ -33,11 +33,11 @@
             "group": 2
         },
         {
-            "id": "admin0",
+            "id": "border-fw",
             "group": 2
         },
         {
-            "id": "border-fw",
+            "id": "coolNode",
             "group": 2
         },
         {
@@ -50,10 +50,6 @@
         },
         {
             "id": "server-https",
-            "group": 2
-        },
-        {
-            "id": "testNode",
             "group": 2
         },
         {
@@ -85,17 +81,17 @@
             "value": 1
         },
         {
-            "source": "admin0",
-            "target": "admin0-br",
-            "value": 1
-        },
-        {
             "source": "border-fw",
             "target": "dmz-br",
             "value": 1
         },
         {
             "source": "border-fw",
+            "target": "upstream-br",
+            "value": 1
+        },
+        {
+            "source": "coolNode",
             "target": "upstream-br",
             "value": 1
         },
@@ -117,11 +113,6 @@
         {
             "source": "server-https",
             "target": "server0-br",
-            "value": 1
-        },
-        {
-            "source": "testNode",
-            "target": "admin0",
             "value": 1
         },
         {

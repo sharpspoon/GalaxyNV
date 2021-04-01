@@ -252,14 +252,10 @@ def load_nodes_to_edit():
         with open(network_yml_file) as networkfile:
             data1 = yaml.load(networkfile, Loader=yaml.FullLoader)
 
-            nodes = []
+            nodes = ""
             for n in data1["nodes"]:
-                nodes.append('''        <tr>
-                                        <th scope="row">'''+n+'''</th>
-                                        <td>dmz-br</td>
-                                        <td>3</td>
-                                    </tr>''')
-
+                nodes+=(r'''<tr><th scope="row">'''+str(n)+r'''</th><td>dmz-br</td><td>3</td></tr>''')
+                #nodes.append(r'''<tr><th scope="row">'''+n+r'''</th><td>dmz-br</td><td>3</td></tr>''')
             return nodes
     except:
         return ("Failed to open network.json file. Are you sure it is named correctly?")
