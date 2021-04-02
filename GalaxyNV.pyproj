@@ -33,6 +33,7 @@
     <Compile Include="GalaxyNV\app.py" />
     <Compile Include="GalaxyNV\config.py" />
     <Compile Include="GalaxyNV\driver.py" />
+    <Compile Include="GalaxyNV\globals.py" />
     <Compile Include="GalaxyNV\views.py" />
     <Compile Include="GalaxyNV\networkfiles.py" />
     <Compile Include="GalaxyNV\gnx.py" />

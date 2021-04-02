@@ -41,6 +41,16 @@ nodes:
       admin0-br: {}
     agents:
     - drone
+  admin0:
+    image: admin0
+    priority: 60
+    type: lxd
+    links:
+      control-br: {}
+      admin0-br: {}
+    agents:
+    - admin
+    - drone
   server-http:
     hostname: downloadmoreram
     image: server-http
@@ -94,15 +104,24 @@ nodes:
     - user
     - drone
     replicas: 5
-  coolNode:
-    image: server-http
+  testnode2:
+    image: user-fw
     type: lxd
     priority: 0
     links:
-      upstream-br: {}
+      testnode: {}
     agents:
     - drone
-    replicas: 25
+    replicas: 0
+  testnode:
+    image: user-fw
+    type: lxd
+    priority: 0
+    links:
+      dmz-br: {}
+    agents:
+    - drone
+    replicas: 0
 links:
   control-br:
     type: lxd

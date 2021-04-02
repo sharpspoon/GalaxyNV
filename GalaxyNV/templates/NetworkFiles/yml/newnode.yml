@@ -1,10 +1,10 @@
 nodes:
-  serverHost:
-    image: ''
+  asdf:
+    image: server-fw
     type: lxd
     priority: 0
     links:
-      server-http: {}
+      asdf: {}
     agents:
     - drone
-    replicas: 50
+    replicas: 12
