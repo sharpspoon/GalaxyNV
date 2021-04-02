@@ -214,7 +214,7 @@ def add_node(node_name, node_link, image_name, number_of_nodes):
 
         conf = hiyapyco.load(globals.network_yml_file, globals.yml_dir+'/newnode.yml', method=hiyapyco.METHOD_MERGE, interpolate=True, failonmissingfiles=True, usedefaultyamlloader=True)
 
-        with open(globals.yml_dir+'/network.yml', 'w') as outfile:
+        with open(globals.network_yml_file, 'w') as outfile:
             yaml.dump(conf, outfile, default_flow_style=False, sort_keys=False)
 
         loadfiles()
@@ -229,7 +229,7 @@ def remove_node(node_name):
 
         del data1['nodes'][node_name]
 
-        with open(globals.yml_dir+'/network.yml', 'w') as outfile:
+        with open(globals.network_yml_file, 'w') as outfile:
             yaml.dump(data1, outfile, default_flow_style=False, sort_keys=False)
 
         loadfiles()
@@ -256,23 +256,24 @@ def load_nodes_to_edit():
                 for l in data1["nodes"][n]["links"]:
                     links+=(r'''<table><tr><td><select class="form-select" aria-label="Default select example"><option selected>'''+str(l)+'''</option>'''+link_list+'''</select></td><td>x</td></tr></table>''')
                 
-                nodes+=(r'''<tr><th scope="row"><input type="text" class="form-control" id="nodeNameId" name="nodeName" aria-describedby="nodeHelp" value="'''+str(n)+r'''" required></th><td>'''+str(links)+r'''</td><td><input type="number" class="form-control" id="numberOfNodesId" name="numberOfNodesFor'''+str(replicas)+'''" value="'''+str(replicas)+'''"></td><td><input type="checkbox" class="form-check-input" id="'''+n+'''" name="'''+n+'''"></td></tr>''')
+                nodes+=(r'''<tr><th scope="row"><input type="text" class="form-control" id="nodeNameId" name="'''+n+'''" aria-describedby="nodeHelp" value="'''+str(n)+r'''" required></th><td>'''+str(links)+r'''</td><td><input type="number" class="form-control" id="numberOfNodesId" name="numberOfNodesFor'''+str(replicas)+'''" value="'''+str(replicas)+'''"></td><td><input type="checkbox" class="form-check-input" id="id_delete_'''+n+'''" name="delete_'''+n+'''"></td></tr>''')
             return nodes
     except:
         return ("Failed to open network.json file. Are you sure it is named correctly?")
 
-def edit_nodes(node_name):
-    if request.method=="POST":
+def change_node_name(n, new_node_name):
+    #if request.method=="GET":
+
+    with open(globals.network_yml_file) as networkfile:
+        data1 = yaml.load(networkfile, Loader=yaml.FullLoader)
+
+    data1["nodes"][new_node_name]=data1["nodes"][n]
+    del data1["nodes"][n]
 
 
-        with open(network_yml_file) as networkfile:
-            data1 = yaml.load(networkfile, Loader=yaml.FullLoader)
+    with open(globals.network_yml_file, 'w') as outfile:
+        yaml.dump(data1, outfile, default_flow_style=False, sort_keys=False)
 
-        del data1['nodes'][node_name]
-
-        with open(yml_dir+'/network.yml', 'w') as outfile:
-            yaml.dump(data1, outfile, default_flow_style=False, sort_keys=False)
-
-        loadfiles()
-        convert()
+    loadfiles()
+    convert()
     return 'success'

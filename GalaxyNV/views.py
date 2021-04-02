@@ -203,16 +203,29 @@ def addnode():
 #        'graph.html'
 #        )
 
-@app.route('/editnodes', methods =["GET", "POST"])
+@app.route('/editnodes', methods =["POST"])
 def editnodes():
     #Get a list of all nodes in the yaml file
     with open(globals.network_yml_file) as networkfile:
         data1 = yaml.load(networkfile, Loader=yaml.FullLoader)
 
-    #Iterate through the list of nodes, then check if they are flagged for deletion
+    #Iterate through the list of nodes
     for n in data1["nodes"]:
-        node_name = request.form.get(n)
-        if node_name:
+
+        #Set each form element value to a var
+        new_node_name=request.form.get(n)
+        delete_node_name = request.form.get("delete_"+n)
+
+        #If the var is true, remove the node
+        if delete_node_name:
             networkfiles.remove_node(n)
+
+        #Check if the name of the node has changed
+        if new_node_name != n:
+            print ('n='+n)
+            print ('new_node_name='+new_node_name)
+            networkfiles.change_node_name(n, new_node_name)
+
+
     graphiframe()
     return graph()
