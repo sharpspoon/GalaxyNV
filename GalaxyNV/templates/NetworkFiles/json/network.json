@@ -39,19 +39,6 @@
             "priority": 0,
             "type": "lxd"
         },
-        "admin0": {
-            "agents": [
-                "admin",
-                "drone"
-            ],
-            "image": "admin0",
-            "links": {
-                "admin0-br": {},
-                "control-br": {}
-            },
-            "priority": 60,
-            "type": "lxd"
-        },
         "border-fw": {
             "agents": [
                 "drone"

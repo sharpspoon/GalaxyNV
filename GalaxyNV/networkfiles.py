@@ -1,6 +1,6 @@
 from datetime import datetime
 from flask import request, render_template
-from GalaxyNV import app, globals
+from GalaxyNV import app, globals, views
 from json2html import *
 import networkx as nx
 import matplotlib.pyplot as plt
@@ -224,7 +224,6 @@ def add_node(node_name, node_link, image_name, number_of_nodes):
 def remove_node(node_name):
     if request.method=="POST":
 
-
         with open(globals.network_yml_file) as networkfile:
             data1 = yaml.load(networkfile, Loader=yaml.FullLoader)
 
@@ -234,8 +233,7 @@ def remove_node(node_name):
             yaml.dump(data1, outfile, default_flow_style=False, sort_keys=False)
 
         loadfiles()
-        convert()
-    return 'success'
+    return convert()
 
 def load_nodes_to_edit():
     try:

@@ -1,6 +1,6 @@
 from datetime import datetime
 from flask import Flask, request, render_template, send_file
-from GalaxyNV import app, gnx, networkfiles
+from GalaxyNV import app, gnx, networkfiles, globals
 import yaml
 
 @app.route('/')
@@ -191,9 +191,8 @@ def addnode():
     number_of_nodes = request.form.get("numberOfNodes")
     networkfiles.add_node(node_name, node_link, image_name, number_of_nodes)
     graphiframe()
-    return render_template(
-        'graph.html'
-        )
+    networkfiles.load_nodes_to_edit()
+    return graph()
 
 @app.route('/removenode', methods =["GET", "POST"])
 def removenode():
@@ -207,7 +206,7 @@ def removenode():
 @app.route('/editnodes', methods =["GET", "POST"])
 def editnodes():
     #Get a list of all nodes in the yaml file
-    with open(network_yml_file) as networkfile:
+    with open(globals.network_yml_file) as networkfile:
         data1 = yaml.load(networkfile, Loader=yaml.FullLoader)
 
     #Create empty list of nodes to delete
@@ -216,9 +215,7 @@ def editnodes():
     #Iterate through the list of nodes, then check if they are flagged for deletion
     for n in data1["nodes"]:
         node_name = request.form.get(n)
-        if node_name==True:
-            networkfiles.remove_node(node_name)
+        if node_name:
+            networkfiles.remove_node(n)
     graphiframe()
-    return render_template(
-        'graph.html'
-        )
+    return graph()

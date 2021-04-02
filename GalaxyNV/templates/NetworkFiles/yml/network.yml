@@ -41,16 +41,6 @@ nodes:
       admin0-br: {}
     agents:
     - drone
-  admin0:
-    image: admin0
-    priority: 60
-    type: lxd
-    links:
-      control-br: {}
-      admin0-br: {}
-    agents:
-    - admin
-    - drone
   server-http:
     hostname: downloadmoreram
     image: server-http
