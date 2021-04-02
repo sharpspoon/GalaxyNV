@@ -91,30 +91,6 @@
             "priority": 70,
             "type": "lxd"
         },
-        "testnode": {
-            "agents": [
-                "drone"
-            ],
-            "image": "user-fw",
-            "links": {
-                "dmz-br": {}
-            },
-            "priority": 0,
-            "replicas": 0,
-            "type": "lxd"
-        },
-        "testnode2": {
-            "agents": [
-                "drone"
-            ],
-            "image": "user-fw",
-            "links": {
-                "testnode": {}
-            },
-            "priority": 0,
-            "replicas": 0,
-            "type": "lxd"
-        },
         "user-fw": {
             "agents": [
                 "drone"

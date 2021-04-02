@@ -53,25 +53,6 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Remove
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <form action="{{ url_for("removenode")}}" method="post">
-                                <div class="mb-3">
-                                    <label for="nodeName" class="form-label">Type the node to remove</label>
-                                    <input type="text" class="form-control" id="nodeNameId" name="nodeName" aria-describedby="nodeHelp" required>
-                                    <div id="nodeHelp" class="form-text">Type the name of the node to remove. Please note, this will remove all replicas tied to this node.</div>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Remove</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
                     <h2 class="accordion-header" id="headingThree">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                             Edit

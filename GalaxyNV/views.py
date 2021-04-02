@@ -194,23 +194,20 @@ def addnode():
     networkfiles.load_nodes_to_edit()
     return graph()
 
-@app.route('/removenode', methods =["GET", "POST"])
-def removenode():
-    node_name = request.form.get("nodeName")
-    networkfiles.remove_node(node_name)
-    graphiframe()
-    return render_template(
-        'graph.html'
-        )
+#@app.route('/removenode', methods =["GET", "POST"])
+#def removenode():
+#    node_name = request.form.get("nodeName")
+#    networkfiles.remove_node(node_name)
+#    graphiframe()
+#    return render_template(
+#        'graph.html'
+#        )
 
 @app.route('/editnodes', methods =["GET", "POST"])
 def editnodes():
     #Get a list of all nodes in the yaml file
     with open(globals.network_yml_file) as networkfile:
         data1 = yaml.load(networkfile, Loader=yaml.FullLoader)
-
-    #Create empty list of nodes to delete
-    #nodes_to_delete=[]
 
     #Iterate through the list of nodes, then check if they are flagged for deletion
     for n in data1["nodes"]:
