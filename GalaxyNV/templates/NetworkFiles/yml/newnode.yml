@@ -4,7 +4,7 @@ nodes:
     type: lxd
     priority: 0
     links:
-      '4': {}
+      df: {}
     agents:
     - drone
-    replicas: 2
+    replicas: 1
