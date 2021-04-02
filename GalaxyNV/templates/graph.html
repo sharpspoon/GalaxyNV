@@ -87,15 +87,13 @@
                                                 <th scope="col">Node</th>
                                                 <th scope="col">Links to</th>
                                                 <th scope="col"># of Replicas</th>
+                                                <th scope="col">Delete</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {{ nodes | safe }}
                                         </tbody>
                                     </table>
-                                    <label for="nodeName" class="form-label">Type the node to remove</label>
-                                    <input type="text" class="form-control" id="nodeNameId" name="nodeName" aria-describedby="nodeHelp" value="asdf" required>
-                                    <div id="nodeHelp" class="form-text">Type the name of the node to remove. Please note, this will remove all replicas tied to this node.</div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit Changes</button>
                             </form>

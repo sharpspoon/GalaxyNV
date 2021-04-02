@@ -1,6 +1,6 @@
 from datetime import datetime
 from flask import request, render_template
-from GalaxyNV import app
+from GalaxyNV import app, globals
 from json2html import *
 import networkx as nx
 import matplotlib.pyplot as plt
@@ -13,30 +13,20 @@ from pyvis.network import Network
 #import ruamel.yaml as yaml2
 import hiyapyco
 
-#Globals
-#Directories
-network_dir="./GalaxyNV/templates/NetworkFiles"
-yml_dir=network_dir+"/yml"
-json_dir=network_dir+"/json"
 
-#Files
-network_json_file=json_dir+"/network.json"
-d3_json_file=json_dir+"/d3.json"
-d3bridge_json_file=json_dir+"/d3bridge.json"
-network_yml_file=yml_dir+"/network.yml"
 
 def createfolders():
     try:
-        os.mkdir(network_dir)
-        os.mkdir(yml_dir)
-        os.mkdir(json_dir)
+        os.mkdir(globals.network_dir)
+        os.mkdir(globals.yml_dir)
+        os.mkdir(globals.json_dir)
 
     except:
         print("Necessary folders already exists. Proceeding.")
 
 def loadfiles():
     try:
-        with open(network_yml_file) as networkfile:
+        with open(globals.network_yml_file) as networkfile:
             network_list = yaml.load(networkfile, Loader=yaml.FullLoader)
 
         return (network_list)
@@ -45,7 +35,7 @@ def loadfiles():
 
 def convert():
     try:
-        with open(network_yml_file) as yaml_in, open(network_json_file, "w") as json_out:
+        with open(globals.network_yml_file) as yaml_in, open(globals.network_json_file, "w") as json_out:
             yaml_object = yaml.safe_load(yaml_in) # yaml_object will be a list or a dict
             json.dump(yaml_object, json_out, indent=4, sort_keys=True)
     except:
@@ -53,12 +43,12 @@ def convert():
 
 def loadjsonfiles():
     try:
-        with open(network_json_file, 'r') as networkfile:
+        with open(globals.network_json_file, 'r') as networkfile:
             data = networkfile.read()
             parsed = json.loads(data)
             return json2html.convert(json = parsed)
     except:
-        return("Fafiled to open network.json file. Are you sure it is named correctly?")
+        return("Failed to open network.json file. Are you sure it is named correctly?")
 
 
 def graph():
@@ -70,7 +60,7 @@ def graph():
 
     #Open the network.json file and begin to parse it
     try:
-        with open(network_json_file, 'r') as networkfile:
+        with open(globals.network_json_file, 'r') as networkfile:
             parsed = json.loads(networkfile.read())
 
             #Create empty node list
@@ -138,7 +128,7 @@ def create_d3json():
     d = { 'nodes': [], 'links': []}
     try:
         #Create the network.json file
-        with open(network_json_file, 'r') as networkfile:
+        with open(globals.network_json_file, 'r') as networkfile:
             parsed = json.loads(networkfile.read())
 
             nodes = []
@@ -212,19 +202,19 @@ def add_node(node_name, node_link, image_name, number_of_nodes):
                 'agents':['drone'],
                 'replicas':int(number_of_nodes)}}}
 
-        with open(yml_dir+'/newnode.yml', 'w') as outfile:
+        with open(globals.yml_dir+'/newnode.yml', 'w') as outfile:
             yaml.dump(d, outfile, default_flow_style=False, sort_keys=False)
 
 
-        with open(network_yml_file) as networkfile:
+        with open(globals.network_yml_file) as networkfile:
             data1 = yaml.load(networkfile, Loader=yaml.FullLoader)
 
-        with open(yml_dir+'/newnode.yml') as newnode:
+        with open(globals.yml_dir+'/newnode.yml') as newnode:
             data2 = yaml.load(newnode, Loader=yaml.FullLoader)
 
-        conf = hiyapyco.load(network_yml_file, yml_dir+'/newnode.yml', method=hiyapyco.METHOD_MERGE, interpolate=True, failonmissingfiles=True, usedefaultyamlloader=True)
+        conf = hiyapyco.load(globals.network_yml_file, globals.yml_dir+'/newnode.yml', method=hiyapyco.METHOD_MERGE, interpolate=True, failonmissingfiles=True, usedefaultyamlloader=True)
 
-        with open(yml_dir+'/network.yml', 'w') as outfile:
+        with open(globals.yml_dir+'/network.yml', 'w') as outfile:
             yaml.dump(conf, outfile, default_flow_style=False, sort_keys=False)
 
         loadfiles()
@@ -235,12 +225,12 @@ def remove_node(node_name):
     if request.method=="POST":
 
 
-        with open(network_yml_file) as networkfile:
+        with open(globals.network_yml_file) as networkfile:
             data1 = yaml.load(networkfile, Loader=yaml.FullLoader)
 
         del data1['nodes'][node_name]
 
-        with open(yml_dir+'/network.yml', 'w') as outfile:
+        with open(globals.yml_dir+'/network.yml', 'w') as outfile:
             yaml.dump(data1, outfile, default_flow_style=False, sort_keys=False)
 
         loadfiles()
@@ -249,7 +239,7 @@ def remove_node(node_name):
 
 def load_nodes_to_edit():
     try:
-        with open(network_yml_file) as networkfile:
+        with open(globals.network_yml_file) as networkfile:
             data1 = yaml.load(networkfile, Loader=yaml.FullLoader)
 
             nodes = ""
@@ -263,7 +253,7 @@ def load_nodes_to_edit():
                 for l in data1["nodes"][n]["links"]:
                     links+=(r'''<table><tr><td>'''+str(l)+'''</td></tr></table>''')
                 
-                nodes+=(r'''<tr><th scope="row"><input type="text" class="form-control" id="nodeNameId" name="nodeName" aria-describedby="nodeHelp" value="'''+str(n)+r'''" required></th><td>'''+str(links)+r'''</td><td>'''+str(replicas)+'''</td></tr>''')
+                nodes+=(r'''<tr><th scope="row"><input type="text" class="form-control" id="nodeNameId" name="nodeName" aria-describedby="nodeHelp" value="'''+str(n)+r'''" required></th><td>'''+str(links)+r'''</td><td>'''+str(replicas)+'''</td><td><input type="checkbox" class="form-check-input" id="'''+n+'''" name="'''+n+'''"></td></tr>''')
             return nodes
     except:
         return ("Failed to open network.json file. Are you sure it is named correctly?")
