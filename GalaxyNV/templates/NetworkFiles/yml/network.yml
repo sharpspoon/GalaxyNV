@@ -94,24 +94,6 @@ nodes:
     - user
     - drone
     replicas: 5
-  testnode2:
-    image: user-fw
-    type: lxd
-    priority: 0
-    links:
-      testnode: {}
-    agents:
-    - drone
-    replicas: 0
-  testnode:
-    image: user-fw
-    type: lxd
-    priority: 0
-    links:
-      dmz-br: {}
-    agents:
-    - drone
-    replicas: 0
 links:
   control-br:
     type: lxd

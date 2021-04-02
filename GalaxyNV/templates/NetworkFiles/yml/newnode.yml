@@ -1,10 +1,10 @@
 nodes:
-  NICE:
-    image: server-fw
+  asdf:
+    image: admin-fw
     type: lxd
     priority: 0
     links:
-      f: {}
+      '4': {}
     agents:
     - drone
-    replicas: 1
+    replicas: 2
