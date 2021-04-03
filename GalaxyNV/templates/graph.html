@@ -1,15 +1,10 @@
 {% extends "layout.html" %}
-
 {% block content %}
 <h1>Pyvis Graph</h1>
 <div class="btn-group">
     <a href="{{ url_for('graph') }}" class="btn btn-primary active" aria-current="page">Hide Bridge</a>
     <a href="{{ url_for('fdgbridge') }}" class="btn btn-primary">Show Bridge</a>
 </div>
-<br />
-<button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
-    Tooltip on top
-</button>
 <div class="row g-0">
     <div class="col-sm-6 col-md-8"><iframe src="graphiframe" frameborder="0" scrolling="no" width="1200" height="4000"></iframe></div>
     <div class="col-6 col-md-4">
@@ -70,7 +65,7 @@
                                             <tr>
                                                 <th scope="col">Node</th>
                                                 <th scope="col">Links to</th>
-                                                <th scope="col"># of Replicas</th>
+                                                <th scope="col">Replicas</th>
                                                 <th scope="col">Delete</th>
                                             </tr>
                                         </thead>

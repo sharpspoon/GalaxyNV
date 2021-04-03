@@ -54,6 +54,52 @@
             "replicas": "0",
             "type": "lxd"
         },
+        "asdf": {
+            "agents": [
+                "drone"
+            ],
+            "image": "admin-fw",
+            "links": {
+                "": {}
+            },
+            "priority": 0,
+            "replicas": 2,
+            "type": "lxd"
+        },
+        "asdf2": {
+            "agents": [
+                "drone"
+            ],
+            "image": "admin-fw",
+            "links": {},
+            "priority": 0,
+            "replicas": 2,
+            "type": "lxd"
+        },
+        "asdf23": {
+            "agents": [
+                "drone"
+            ],
+            "image": "server-fw",
+            "links": {
+                "asdf": {}
+            },
+            "priority": 0,
+            "replicas": 2,
+            "type": "lxd"
+        },
+        "asfgdhbnb": {
+            "agents": [
+                "drone"
+            ],
+            "image": "server-fw",
+            "links": {
+                "asdf": {}
+            },
+            "priority": 0,
+            "replicas": 2,
+            "type": "lxd"
+        },
         "border-fw": {
             "agents": [
                 "drone"
@@ -66,6 +112,18 @@
             },
             "priority": 0,
             "replicas": "0",
+            "type": "lxd"
+        },
+        "returntest": {
+            "agents": [
+                "drone"
+            ],
+            "image": "server-fw",
+            "links": {
+                "asdf": {}
+            },
+            "priority": 0,
+            "replicas": 2,
             "type": "lxd"
         },
         "server-fw": {
@@ -154,7 +212,7 @@
             "replicas": 1,
             "type": "lxd"
         },
-        "user2001": {
+        "user20012": {
             "agents": [
                 "user",
                 "drone"
@@ -165,7 +223,7 @@
                 "user200-br": {}
             },
             "priority": 100,
-            "replicas": 2,
+            "replicas": 3,
             "type": "lxd"
         }
     }
