@@ -88,7 +88,7 @@ nodes:
     agents:
     - user
     - drone
-    replicas: '3'
+    replicas: 1
   user1:
     image: user1
     type: lxd
@@ -99,7 +99,7 @@ nodes:
     agents:
     - user
     - drone
-    replicas: '3'
+    replicas: 1
   user2001:
     image: user200
     type: lxd
@@ -110,9 +110,9 @@ nodes:
     agents:
     - user
     - drone
-    replicas: '6'
-  asdff:
-    image: user-fw
+    replicas: 2
+  test:
+    image: server-fw
     type: lxd
     priority: 0
     links:
@@ -120,7 +120,7 @@ nodes:
       : {}
     agents:
     - drone
-    replicas: '6'
+    replicas: 10
 links:
   control-br:
     type: lxd

@@ -1,6 +1,6 @@
 nodes:
-  asdf:
-    image: user-fw
+  test:
+    image: server-fw
     type: lxd
     priority: 0
     links:
@@ -8,4 +8,4 @@ nodes:
       : {}
     agents:
     - drone
-    replicas: 5
+    replicas: 3

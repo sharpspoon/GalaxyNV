@@ -54,18 +54,6 @@
             "replicas": "0",
             "type": "lxd"
         },
-        "asdff": {
-            "agents": [
-                "drone"
-            ],
-            "image": "user-fw",
-            "links": {
-                "": {}
-            },
-            "priority": 0,
-            "replicas": "6",
-            "type": "lxd"
-        },
         "border-fw": {
             "agents": [
                 "drone"
@@ -122,6 +110,18 @@
             "replicas": "0",
             "type": "lxd"
         },
+        "test": {
+            "agents": [
+                "drone"
+            ],
+            "image": "server-fw",
+            "links": {
+                "": {}
+            },
+            "priority": 0,
+            "replicas": 10,
+            "type": "lxd"
+        },
         "user-fw": {
             "agents": [
                 "drone"
@@ -149,7 +149,7 @@
                 "user0-br": {}
             },
             "priority": 80,
-            "replicas": "3",
+            "replicas": 1,
             "type": "lxd"
         },
         "user1": {
@@ -163,7 +163,7 @@
                 "user1-br": {}
             },
             "priority": 90,
-            "replicas": "3",
+            "replicas": 1,
             "type": "lxd"
         },
         "user2001": {
@@ -177,7 +177,7 @@
                 "user200-br": {}
             },
             "priority": 100,
-            "replicas": "6",
+            "replicas": 2,
             "type": "lxd"
         }
     }
