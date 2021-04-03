@@ -100,7 +100,7 @@ nodes:
     - user
     - drone
     replicas: 1
-  user2001:
+  user20012:
     image: user200
     type: lxd
     priority: 100
@@ -109,6 +109,51 @@ nodes:
       user200-br: {}
     agents:
     - user
+    - drone
+    replicas: 3
+  asdf:
+    image: admin-fw
+    type: lxd
+    priority: 0
+    links:
+      ? ''
+      : {}
+    agents:
+    - drone
+    replicas: 2
+  asdf2:
+    image: admin-fw
+    type: lxd
+    priority: 0
+    links: {}
+    agents:
+    - drone
+    replicas: 2
+  asdf23:
+    image: server-fw
+    type: lxd
+    priority: 0
+    links:
+      asdf: {}
+    agents:
+    - drone
+    replicas: 2
+  asfgdhbnb:
+    image: server-fw
+    type: lxd
+    priority: 0
+    links:
+      asdf: {}
+    agents:
+    - drone
+    replicas: 2
+  returntest:
+    image: server-fw
+    type: lxd
+    priority: 0
+    links:
+      asdf: {}
+    agents:
     - drone
     replicas: 2
 links:

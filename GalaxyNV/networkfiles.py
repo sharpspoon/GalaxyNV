@@ -10,10 +10,7 @@ import json
 import pprint
 from collections import defaultdict
 from pyvis.network import Network
-#import ruamel.yaml as yaml2
 import hiyapyco
-
-
 
 def createfolders():
     try:
@@ -119,8 +116,8 @@ def graph():
                 replica_count = 0
 
     net.show_buttons()
-    net.save_graph(r'GalaxyNV\templates\PyvisGraph.html')
-    return ("success")
+    
+    return net.save_graph(r'GalaxyNV\templates\PyvisGraph.html')
 
 
 def create_d3json():
@@ -187,8 +184,6 @@ def create_d3jsonbridge():
             return "Build success."
     except:
         return ("Failed to open network.json file. Are you sure it is named correctly?")
-
-
     
 def add_node(node_name, node_link, image_name, number_of_nodes):
     if request.method=="POST":
@@ -205,7 +200,6 @@ def add_node(node_name, node_link, image_name, number_of_nodes):
         with open(globals.yml_dir+'/newnode.yml', 'w') as outfile:
             yaml.dump(d, outfile, default_flow_style=False, sort_keys=False)
 
-
         with open(globals.network_yml_file) as networkfile:
             data1 = yaml.load(networkfile, Loader=yaml.FullLoader)
 
@@ -218,8 +212,7 @@ def add_node(node_name, node_link, image_name, number_of_nodes):
             yaml.dump(conf, outfile, default_flow_style=False, sort_keys=False)
 
         loadfiles()
-        convert()
-    return 'success'
+    return convert()
 
 def remove_node(node_name):
     if request.method=="POST":
@@ -251,10 +244,10 @@ def load_nodes_to_edit():
                 except:
                     replicas=0
 
-
-
+                links+='<table>'
                 for l in data1["nodes"][n]["links"]:
-                    links+=(r'''<table><tr><td><select class="form-select" aria-label="Default select example"><option selected>'''+str(l)+'''</option>'''+link_list+'''</select></td><td><input type="checkbox" class="btn-check" id="btn-check_'''+n+'''_'''+str(l)+'''" autocomplete="off"><label class="btn btn-outline-danger" for="btn-check_'''+n+'''_'''+str(l)+'''">X</label></td></tr></table>''')
+                    links+=(r'''<tr><td><select class="form-select" aria-label="Default select example"><option selected>'''+str(l)+'''</option>'''+link_list+'''</select></td><td><input type="checkbox" class="btn-check form-control" id="id_delete_'''+n+'''_'''+str(l)+'''" name="delete_'''+n+'''_'''+str(l)+'''" autocomplete="off"><label class="btn btn-outline-danger" for="id_delete_'''+n+'''_'''+str(l)+'''">X</label></td></tr>''')
+                links+='''</table><button type="button" class="btn btn-outline-success btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Add link to '''+n+'''">Add Link</button>'''
                 
                 nodes+=(r'''<tr><th scope="row"><input type="text" class="form-control" id="nodeNameId" name="'''+n+'''" aria-describedby="nodeHelp" value="'''+str(n)+r'''" required></th><td>'''+str(links)+r'''</td><td><input type="number" class="form-control" id="numberOfNodesId" name="replicas_'''+str(n)+'''" value="'''+str(replicas)+'''"></td><td><input type="checkbox" class="btn-check form-control" id="id_delete_'''+n+'''" name="delete_'''+n+'''" autocomplete="off""><label class="btn btn-outline-danger" for="id_delete_'''+n+'''">X</label></td></tr>''')
             return nodes
@@ -269,7 +262,6 @@ def change_node_name(n, new_node_name):
 
     data1["nodes"][new_node_name]=data1["nodes"][n]
     del data1["nodes"][n]
-
 
     with open(globals.network_yml_file, 'w') as outfile:
         yaml.dump(data1, outfile, default_flow_style=False, sort_keys=False)
@@ -286,10 +278,22 @@ def change_node_replicas(n, current_node_replicas, new_node_replicas):
 
     data1["nodes"][n]["replicas"]=new_node_replicas
 
-
     with open(globals.network_yml_file, 'w') as outfile:
         yaml.dump(data1, outfile, default_flow_style=False, sort_keys=False)
 
     loadfiles()
-    convert()
-    return 'success'
+    return convert()
+
+def remove_node_link(node_name, node_link):
+    if request.method=="POST":
+
+        with open(globals.network_yml_file) as networkfile:
+            data1 = yaml.load(networkfile, Loader=yaml.FullLoader)
+
+        del data1['nodes'][node_name]['links'][node_link]
+
+        with open(globals.network_yml_file, 'w') as outfile:
+            yaml.dump(data1, outfile, default_flow_style=False, sort_keys=False)
+
+        loadfiles()
+    return convert()

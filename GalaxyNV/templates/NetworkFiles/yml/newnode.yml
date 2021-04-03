@@ -1,11 +1,10 @@
 nodes:
-  test:
+  returntest:
     image: server-fw
     type: lxd
     priority: 0
     links:
-      ? ''
-      : {}
+      asdf: {}
     agents:
     - drone
-    replicas: 3
+    replicas: 2
