@@ -254,7 +254,7 @@ def load_nodes_to_edit():
 
 
                 for l in data1["nodes"][n]["links"]:
-                    links+=(r'''<table><tr><td><select class="form-select" aria-label="Default select example"><option selected>'''+str(l)+'''</option>'''+link_list+'''</select></td><td>x</td></tr></table>''')
+                    links+=(r'''<table><tr><td><select class="form-select" aria-label="Default select example"><option selected>'''+str(l)+'''</option>'''+link_list+'''</select></td><td><input type="checkbox" class="btn-check" id="btn-check" autocomplete="off"><label class="btn btn-outline-danger" for="btn-check">X</label></td></tr></table>''')
                 
                 nodes+=(r'''<tr><th scope="row"><input type="text" class="form-control" id="nodeNameId" name="'''+n+'''" aria-describedby="nodeHelp" value="'''+str(n)+r'''" required></th><td>'''+str(links)+r'''</td><td><input type="number" class="form-control" id="numberOfNodesId" name="replicas_'''+str(n)+'''" value="'''+str(replicas)+'''"></td><td><input type="checkbox" class="form-check-input" id="id_delete_'''+n+'''" name="delete_'''+n+'''"></td></tr>''')
             return nodes

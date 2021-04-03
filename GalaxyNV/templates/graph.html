@@ -7,6 +7,9 @@
     <a href="{{ url_for('fdgbridge') }}" class="btn btn-primary">Show Bridge</a>
 </div>
 <br />
+<button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+    Tooltip on top
+</button>
 <div class="row g-0">
     <div class="col-sm-6 col-md-8"><iframe src="graphiframe" frameborder="0" scrolling="no" width="1200" height="4000"></iframe></div>
     <div class="col-6 col-md-4">
@@ -62,7 +65,7 @@
                         <div class="accordion-body">
                             <form action="{{ url_for("editnodes")}}" method="post">
                                 <div class="mb-3">
-                                    <table class="table">
+                                    <table class="table table-hover">
                                         <thead>
                                             <tr>
                                                 <th scope="col">Node</th>

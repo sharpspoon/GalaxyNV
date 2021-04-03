@@ -111,7 +111,7 @@ nodes:
     - user
     - drone
     replicas: 2
-  test:
+  test1:
     image: server-fw
     type: lxd
     priority: 0
