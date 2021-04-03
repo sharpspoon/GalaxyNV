@@ -37,6 +37,7 @@
                 "dmz-br": {}
             },
             "priority": 0,
+            "replicas": "0",
             "type": "lxd"
         },
         "admin0": {
@@ -50,6 +51,7 @@
                 "control-br": {}
             },
             "priority": 60,
+            "replicas": "0",
             "type": "lxd"
         },
         "border-fw": {
@@ -63,6 +65,7 @@
                 "upstream-br": {}
             },
             "priority": 0,
+            "replicas": "0",
             "type": "lxd"
         },
         "server-fw": {
@@ -76,6 +79,7 @@
                 "server0-br": {}
             },
             "priority": 0,
+            "replicas": "0",
             "type": "lxd"
         },
         "server-http": {
@@ -89,6 +93,7 @@
                 "server0-br": {}
             },
             "priority": 70,
+            "replicas": "0",
             "type": "lxd"
         },
         "server-https": {
@@ -102,6 +107,7 @@
                 "server0-br": {}
             },
             "priority": 70,
+            "replicas": "0",
             "type": "lxd"
         },
         "user-fw": {
@@ -117,6 +123,7 @@
                 "user200-br": {}
             },
             "priority": 0,
+            "replicas": "0",
             "type": "lxd"
         },
         "user0": {
@@ -130,7 +137,7 @@
                 "user0-br": {}
             },
             "priority": 80,
-            "replicas": 3,
+            "replicas": "3",
             "type": "lxd"
         },
         "user1": {
@@ -144,7 +151,7 @@
                 "user1-br": {}
             },
             "priority": 90,
-            "replicas": 3,
+            "replicas": "3",
             "type": "lxd"
         },
         "user200": {
@@ -158,7 +165,7 @@
                 "user200-br": {}
             },
             "priority": 100,
-            "replicas": 5,
+            "replicas": "7",
             "type": "lxd"
         }
     }

@@ -215,6 +215,11 @@ def editnodes():
         #Set each form element value to a var
         new_node_name=request.form.get(n)
         delete_node_name = request.form.get("delete_"+n)
+        try:
+            current_node_replicas=data1["nodes"][n]["replicas"]
+        except:
+            current_node_replicas=0
+        new_node_replicas = request.form.get("replicas_"+n)
 
         #If the var is true, remove the node
         if delete_node_name:
@@ -222,9 +227,13 @@ def editnodes():
 
         #Check if the name of the node has changed
         if new_node_name != n:
-            print ('n='+n)
-            print ('new_node_name='+new_node_name)
             networkfiles.change_node_name(n, new_node_name)
+
+        #Check if the replicas of the node has changed
+        if int(new_node_replicas) != int(current_node_replicas):
+            print ('new_node_replicas='+str(new_node_replicas))
+            print ('current_node_replicas='+str(current_node_replicas))
+            networkfiles.change_node_replicas(n,current_node_replicas, new_node_replicas)
 
 
     graphiframe()
