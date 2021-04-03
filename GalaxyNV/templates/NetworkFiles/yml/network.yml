@@ -111,16 +111,6 @@ nodes:
     - user
     - drone
     replicas: 2
-  test1:
-    image: server-fw
-    type: lxd
-    priority: 0
-    links:
-      ? ''
-      : {}
-    agents:
-    - drone
-    replicas: 10
 links:
   control-br:
     type: lxd
