@@ -100,7 +100,7 @@ nodes:
     - user
     - drone
     replicas: '3'
-  user200:
+  user2001:
     image: user200
     type: lxd
     priority: 100
@@ -110,7 +110,17 @@ nodes:
     agents:
     - user
     - drone
-    replicas: '7'
+    replicas: '6'
+  asdff:
+    image: user-fw
+    type: lxd
+    priority: 0
+    links:
+      ? ''
+      : {}
+    agents:
+    - drone
+    replicas: '6'
 links:
   control-br:
     type: lxd

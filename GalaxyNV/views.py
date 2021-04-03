@@ -226,13 +226,26 @@ def editnodes():
             networkfiles.remove_node(n)
 
         #Check if the name of the node has changed
-        if new_node_name != n:
+        if (new_node_name != n) and (int(new_node_replicas) != int(current_node_replicas)):
+            networkfiles.change_node_name(n, new_node_name)
+            if globals.DEBUG==True:
+                print ('new_node_name='+str(new_node_name))
+                print ('n='+str(n))
+                print ('new_node_replicas='+str(new_node_replicas))
+                print ('current_node_replicas='+str(current_node_replicas))
+            networkfiles.change_node_replicas(new_node_name,current_node_replicas, new_node_replicas)
+
+        elif new_node_name != n:
+            if globals.DEBUG==True:
+                print ('new_node_name='+str(new_node_name))
+                print ('n='+str(n))
             networkfiles.change_node_name(n, new_node_name)
 
         #Check if the replicas of the node has changed
-        if int(new_node_replicas) != int(current_node_replicas):
-            print ('new_node_replicas='+str(new_node_replicas))
-            print ('current_node_replicas='+str(current_node_replicas))
+        elif int(new_node_replicas) != int(current_node_replicas):
+            if globals.DEBUG==True:
+                print ('new_node_replicas='+str(new_node_replicas))
+                print ('current_node_replicas='+str(current_node_replicas))
             networkfiles.change_node_replicas(n,current_node_replicas, new_node_replicas)
 
 

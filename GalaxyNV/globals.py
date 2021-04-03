@@ -3,6 +3,8 @@ from flask import render_template
 from GalaxyNV import app
 
 #Globals
+DEBUG=True
+
 #Directories
 network_dir="./GalaxyNV/templates/NetworkFiles"
 yml_dir=network_dir+"/yml"
