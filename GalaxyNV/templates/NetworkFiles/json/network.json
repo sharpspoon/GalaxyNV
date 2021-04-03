@@ -54,6 +54,18 @@
             "replicas": "0",
             "type": "lxd"
         },
+        "asdff": {
+            "agents": [
+                "drone"
+            ],
+            "image": "user-fw",
+            "links": {
+                "": {}
+            },
+            "priority": 0,
+            "replicas": "6",
+            "type": "lxd"
+        },
         "border-fw": {
             "agents": [
                 "drone"
@@ -154,7 +166,7 @@
             "replicas": "3",
             "type": "lxd"
         },
-        "user200": {
+        "user2001": {
             "agents": [
                 "user",
                 "drone"
@@ -165,7 +177,7 @@
                 "user200-br": {}
             },
             "priority": 100,
-            "replicas": "7",
+            "replicas": "6",
             "type": "lxd"
         }
     }
