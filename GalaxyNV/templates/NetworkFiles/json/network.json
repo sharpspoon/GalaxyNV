@@ -110,18 +110,6 @@
             "replicas": "0",
             "type": "lxd"
         },
-        "test1": {
-            "agents": [
-                "drone"
-            ],
-            "image": "server-fw",
-            "links": {
-                "": {}
-            },
-            "priority": 0,
-            "replicas": 10,
-            "type": "lxd"
-        },
         "user-fw": {
             "agents": [
                 "drone"
