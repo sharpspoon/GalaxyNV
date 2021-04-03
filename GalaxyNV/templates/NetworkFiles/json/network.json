@@ -110,7 +110,7 @@
             "replicas": "0",
             "type": "lxd"
         },
-        "test": {
+        "test1": {
             "agents": [
                 "drone"
             ],
