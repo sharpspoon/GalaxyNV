@@ -256,7 +256,7 @@ def load_nodes_to_edit():
                 for l in data1["nodes"][n]["links"]:
                     links+=(r'''<table><tr><td><select class="form-select" aria-label="Default select example"><option selected>'''+str(l)+'''</option>'''+link_list+'''</select></td><td>x</td></tr></table>''')
                 
-                nodes+=(r'''<tr><th scope="row"><input type="text" class="form-control" id="nodeNameId" name="'''+n+'''" aria-describedby="nodeHelp" value="'''+str(n)+r'''" required></th><td>'''+str(links)+r'''</td><td><input type="number" class="form-control" id="numberOfNodesId" name="numberOfNodesFor'''+str(replicas)+'''" value="'''+str(replicas)+'''"></td><td><input type="checkbox" class="form-check-input" id="id_delete_'''+n+'''" name="delete_'''+n+'''"></td></tr>''')
+                nodes+=(r'''<tr><th scope="row"><input type="text" class="form-control" id="nodeNameId" name="'''+n+'''" aria-describedby="nodeHelp" value="'''+str(n)+r'''" required></th><td>'''+str(links)+r'''</td><td><input type="number" class="form-control" id="numberOfNodesId" name="replicas_'''+str(n)+'''" value="'''+str(replicas)+'''"></td><td><input type="checkbox" class="form-check-input" id="id_delete_'''+n+'''" name="delete_'''+n+'''"></td></tr>''')
             return nodes
     except:
         return ("Failed to open network.json file. Are you sure it is named correctly?")
@@ -269,6 +269,22 @@ def change_node_name(n, new_node_name):
 
     data1["nodes"][new_node_name]=data1["nodes"][n]
     del data1["nodes"][n]
+
+
+    with open(globals.network_yml_file, 'w') as outfile:
+        yaml.dump(data1, outfile, default_flow_style=False, sort_keys=False)
+
+    loadfiles()
+    convert()
+    return 'success'
+
+def change_node_replicas(n, current_node_replicas, new_node_replicas):
+    #if request.method=="GET":
+
+    with open(globals.network_yml_file) as networkfile:
+        data1 = yaml.load(networkfile, Loader=yaml.FullLoader)
+
+    data1["nodes"][n]["replicas"]=new_node_replicas
 
 
     with open(globals.network_yml_file, 'w') as outfile:
