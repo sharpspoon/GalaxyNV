@@ -194,15 +194,6 @@ def addnode():
     networkfiles.load_nodes_to_edit()
     return graph()
 
-#@app.route('/removenode', methods =["GET", "POST"])
-#def removenode():
-#    node_name = request.form.get("nodeName")
-#    networkfiles.remove_node(node_name)
-#    graphiframe()
-#    return render_template(
-#        'graph.html'
-#        )
-
 @app.route('/editnodes', methods =["POST"])
 def editnodes():
     #Get a list of all nodes in the yaml file
@@ -221,12 +212,14 @@ def editnodes():
             current_node_replicas=0
         new_node_replicas = request.form.get("replicas_"+n)
 
-        #If the var is true, remove the node
+        #If the var is true, remove the node and do not do any of the below
         if delete_node_name:
+            if globals.DEBUG==True:
+                print ('Deleting the node "'+n+'" and ignoring any other changes to this node. Moving on to next node...')
             networkfiles.remove_node(n)
 
         #Check if the name of the node has changed
-        if (new_node_name != n) and (int(new_node_replicas) != int(current_node_replicas)):
+        elif (new_node_name != n) and (int(new_node_replicas) != int(current_node_replicas)):
             networkfiles.change_node_name(n, new_node_name)
             if globals.DEBUG==True:
                 print ('new_node_name='+str(new_node_name))
@@ -246,8 +239,9 @@ def editnodes():
             if globals.DEBUG==True:
                 print ('new_node_replicas='+str(new_node_replicas))
                 print ('current_node_replicas='+str(current_node_replicas))
-            networkfiles.change_node_replicas(n,current_node_replicas, new_node_replicas)
+            networkfiles.change_node_replicas(n,current_node_replicas, int(new_node_replicas))
 
 
     graphiframe()
+    networkfiles.load_nodes_to_edit()
     return graph()
