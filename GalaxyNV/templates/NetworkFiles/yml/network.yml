@@ -111,51 +111,14 @@ nodes:
     - user
     - drone
     replicas: 3
-  asdf:
-    image: admin-fw
-    type: lxd
-    priority: 0
-    links:
-      ? ''
-      : {}
-    agents:
-    - drone
-    replicas: 2
-  asdf2:
-    image: admin-fw
+  linktest3:
+    image: server-fw
     type: lxd
     priority: 0
     links: {}
     agents:
     - drone
-    replicas: 2
-  asdf23:
-    image: server-fw
-    type: lxd
-    priority: 0
-    links:
-      asdf: {}
-    agents:
-    - drone
-    replicas: 2
-  asfgdhbnb:
-    image: server-fw
-    type: lxd
-    priority: 0
-    links:
-      asdf: {}
-    agents:
-    - drone
-    replicas: 2
-  returntest:
-    image: server-fw
-    type: lxd
-    priority: 0
-    links:
-      asdf: {}
-    agents:
-    - drone
-    replicas: 2
+    replicas: 1
 links:
   control-br:
     type: lxd
