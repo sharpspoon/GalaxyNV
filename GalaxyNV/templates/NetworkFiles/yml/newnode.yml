@@ -1,9 +1,10 @@
 nodes:
-  linktest3:
+  asdf:
     image: server-fw
     type: lxd
     priority: 0
-    links: {}
+    links:
+      asdf: {}
     agents:
     - drone
     replicas: 1

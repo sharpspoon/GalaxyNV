@@ -238,6 +238,15 @@ def remove_node(node_name):
         loadfiles()
     return convert()
 
+def link_list():
+    with open(globals.network_yml_file) as networkfile:
+        data1 = yaml.load(networkfile, Loader=yaml.FullLoader)
+
+    link_list=""
+    for n in data1["nodes"]:
+        link_list+='''<option value="'''+n+'''">'''+n+'''</option>'''
+    return link_list
+
 def build_add_link_page_scripts():
     try:
         with open(globals.network_yml_file) as networkfile:
@@ -249,9 +258,9 @@ def build_add_link_page_scripts():
             #Check if there is a '-' in the node name. If there is, remove it for the javascript function.
             if "-" in n:
                 n2=n.replace('-', '')
-                script+='''<script>function addLinkTo_'''+n2+'''() {document.getElementById("demo").innerHTML = "Hello World";}</script>'''
+                script+='''<script>function addLinkTo_'''+n2+'''() {document.getElementById("jsAddLinkTo_'''+n2+'''").innerHTML = "1";}</script>'''
             else:
-                script+='''<script>function addLinkTo_'''+n+'''() {document.getElementById("demo").innerHTML = "Hello World";}</script>'''
+                script+='''<script>function addLinkTo_'''+n+'''() {document.getElementById("jsAddLinkTo_'''+n+'''").innerHTML = "2";}</script>'''
         return script
     except:
         return ("Failed to open network.json file. Are you sure it is named correctly?")
@@ -262,21 +271,24 @@ def load_nodes_to_edit():
             data1 = yaml.load(networkfile, Loader=yaml.FullLoader)
 
             nodes = ""
-            link_list=""
-            for n in data1["nodes"]:
-                link_list+='''<option value="'''+n+'''">'''+n+'''</option>'''
             for n in data1["nodes"]:
                 links=""
                 try:
                     replicas=data1["nodes"][n]["replicas"]
                 except:
                     replicas=0
-                
+                                    #Check if there is a '-' in the node name. If there is, remove it for the javascript function.
+                if "-" in n:
+                    n2=n.replace('-', '')
+                    links+='''<div id="jsAddLinkTo_'''+n2+'''"></div>'''
+                else:
+                    links+='''<div id="jsAddLinkTo_'''+n+'''"></div>'''
                 
                 if data1["nodes"][n]["links"] != {}:
-                    links+='<p id="demo"></p><table>'
+
+                    links+='<table>'
                     for l in data1["nodes"][n]["links"]:
-                        links+=(r'''<tr><td><select class="form-select" aria-label="Default select example"><option selected>'''+str(l)+'''</option>'''+link_list+'''</select></td><td><input type="checkbox" class="btn-check form-control" id="id_delete_'''+n+'''_'''+str(l)+'''" name="delete_'''+n+'''_'''+str(l)+'''" autocomplete="off"><label class="btn btn-outline-danger" for="id_delete_'''+n+'''_'''+str(l)+'''">X</label></td></tr>''')
+                        links+=(r'''<tr><td><select class="form-select" aria-label="Default select example"><option selected>'''+str(l)+'''</option>'''+link_list()+'''</select></td><td><input type="checkbox" class="btn-check form-control" id="id_delete_'''+n+'''_'''+str(l)+'''" name="delete_'''+n+'''_'''+str(l)+'''" autocomplete="off"><label class="btn btn-outline-danger" for="id_delete_'''+n+'''_'''+str(l)+'''">X</label></td></tr>''')
                     links+='</table>'
 
                 #Check if there is a '-' in the node name. If there is, remove it for the javascript function.
@@ -284,7 +296,7 @@ def load_nodes_to_edit():
                     n2=n.replace('-', '')
                     links+='''<button type="button" class="btn btn-outline-success btn-sm" id="id_addLinkTo_'''+n+'''" name="addLinkTo_'''+n+'''" data-bs-toggle="tooltip" data-bs-placement="top" title="Add link to '''+n+'''" onclick="addLinkTo_'''+n2+'''()">Add Link</button>'''
                 else:
-                    links+='''<button type="button" class="btn btn-outline-success btn-sm" id="id_addLinkTo_'''+n+'''" name="addLinkTo_'''+n+'''" data-bs-toggle="tooltip" data-bs-placement="top" title="Add link to '''+n+'''" onclick="'''+n+'''">Add Link</button>'''
+                    links+='''<button type="button" class="btn btn-outline-success btn-sm" id="id_addLinkTo_'''+n+'''" name="addLinkTo_'''+n+'''" data-bs-toggle="tooltip" data-bs-placement="top" title="Add link to '''+n+'''" onclick="addLinkTo_'''+n+'''()">Add Link</button>'''
                 
                 nodes+=(r'''<tr><th scope="row"><input type="text" class="form-control" id="nodeNameId" name="'''+n+'''" aria-describedby="nodeHelp" value="'''+str(n)+r'''" required></th><td>'''+str(links)+r'''</td><td><input type="number" class="form-control" id="numberOfNodesId" name="replicas_'''+str(n)+'''" value="'''+str(replicas)+'''"></td><td><input type="checkbox" class="btn-check form-control" id="id_delete_'''+n+'''" name="delete_'''+n+'''" autocomplete="off""><label class="btn btn-outline-danger" for="id_delete_'''+n+'''">X</label></td></tr>''')
             return nodes
