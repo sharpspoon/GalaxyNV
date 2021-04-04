@@ -116,9 +116,11 @@ def img_firewall():
 @app.route('/graph')
 def graph():
     loadnodes=networkfiles.load_nodes_to_edit()
+    javascript=networkfiles.build_add_link_page_scripts()
     return render_template(
         'graph.html',
-        nodes=loadnodes
+        nodes=loadnodes,
+        js=javascript
     )
 
 @app.route('/graphiframe')
