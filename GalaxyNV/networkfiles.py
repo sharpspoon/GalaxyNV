@@ -187,15 +187,25 @@ def create_d3jsonbridge():
     
 def add_node(node_name, node_link, image_name, number_of_nodes):
     if request.method=="POST":
-        d={ 'nodes': {
-            node_name:{
-                'image':image_name,
-                'type':'lxd',
-                'priority':0,
-                'links':{
-                    node_link:{}},
-                'agents':['drone'],
-                'replicas':int(number_of_nodes)}}}
+        if node_link:
+            d={ 'nodes': {
+                node_name:{
+                    'image':image_name,
+                    'type':'lxd',
+                    'priority':0,
+                    'links':{
+                        node_link:{}},
+                    'agents':['drone'],
+                    'replicas':int(number_of_nodes)}}}
+        else:
+            d={ 'nodes': {
+                node_name:{
+                    'image':image_name,
+                    'type':'lxd',
+                    'priority':0,
+                    'links':{},
+                    'agents':['drone'],
+                    'replicas':int(number_of_nodes)}}}
 
         with open(globals.yml_dir+'/newnode.yml', 'w') as outfile:
             yaml.dump(d, outfile, default_flow_style=False, sort_keys=False)
@@ -243,11 +253,13 @@ def load_nodes_to_edit():
                     replicas=data1["nodes"][n]["replicas"]
                 except:
                     replicas=0
-
-                links+='<table>'
-                for l in data1["nodes"][n]["links"]:
-                    links+=(r'''<tr><td><select class="form-select" aria-label="Default select example"><option selected>'''+str(l)+'''</option>'''+link_list+'''</select></td><td><input type="checkbox" class="btn-check form-control" id="id_delete_'''+n+'''_'''+str(l)+'''" name="delete_'''+n+'''_'''+str(l)+'''" autocomplete="off"><label class="btn btn-outline-danger" for="id_delete_'''+n+'''_'''+str(l)+'''">X</label></td></tr>''')
-                links+='''</table><button type="button" class="btn btn-outline-success btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Add link to '''+n+'''">Add Link</button>'''
+                
+                if data1["nodes"][n]["links"] != {}:
+                    links+='<table>'
+                    for l in data1["nodes"][n]["links"]:
+                        links+=(r'''<tr><td><select class="form-select" aria-label="Default select example"><option selected>'''+str(l)+'''</option>'''+link_list+'''</select></td><td><input type="checkbox" class="btn-check form-control" id="id_delete_'''+n+'''_'''+str(l)+'''" name="delete_'''+n+'''_'''+str(l)+'''" autocomplete="off"><label class="btn btn-outline-danger" for="id_delete_'''+n+'''_'''+str(l)+'''">X</label></td></tr>''')
+                    links+='</table>'
+                links+='''<button type="button" class="btn btn-outline-success btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Add link to '''+n+'''">Add Link</button>'''
                 
                 nodes+=(r'''<tr><th scope="row"><input type="text" class="form-control" id="nodeNameId" name="'''+n+'''" aria-describedby="nodeHelp" value="'''+str(n)+r'''" required></th><td>'''+str(links)+r'''</td><td><input type="number" class="form-control" id="numberOfNodesId" name="replicas_'''+str(n)+'''" value="'''+str(replicas)+'''"></td><td><input type="checkbox" class="btn-check form-control" id="id_delete_'''+n+'''" name="delete_'''+n+'''" autocomplete="off""><label class="btn btn-outline-danger" for="id_delete_'''+n+'''">X</label></td></tr>''')
             return nodes
@@ -267,8 +279,7 @@ def change_node_name(n, new_node_name):
         yaml.dump(data1, outfile, default_flow_style=False, sort_keys=False)
 
     loadfiles()
-    convert()
-    return 'success'
+    return convert()
 
 def change_node_replicas(n, current_node_replicas, new_node_replicas):
     #if request.method=="GET":

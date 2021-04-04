@@ -54,52 +54,6 @@
             "replicas": "0",
             "type": "lxd"
         },
-        "asdf": {
-            "agents": [
-                "drone"
-            ],
-            "image": "admin-fw",
-            "links": {
-                "": {}
-            },
-            "priority": 0,
-            "replicas": 2,
-            "type": "lxd"
-        },
-        "asdf2": {
-            "agents": [
-                "drone"
-            ],
-            "image": "admin-fw",
-            "links": {},
-            "priority": 0,
-            "replicas": 2,
-            "type": "lxd"
-        },
-        "asdf23": {
-            "agents": [
-                "drone"
-            ],
-            "image": "server-fw",
-            "links": {
-                "asdf": {}
-            },
-            "priority": 0,
-            "replicas": 2,
-            "type": "lxd"
-        },
-        "asfgdhbnb": {
-            "agents": [
-                "drone"
-            ],
-            "image": "server-fw",
-            "links": {
-                "asdf": {}
-            },
-            "priority": 0,
-            "replicas": 2,
-            "type": "lxd"
-        },
         "border-fw": {
             "agents": [
                 "drone"
@@ -114,16 +68,14 @@
             "replicas": "0",
             "type": "lxd"
         },
-        "returntest": {
+        "linktest3": {
             "agents": [
                 "drone"
             ],
             "image": "server-fw",
-            "links": {
-                "asdf": {}
-            },
+            "links": {},
             "priority": 0,
-            "replicas": 2,
+            "replicas": 1,
             "type": "lxd"
         },
         "server-fw": {
