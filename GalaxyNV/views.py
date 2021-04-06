@@ -3,79 +3,9 @@ from flask import Flask, request, render_template, send_file
 from GalaxyNV import app, gnx, networkfiles, globals
 import yaml
 
-@app.route('/')
-@app.route('/home')
-def home():
-    subheader1 = gnx.subheader1()
-    return render_template(
-        'index.html',
-        title='Home Page',
-        year=datetime.now().year,
-        sh1=subheader1
-    )
-
-@app.route('/image')
-def image():
-    return render_template(
-        'image.html',
-        title='Galaxy Image and Network Configuration',
-        year=datetime.now().year
-    )
-
-@app.route('/contact')
-def contact():
-    return render_template(
-        'contact.html',
-        title='Contact',
-        year=datetime.now().year,
-        message='Your contact page.'
-    )
-
-@app.route('/about')
-def about():
-    return render_template(
-        'about.html',
-        title='About',
-        year=datetime.now().year,
-        message='Your application description page.'
-    )
-
-@app.route('/d3json')
-def d3json():
-    return render_template(
-        'NetworkFiles/json/d3.json'
-    )
-
-@app.route('/d3jsonbridge')
-def d3jsonbridge():
-    return render_template(
-        'NetworkFiles/json/d3bridge.json'
-    )
-
-@app.route('/json')
-def json():
-    return render_template(
-        'network.json'
-    )
-
-@app.route('/jsonbridge')
-def jsonbridge():
-    return render_template(
-        'networkbridge.json'
-    )
-
-@app.route('/demoiframe')
-def demoiframe():
-    return render_template(
-        'Demo.html'
-    )
-
-@app.route('/demojson')
-def demojson():
-    return render_template(
-        'NetworkFiles/json/demo.json'
-    )
-
+##########
+# Images #
+##########
 @app.route('/img_laptop')
 def img_laptop():
     return send_file(
@@ -112,66 +42,35 @@ def img_firewall():
         r'static\img\firewall.png', mimetype='image/png'
     )
 
-#Pyvis graph
-@app.route('/graph')
-def graph():
-    loadnodes=networkfiles.load_nodes_to_edit()
-    javascript=networkfiles.build_add_link_page_scripts()
+#########
+# Pages #
+#########
+@app.route('/')
+@app.route('/home')
+def home():
+    subheader1 = gnx.subheader1()
     return render_template(
-        'graph.html',
-        nodes=loadnodes,
-        js=javascript
+        'index.html',
+        title='Home Page',
+        year=datetime.now().year,
+        sh1=subheader1
     )
 
-@app.route('/graphiframe')
-def graphiframe():
-    networkfiles.graph()
+@app.route('/image')
+def image():
     return render_template(
-        'PyvisGraph.html'
+        'image.html',
+        title='Galaxy Image and Network Configuration',
+        year=datetime.now().year
     )
 
-#Force directed graph with no bridge display
-@app.route('/fdg')
-def fdg():
-    jsoncontent = networkfiles.create_d3json()
+@app.route('/contact')
+def contact():
     return render_template(
-        'fdg.html',
-        jc = jsoncontent
-    )
-
-@app.route('/fdgiframe')
-def fdgiframe():
-    return render_template(
-        'ForceDirectedGraph.html'
-    )
-
-#Force directed graph with a bridge display
-@app.route('/fdgbridge')
-def fdgbridge():
-    jsoncontent = networkfiles.create_d3jsonbridge()
-    return render_template(
-        'fdgbridge.html',
-        jc = jsoncontent
-    )
-
-@app.route('/fdgbridgeiframe')
-def fdgbridgeiframe():
-    return render_template(
-        'ForceDirectedGraphBridge.html'
-    )
-
-@app.route('/arc')
-def arc():
-    jsoncontent = networkfiles.create_d3json()
-    return render_template(
-        'arc.html',
-        jc = jsoncontent
-    )
-
-@app.route('/arciframe')
-def arciframe():
-    return render_template(
-        'ArcGraph.html'
+        'contact.html',
+        title='Contact',
+        year=datetime.now().year,
+        message='Your contact page.'
     )
 
 @app.route('/networkyaml')
@@ -185,6 +84,101 @@ def networkyaml():
         jc = jsoncontent
     )
 
+#Pyvis graph html page
+@app.route('/graph')
+def graph():
+    loadnodes=networkfiles.load_nodes_to_edit()
+    javascript=networkfiles.build_add_link_page_scripts()
+    return render_template(
+        'graph.html',
+        nodes=loadnodes,
+        js=javascript
+    )
+
+#Force directed graph with no bridge display
+@app.route('/fdg')
+def fdg():
+    jsoncontent = networkfiles.create_d3json()
+    return render_template(
+        'fdg.html',
+        jc = jsoncontent
+    )
+
+#Force directed graph with a bridge display
+@app.route('/fdgbridge')
+def fdgbridge():
+    jsoncontent = networkfiles.create_d3jsonbridge()
+    return render_template(
+        'fdgbridge.html',
+        jc = jsoncontent
+    )
+
+###########
+# Iframes #
+###########
+@app.route('/demoiframe')
+def demoiframe():
+    return render_template(
+        'Demo.html'
+    )
+
+@app.route('/graphiframe')
+def graphiframe():
+    networkfiles.graph()
+    return render_template(
+        'PyvisGraph.html'
+    )
+
+#Force directed graph with no bridge display
+@app.route('/fdgiframe')
+def fdgiframe():
+    return render_template(
+        'ForceDirectedGraph.html'
+    )
+
+#Force directed graph with a bridge display
+@app.route('/fdgbridgeiframe')
+def fdgbridgeiframe():
+    return render_template(
+        'ForceDirectedGraphBridge.html'
+    )
+
+##############
+# Json Files #
+##############
+@app.route('/d3json')
+def d3json():
+    return render_template(
+        'NetworkFiles/json/d3.json'
+    )
+
+@app.route('/d3jsonbridge')
+def d3jsonbridge():
+    return render_template(
+        'NetworkFiles/json/d3bridge.json'
+    )
+
+@app.route('/json')
+def json():
+    return render_template(
+        'network.json'
+    )
+
+@app.route('/jsonbridge')
+def jsonbridge():
+    return render_template(
+        'networkbridge.json'
+    )
+
+@app.route('/demojson')
+def demojson():
+    return render_template(
+        'NetworkFiles/json/demo.json'
+    )
+
+############
+# Commands #
+############
 @app.route('/addnode', methods =["GET", "POST"])
 def addnode():
     node_name = request.form.get("nodeName")

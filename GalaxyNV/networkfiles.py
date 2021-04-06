@@ -258,9 +258,9 @@ def build_add_link_page_scripts():
             #Check if there is a '-' in the node name. If there is, remove it for the javascript function.
             if "-" in n:
                 n2=n.replace('-', '')
-                script+='''<script>function addLinkTo_'''+n2+'''Function() {document.getElementById("jsAddLinkTo_'''+n2+'''").innerHTML = "1";}</script>'''
+                script+='''<script>function addLinkTo_'''+n2+'''Function() {document.getElementById("jsAddLinkTo_'''+n2+'''").innerHTML = '<select class="form-select" aria-label="Default select example">'''+link_list()+'''</select>';}</script>'''
             else:
-                script+='''<script>function addLinkTo_'''+n+'''Function() {document.getElementById("jsAddLinkTo_'''+n+'''").innerHTML = "2";}</script>'''
+                script+='''<script>function addLinkTo_'''+n+'''Function() {document.getElementById("jsAddLinkTo_'''+n+'''").innerHTML = '<select class="form-select" aria-label="Default select example">'''+link_list()+'''</select>';}</script>'''
         return script
     except:
         return ("Failed to open network.json file. Are you sure it is named correctly?")
@@ -277,7 +277,7 @@ def load_nodes_to_edit():
                     replicas=data1["nodes"][n]["replicas"]
                 except:
                     replicas=0
-                                    #Check if there is a '-' in the node name. If there is, remove it for the javascript function.
+                #Check if there is a '-' in the node name. If there is, remove it for the javascript function.
                 if "-" in n:
                     n2=n.replace('-', '')
                     links+='''<div id="jsAddLinkTo_'''+n2+'''"></div>'''
@@ -294,7 +294,7 @@ def load_nodes_to_edit():
                 #Check if there is a '-' in the node name. If there is, remove it for the javascript function.
                 if "-" in n:
                     n2=n.replace('-', '')
-                    links+='''<button type="button" class="btn btn-outline-success btn-sm" id="id_addLinkTo_'''+n2+'''" name="addLinkTo_'''+n+'''" data-bs-toggle="tooltip" data-bs-placement="top" title="Add link to '''+n2+'''" onclick="addLinkTo_'''+n2+'''Function()">Add Link</button>'''
+                    links+='''<button type="button" class="btn btn-outline-success btn-sm" id="id_addLinkTo_'''+n+'''" name="addLinkTo_'''+n+'''" data-bs-toggle="tooltip" data-bs-placement="top" title="Add link to '''+n+'''" onclick="addLinkTo_'''+n2+'''Function()">Add Link</button>'''
                 else:
                     links+='''<button type="button" class="btn btn-outline-success btn-sm" id="id_addLinkTo_'''+n+'''" name="addLinkTo_'''+n+'''" data-bs-toggle="tooltip" data-bs-placement="top" title="Add link to '''+n+'''" onclick="addLinkTo_'''+n+'''Function()">Add Link</button>'''
                 
