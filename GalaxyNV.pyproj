@@ -43,7 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="GalaxyNV\" />
-    <Folder Include="GalaxyNV\networkx\" />
     <Folder Include="GalaxyNV\static\" />
     <Folder Include="GalaxyNV\static\fonts\" />
     <Folder Include="GalaxyNV\static\img\" />
@@ -63,7 +62,6 @@
     <Content Include="GalaxyNV\static\scripts\jquery.js" />
     <Content Include="GalaxyNV\templates\config_template.j2" />
     <Content Include="GalaxyNV\templates\Demo.html" />
-    <Content Include="GalaxyNV\templates\arc.html" />
     <Content Include="GalaxyNV\templates\ArcGraph.html" />
     <Content Include="GalaxyNV\templates\graphbridge.html" />
     <Content Include="GalaxyNV\templates\graph.html" />
@@ -93,7 +91,6 @@
     <Content Include="GalaxyNV\static\scripts\respond.js" />
     <Content Include="GalaxyNV\static\scripts\respond.min.js" />
     <Content Include="GalaxyNV\static\scripts\_references.js" />
-    <Content Include="GalaxyNV\templates\about.html" />
     <Content Include="GalaxyNV\templates\contact.html" />
     <Content Include="GalaxyNV\templates\index.html" />
     <Content Include="GalaxyNV\templates\layout.html" />
