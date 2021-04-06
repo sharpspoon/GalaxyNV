@@ -258,9 +258,9 @@ def build_add_link_page_scripts():
             #Check if there is a '-' in the node name. If there is, remove it for the javascript function.
             if "-" in n:
                 n2=n.replace('-', '')
-                script+='''<script>function addLinkTo_'''+n2+'''() {document.getElementById("jsAddLinkTo_'''+n2+'''").innerHTML = "1";}</script>'''
+                script+='''<script>function addLinkTo_'''+n2+'''Function() {document.getElementById("jsAddLinkTo_'''+n2+'''").innerHTML = "1";}</script>'''
             else:
-                script+='''<script>function addLinkTo_'''+n+'''() {document.getElementById("jsAddLinkTo_'''+n+'''").innerHTML = "2";}</script>'''
+                script+='''<script>function addLinkTo_'''+n+'''Function() {document.getElementById("jsAddLinkTo_'''+n+'''").innerHTML = "2";}</script>'''
         return script
     except:
         return ("Failed to open network.json file. Are you sure it is named correctly?")
@@ -294,9 +294,9 @@ def load_nodes_to_edit():
                 #Check if there is a '-' in the node name. If there is, remove it for the javascript function.
                 if "-" in n:
                     n2=n.replace('-', '')
-                    links+='''<button type="button" class="btn btn-outline-success btn-sm" id="id_addLinkTo_'''+n+'''" name="addLinkTo_'''+n+'''" data-bs-toggle="tooltip" data-bs-placement="top" title="Add link to '''+n+'''" onclick="addLinkTo_'''+n2+'''()">Add Link</button>'''
+                    links+='''<button type="button" class="btn btn-outline-success btn-sm" id="id_addLinkTo_'''+n2+'''" name="addLinkTo_'''+n+'''" data-bs-toggle="tooltip" data-bs-placement="top" title="Add link to '''+n2+'''" onclick="addLinkTo_'''+n2+'''Function()">Add Link</button>'''
                 else:
-                    links+='''<button type="button" class="btn btn-outline-success btn-sm" id="id_addLinkTo_'''+n+'''" name="addLinkTo_'''+n+'''" data-bs-toggle="tooltip" data-bs-placement="top" title="Add link to '''+n+'''" onclick="addLinkTo_'''+n+'''()">Add Link</button>'''
+                    links+='''<button type="button" class="btn btn-outline-success btn-sm" id="id_addLinkTo_'''+n+'''" name="addLinkTo_'''+n+'''" data-bs-toggle="tooltip" data-bs-placement="top" title="Add link to '''+n+'''" onclick="addLinkTo_'''+n+'''Function()">Add Link</button>'''
                 
                 nodes+=(r'''<tr><th scope="row"><input type="text" class="form-control" id="nodeNameId" name="'''+n+'''" aria-describedby="nodeHelp" value="'''+str(n)+r'''" required></th><td>'''+str(links)+r'''</td><td><input type="number" class="form-control" id="numberOfNodesId" name="replicas_'''+str(n)+'''" value="'''+str(replicas)+'''"></td><td><input type="checkbox" class="btn-check form-control" id="id_delete_'''+n+'''" name="delete_'''+n+'''" autocomplete="off""><label class="btn btn-outline-danger" for="id_delete_'''+n+'''">X</label></td></tr>''')
             return nodes
