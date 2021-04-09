@@ -54,7 +54,7 @@
             "replicas": "0",
             "type": "lxd"
         },
-        "asdf": {
+        "asdfffff": {
             "agents": [
                 "drone"
             ],
@@ -78,28 +78,6 @@
             },
             "priority": 0,
             "replicas": "0",
-            "type": "lxd"
-        },
-        "haha0": {
-            "agents": [
-                "drone"
-            ],
-            "image": "admin-fw",
-            "links": {
-                "asdf": {}
-            },
-            "priority": 0,
-            "replicas": 1,
-            "type": "lxd"
-        },
-        "linktest3": {
-            "agents": [
-                "drone"
-            ],
-            "image": "server-fw",
-            "links": {},
-            "priority": 0,
-            "replicas": 1,
             "type": "lxd"
         },
         "server-fw": {
@@ -144,48 +122,6 @@
             "replicas": "0",
             "type": "lxd"
         },
-        "test-": {
-            "agents": [
-                "drone"
-            ],
-            "image": "server-fw",
-            "links": {},
-            "priority": 0,
-            "replicas": 1,
-            "type": "lxd"
-        },
-        "test-0": {
-            "agents": [
-                "drone"
-            ],
-            "image": "server-fw",
-            "links": {},
-            "priority": 0,
-            "replicas": 1,
-            "type": "lxd"
-        },
-        "test-asdf": {
-            "agents": [
-                "drone"
-            ],
-            "image": "user-fw",
-            "links": {
-                "asdf": {}
-            },
-            "priority": 0,
-            "replicas": 1,
-            "type": "lxd"
-        },
-        "test-fw": {
-            "agents": [
-                "drone"
-            ],
-            "image": "server-fw",
-            "links": {},
-            "priority": 0,
-            "replicas": 1,
-            "type": "lxd"
-        },
         "user-fw": {
             "agents": [
                 "drone"
@@ -227,7 +163,7 @@
                 "user1-br": {}
             },
             "priority": 90,
-            "replicas": 1,
+            "replicas": 0,
             "type": "lxd"
         },
         "user20012": {
@@ -237,8 +173,7 @@
             ],
             "image": "user200",
             "links": {
-                "control-br": {},
-                "user200-br": {}
+                "control-br": {}
             },
             "priority": 100,
             "replicas": 3,
