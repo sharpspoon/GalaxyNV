@@ -119,6 +119,24 @@ nodes:
     agents:
     - drone
     replicas: 1
+  test1:
+    image: admin-fw
+    type: lxd
+    priority: 0
+    links:
+      border-fw: {}
+    agents:
+    - drone
+    replicas: 1
+  test2:
+    image: admin-fw
+    type: lxd
+    priority: 0
+    links:
+      test1: {}
+    agents:
+    - drone
+    replicas: 1
 links:
   control-br:
     type: lxd

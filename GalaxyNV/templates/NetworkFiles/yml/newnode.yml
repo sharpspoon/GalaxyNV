@@ -1,10 +1,10 @@
 nodes:
-  asdf:
-    image: server-fw
+  test2:
+    image: admin-fw
     type: lxd
     priority: 0
     links:
-      asdf: {}
+      test1: {}
     agents:
     - drone
     replicas: 1
