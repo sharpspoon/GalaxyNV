@@ -122,6 +122,30 @@
             "replicas": "0",
             "type": "lxd"
         },
+        "test1": {
+            "agents": [
+                "drone"
+            ],
+            "image": "admin-fw",
+            "links": {
+                "border-fw": {}
+            },
+            "priority": 0,
+            "replicas": 1,
+            "type": "lxd"
+        },
+        "test2": {
+            "agents": [
+                "drone"
+            ],
+            "image": "admin-fw",
+            "links": {
+                "test1": {}
+            },
+            "priority": 0,
+            "replicas": 1,
+            "type": "lxd"
+        },
         "user-fw": {
             "agents": [
                 "drone"

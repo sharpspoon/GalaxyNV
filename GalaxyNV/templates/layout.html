@@ -68,9 +68,10 @@
                                     <div id="nodeHelp" class="form-text">Type the name of the new node. If the node already exists, it will add to that node replica.</div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="nodeName" class="form-label">Name the node you want to link to</label>
-                                    <input type="text" class="form-control" id="nodeLinkId" name="nodeLink" aria-describedby="nodeHelp">
-                                    <div id="nodeHelp" class="form-text">Type the name of an existing node to link to. This is optional.</div>
+                                    <label for="nodeLink" class="form-label">Select the node you want to link to</label>
+                                    <select class="form-select" id="nodeLinkId" name="nodeLink" aria-label="Default select example">
+                                        {{ links | safe}}
+                                    </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleDataList" class="form-label">Which image will you use?</label>
