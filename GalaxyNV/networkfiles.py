@@ -247,20 +247,31 @@ def link_list():
         link_list+='''<option value="'''+n+'''">'''+n+'''</option>'''
     return link_list
 
+def image_list():
+    with open(globals.network_yml_file) as networkfile:
+        data1 = yaml.load(networkfile, Loader=yaml.FullLoader)
+
+    image_list=""
+    for n in data1["nodes"]:
+        image_list+='''<option value="'''+n+'''">'''+n+'''</option>'''
+    return image_list
+
 def build_add_link_page_scripts():
     try:
         with open(globals.network_yml_file) as networkfile:
             data1 = yaml.load(networkfile, Loader=yaml.FullLoader)
 
 
-        script=''''''
+        script='''<script>'''
         for n in data1["nodes"]:
             #Check if there is a '-' in the node name. If there is, remove it for the javascript function.
+            
             if "-" in n:
                 n2=n.replace('-', '')
-                script+='''<script>function addLinkTo_'''+n2+'''Function() {document.getElementById("jsAddLinkTo_'''+n2+'''").innerHTML = '<select class="form-select" aria-label="Default select example">'''+link_list()+'''</select>';}</script>'''
+                script+='''function addLinkTo_'''+n2+'''Function() {document.getElementById("jsAddLinkTo_'''+n2+'''").innerHTML = '<select class="form-select" aria-label="Default select example">'''+link_list()+'''</select>';}'''
             else:
-                script+='''<script>function addLinkTo_'''+n+'''Function() {document.getElementById("jsAddLinkTo_'''+n+'''").innerHTML = '<select class="form-select" aria-label="Default select example">'''+link_list()+'''</select>';}</script>'''
+                script+='''function addLinkTo_'''+n+'''Function() {document.getElementById("jsAddLinkTo_'''+n+'''").innerHTML = '<select class="form-select" aria-label="Default select example">'''+link_list()+'''</select>';}'''
+        script+='''</script>'''
         return script
     except:
         return ("Failed to open network.json file. Are you sure it is named correctly?")
