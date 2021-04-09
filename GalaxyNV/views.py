@@ -49,11 +49,13 @@ def img_firewall():
 @app.route('/home')
 def home():
     subheader1 = gnx.subheader1()
+    loadnodes=networkfiles.load_nodes_to_edit()
     return render_template(
         'index.html',
         title='Home Page',
         year=datetime.now().year,
-        sh1=subheader1
+        sh1=subheader1,
+        nodes=loadnodes
     )
 
 @app.route('/image')
