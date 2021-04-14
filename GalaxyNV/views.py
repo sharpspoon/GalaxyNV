@@ -62,7 +62,8 @@ def image():
     return render_template(
         'image.html',
         title='Galaxy Image and Network Configuration',
-        year=datetime.now().year
+        year=datetime.now().year,
+        links=networkfiles.link_list()
     )
 
 @app.route('/contact')
@@ -71,7 +72,8 @@ def contact():
         'contact.html',
         title='Contact',
         year=datetime.now().year,
-        message='Your contact page.'
+        message='Your contact page.',
+        links=networkfiles.link_list()
     )
 
 @app.route('/networkyaml')
@@ -82,7 +84,8 @@ def networkyaml():
     return render_template(
         'networkyaml.html',
         yc = ymlcontent,
-        jc = jsoncontent
+        jc = jsoncontent,
+        links=networkfiles.link_list()
     )
 
 #Pyvis graph html page
@@ -93,7 +96,8 @@ def graph():
     return render_template(
         'graph.html',
         nodes=loadnodes,
-        js=javascript
+        js=javascript,
+        links=networkfiles.link_list()
     )
 
 #Force directed graph with no bridge display
@@ -102,7 +106,8 @@ def fdg():
     jsoncontent = networkfiles.create_d3json()
     return render_template(
         'fdg.html',
-        jc = jsoncontent
+        jc = jsoncontent,
+        links=networkfiles.link_list()
     )
 
 #Force directed graph with a bridge display
@@ -111,7 +116,8 @@ def fdgbridge():
     jsoncontent = networkfiles.create_d3jsonbridge()
     return render_template(
         'fdgbridge.html',
-        jc = jsoncontent
+        jc = jsoncontent,
+        links=networkfiles.link_list()
     )
 
 ###########
