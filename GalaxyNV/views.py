@@ -83,6 +83,7 @@ def networkyaml():
 
     return render_template(
         'networkyaml.html',
+        year=datetime.now().year,
         yc = ymlcontent,
         jc = jsoncontent,
         links=networkfiles.link_list()
@@ -95,6 +96,7 @@ def graph():
     javascript=networkfiles.build_add_link_page_scripts()
     return render_template(
         'graph.html',
+        year=datetime.now().year,
         nodes=loadnodes,
         js=javascript,
         links=networkfiles.link_list()
@@ -106,6 +108,7 @@ def fdg():
     jsoncontent = networkfiles.create_d3json()
     return render_template(
         'fdg.html',
+        year=datetime.now().year,
         jc = jsoncontent,
         links=networkfiles.link_list()
     )
@@ -113,10 +116,10 @@ def fdg():
 #Force directed graph with a bridge display
 @app.route('/fdgbridge')
 def fdgbridge():
-    jsoncontent = networkfiles.create_d3jsonbridge()
     return render_template(
         'fdgbridge.html',
-        jc = jsoncontent,
+        year=datetime.now().year,
+        jc = networkfiles.create_d3jsonbridge(),
         links=networkfiles.link_list()
     )
 
