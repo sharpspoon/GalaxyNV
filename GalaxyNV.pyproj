@@ -63,6 +63,7 @@
     <Content Include="GalaxyNV\templates\config_template.j2" />
     <Content Include="GalaxyNV\templates\Demo.html" />
     <Content Include="GalaxyNV\templates\ArcGraph.html" />
+    <Content Include="GalaxyNV\templates\history.html" />
     <Content Include="GalaxyNV\templates\graphbridge.html" />
     <Content Include="GalaxyNV\templates\graph.html" />
     <Content Include="GalaxyNV\templates\fdgbridge.html" />

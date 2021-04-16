@@ -54,6 +54,7 @@ def home():
         year=datetime.now().year,
         sh1=gnx.subheader1(),
         nodes=networkfiles.load_nodes_to_edit(),
+        js=networkfiles.build_add_link_page_scripts(),
         links=networkfiles.link_list()
     )
 
@@ -63,6 +64,8 @@ def image():
         'image.html',
         title='Galaxy Image and Network Configuration',
         year=datetime.now().year,
+        nodes=networkfiles.load_nodes_to_edit(),
+        js=networkfiles.build_add_link_page_scripts(),
         links=networkfiles.link_list()
     )
 
@@ -73,43 +76,54 @@ def contact():
         title='Contact',
         year=datetime.now().year,
         message='Your contact page.',
+        nodes=networkfiles.load_nodes_to_edit(),
+        js=networkfiles.build_add_link_page_scripts(),
+        links=networkfiles.link_list()
+    )
+
+@app.route('/history')
+def history():
+    return render_template(
+        'history.html',
+        title='history',
+        year=datetime.now().year,
+        nodes=networkfiles.load_nodes_to_edit(),
+        js=networkfiles.build_add_link_page_scripts(),
         links=networkfiles.link_list()
     )
 
 @app.route('/networkyaml')
 def networkyaml():
-    ymlcontent = networkfiles.loadfiles()
-    jsoncontent = networkfiles.loadjsonfiles()
-
     return render_template(
         'networkyaml.html',
         year=datetime.now().year,
-        yc = ymlcontent,
-        jc = jsoncontent,
+        yc = networkfiles.loadfiles(),
+        jc = networkfiles.loadjsonfiles(),
+        nodes=networkfiles.load_nodes_to_edit(),
+        js=networkfiles.build_add_link_page_scripts(),
         links=networkfiles.link_list()
     )
 
 #Pyvis graph html page
 @app.route('/graph')
 def graph():
-    loadnodes=networkfiles.load_nodes_to_edit()
-    javascript=networkfiles.build_add_link_page_scripts()
     return render_template(
         'graph.html',
         year=datetime.now().year,
-        nodes=loadnodes,
-        js=javascript,
+        nodes=networkfiles.load_nodes_to_edit(),
+        js=networkfiles.build_add_link_page_scripts(),
         links=networkfiles.link_list()
     )
 
 #Force directed graph with no bridge display
 @app.route('/fdg')
 def fdg():
-    jsoncontent = networkfiles.create_d3json()
     return render_template(
         'fdg.html',
         year=datetime.now().year,
-        jc = jsoncontent,
+        jc = networkfiles.create_d3json(),
+        nodes=networkfiles.load_nodes_to_edit(),
+        js=networkfiles.build_add_link_page_scripts(),
         links=networkfiles.link_list()
     )
 
@@ -120,6 +134,8 @@ def fdgbridge():
         'fdgbridge.html',
         year=datetime.now().year,
         jc = networkfiles.create_d3jsonbridge(),
+        nodes=networkfiles.load_nodes_to_edit(),
+        js=networkfiles.build_add_link_page_scripts(),
         links=networkfiles.link_list()
     )
 
