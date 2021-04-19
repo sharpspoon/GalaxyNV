@@ -1,10 +1,10 @@
 nodes:
-  test2:
+  fff:
     image: admin-fw
     type: lxd
     priority: 0
     links:
-      test1: {}
+      border-fw: {}
     agents:
     - drone
     replicas: 1
