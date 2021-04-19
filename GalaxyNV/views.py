@@ -54,6 +54,7 @@ def home():
         year=datetime.now().year,
         sh1=gnx.subheader1(),
         nodes=networkfiles.load_nodes_to_edit(),
+        images=networkfiles.image_list(),
         js=networkfiles.build_add_link_page_scripts(),
         links=networkfiles.link_list()
     )
@@ -65,6 +66,7 @@ def image():
         title='Galaxy Image and Network Configuration',
         year=datetime.now().year,
         nodes=networkfiles.load_nodes_to_edit(),
+        images=networkfiles.image_list(),
         js=networkfiles.build_add_link_page_scripts(),
         links=networkfiles.link_list()
     )
@@ -77,6 +79,7 @@ def contact():
         year=datetime.now().year,
         message='Your contact page.',
         nodes=networkfiles.load_nodes_to_edit(),
+        images=networkfiles.image_list(),
         js=networkfiles.build_add_link_page_scripts(),
         links=networkfiles.link_list()
     )
@@ -88,6 +91,7 @@ def history():
         title='history',
         year=datetime.now().year,
         nodes=networkfiles.load_nodes_to_edit(),
+        images=networkfiles.image_list(),
         js=networkfiles.build_add_link_page_scripts(),
         links=networkfiles.link_list()
     )
@@ -100,6 +104,7 @@ def networkyaml():
         yc = networkfiles.loadfiles(),
         jc = networkfiles.loadjsonfiles(),
         nodes=networkfiles.load_nodes_to_edit(),
+        images=networkfiles.image_list(),
         js=networkfiles.build_add_link_page_scripts(),
         links=networkfiles.link_list()
     )
@@ -111,6 +116,7 @@ def graph():
         'graph.html',
         year=datetime.now().year,
         nodes=networkfiles.load_nodes_to_edit(),
+        images=networkfiles.image_list(),
         js=networkfiles.build_add_link_page_scripts(),
         links=networkfiles.link_list()
     )
@@ -123,6 +129,7 @@ def fdg():
         year=datetime.now().year,
         jc = networkfiles.create_d3json(),
         nodes=networkfiles.load_nodes_to_edit(),
+        images=networkfiles.image_list(),
         js=networkfiles.build_add_link_page_scripts(),
         links=networkfiles.link_list()
     )
@@ -135,6 +142,7 @@ def fdgbridge():
         year=datetime.now().year,
         jc = networkfiles.create_d3jsonbridge(),
         nodes=networkfiles.load_nodes_to_edit(),
+        images=networkfiles.image_list(),
         js=networkfiles.build_add_link_page_scripts(),
         links=networkfiles.link_list()
     )
