@@ -77,6 +77,12 @@
                                     </select>
                                 </div>
                                 <div class="mb-3">
+                                    <label for="nodeLink" class="form-label">Select the image you want to use</label>
+                                    <select class="form-select" id="imageNameId" name="imageName" aria-label="Default select example">
+                                        {{ images | safe}}
+                                    </select>
+                                </div>
+                                <!--<div class="mb-3">
                                     <label for="exampleDataList" class="form-label">Which image will you use?</label>
                                     <input class="form-control" list="datalistOptions" id="imageNameId" name="imageName" placeholder="Type to search...">
                                     <datalist id="datalistOptions">
@@ -87,7 +93,7 @@
                                         <option value="server-http">
                                         <option value="server-https">
                                     </datalist>
-                                </div>
+                                </div>-->
                                 <div class="mb-3">
                                     <label for="numberOfNodes" class="form-label">Number of replicas</label>
                                     <input type="number" class="form-control" id="numberOfNodesId" name="numberOfNodes" required>

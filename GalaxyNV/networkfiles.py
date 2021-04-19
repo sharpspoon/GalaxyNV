@@ -14,12 +14,28 @@ import hiyapyco
 
 def createfolders():
     try:
-        os.mkdir(globals.network_dir)
-        os.mkdir(globals.yml_dir)
-        os.mkdir(globals.json_dir)
-
+        #os.mkdir(globals.network_dir)
+        #os.mkdir(globals.yml_dir)
+        #os.mkdir(globals.json_dir)
+        #os.mkdir(globals.system_dir)
+        os.mkdir(globals.image_nodes_dir)
     except:
         print("Necessary folders already exists. Proceeding.")
+
+def create_test_nodes():
+    try:
+        os.mkdir(globals.image_nodes_dir+"/admin-fw")
+        os.mkdir(globals.image_nodes_dir+"/admin0")
+        os.mkdir(globals.image_nodes_dir+"/border-fw")
+        os.mkdir(globals.image_nodes_dir+"/server-fw")
+        os.mkdir(globals.image_nodes_dir+"/server-http")
+        os.mkdir(globals.image_nodes_dir+"/server-https")
+        os.mkdir(globals.image_nodes_dir+"/user-fw")
+        os.mkdir(globals.image_nodes_dir+"/user0")
+        os.mkdir(globals.image_nodes_dir+"/user1")
+        os.mkdir(globals.image_nodes_dir+"/user200")
+    except:
+        print("all exist")
 
 def loadfiles():
     try:
@@ -248,12 +264,10 @@ def link_list():
     return link_list
 
 def image_list():
-    with open(globals.network_yml_file) as networkfile:
-        data1 = yaml.load(networkfile, Loader=yaml.FullLoader)
-
     image_list=""
-    for n in data1["nodes"]:
-        image_list+='''<option value="'''+n+'''">'''+n+'''</option>'''
+    #print (os.listdir(globals.image_nodes_dir))
+    for folder in (os.listdir(globals.image_nodes_dir)):
+        image_list+='''<option value="'''+folder+'''">'''+folder+'''</option>'''
     return image_list
 
 def build_add_link_page_scripts():
