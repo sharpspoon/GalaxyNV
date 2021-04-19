@@ -302,6 +302,17 @@ def load_nodes_to_edit():
                     replicas=data1["nodes"][n]["replicas"]
                 except:
                     replicas=0
+
+                try:
+                    priority=data1["nodes"][n]["priority"]
+                except:
+                    priority=0
+
+                try:
+                    hostname=data1["nodes"][n]["hostname"]
+                except:
+                    hostname=""
+
                 #Check if there is a '-' in the node name. If there is, remove it for the javascript function.
                 if "-" in n:
                     n2=n.replace('-', '')
@@ -323,7 +334,7 @@ def load_nodes_to_edit():
                 else:
                     links+='''<button type="button" class="btn btn-outline-success btn-sm" id="id_addLinkTo_'''+n+'''" name="addLinkTo_'''+n+'''" data-bs-toggle="tooltip" data-bs-placement="top" title="Add link to '''+n+'''" onclick="addLinkTo_'''+n+'''Function()">Add Link</button>'''
                 
-                nodes+=(r'''<tr><th scope="row"><input type="text" class="form-control" id="nodeNameId" name="'''+n+'''" aria-describedby="nodeHelp" value="'''+str(n)+r'''" required></th><td>'''+str(links)+r'''</td><td><input type="number" class="form-control" id="numberOfNodesId" name="replicas_'''+str(n)+'''" value="'''+str(replicas)+'''"></td><td><input type="checkbox" class="btn-check form-control" id="id_delete_'''+n+'''" name="delete_'''+n+'''" autocomplete="off""><label class="btn btn-outline-danger" for="id_delete_'''+n+'''">X</label></td></tr>''')
+                nodes+=(r'''<tr><th scope="row"><input type="text" class="form-control" id="nodeNameId" name="'''+n+'''" aria-describedby="nodeHelp" value="'''+str(n)+r'''" required></th><td>'''+str(links)+r'''</td><td><input type="text" class="form-control" id="numberOfNodesId" name="hostname_'''+hostname+'''" value="'''+hostname+'''"></td><td><input type="number" class="form-control" id="numberOfNodesId" name="priority_'''+str(priority)+'''" value="'''+str(priority)+'''"></td><td><input type="number" class="form-control" id="numberOfNodesId" name="replicas_'''+str(n)+'''" value="'''+str(replicas)+'''"></td><td><input type="checkbox" class="btn-check form-control" id="id_delete_'''+n+'''" name="delete_'''+n+'''" autocomplete="off""><label class="btn btn-outline-danger" for="id_delete_'''+n+'''">X</label></td></tr>''')
             return nodes
     except:
         return ("Failed to open network.json file. Are you sure it is named correctly?")

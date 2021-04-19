@@ -82,18 +82,15 @@
                                         {{ images | safe}}
                                     </select>
                                 </div>
-                                <!--<div class="mb-3">
-                                    <label for="exampleDataList" class="form-label">Which image will you use?</label>
-                                    <input class="form-control" list="datalistOptions" id="imageNameId" name="imageName" placeholder="Type to search...">
-                                    <datalist id="datalistOptions">
-                                        <option value="border-fw">
-                                        <option value="user-fw">
-                                        <option value="server-fw">
-                                        <option value="admin-fw">
-                                        <option value="server-http">
-                                        <option value="server-https">
-                                    </datalist>
-                                </div>-->
+                                <div class="mb-3">
+                                    <label for="hostname" class="form-label">Hostname</label>
+                                    <input type="text" class="form-control" id="hostnameId" name="hostname" aria-describedby="hostnameHelp" required>
+                                    <div id="hostnameHelp" class="form-text">Type the name of the hostname.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="priority" class="form-label">Priority</label>
+                                    <input type="number" class="form-control" id="priorityId" name="priority" required>
+                                </div>
                                 <div class="mb-3">
                                     <label for="numberOfNodes" class="form-label">Number of replicas</label>
                                     <input type="number" class="form-control" id="numberOfNodesId" name="numberOfNodes" required>
@@ -118,6 +115,8 @@
                                             <tr>
                                                 <th scope="col">Node</th>
                                                 <th scope="col">Links to</th>
+                                                <th scope="col">Hostname</th>
+                                                <th scope="col">Priority</th>
                                                 <th scope="col">Replicas</th>
                                                 <th scope="col">Delete</th>
                                             </tr>
