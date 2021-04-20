@@ -201,14 +201,15 @@ def create_d3jsonbridge():
     except:
         return ("Failed to open network.json file. Are you sure it is named correctly?")
     
-def add_node(node_name, node_link, image_name, number_of_nodes):
+def add_node(node_name, node_link, image_name, number_of_nodes, hostname, priority):
     if request.method=="POST":
         if node_link:
             d={ 'nodes': {
                 node_name:{
                     'image':image_name,
                     'type':'lxd',
-                    'priority':0,
+                    'priority':priority,
+                    'hostname':hostname,
                     'links':{
                         node_link:{}},
                     'agents':['drone'],
@@ -218,7 +219,8 @@ def add_node(node_name, node_link, image_name, number_of_nodes):
                 node_name:{
                     'image':image_name,
                     'type':'lxd',
-                    'priority':0,
+                    'priority':priority,
+                    'hostname':hostname,
                     'links':{},
                     'agents':['drone'],
                     'replicas':int(number_of_nodes)}}}

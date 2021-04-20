@@ -137,6 +137,26 @@ nodes:
     agents:
     - drone
     replicas: 1
+  hostnametest:
+    image: admin-fw
+    type: lxd
+    priority: nice
+    hostname: '2'
+    links:
+      border-fw: {}
+    agents:
+    - drone
+    replicas: 1
+  hpostname:
+    image: admin-fw
+    type: lxd
+    priority: '1'
+    hostname: thishsouldbehostname
+    links:
+      border-fw: {}
+    agents:
+    - drone
+    replicas: 2
 links:
   control-br:
     type: lxd
