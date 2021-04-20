@@ -80,6 +80,32 @@
             "replicas": "0",
             "type": "lxd"
         },
+        "hostnametest": {
+            "agents": [
+                "drone"
+            ],
+            "hostname": "2",
+            "image": "admin-fw",
+            "links": {
+                "border-fw": {}
+            },
+            "priority": "nice",
+            "replicas": 1,
+            "type": "lxd"
+        },
+        "hpostname": {
+            "agents": [
+                "drone"
+            ],
+            "hostname": "thishsouldbehostname",
+            "image": "admin-fw",
+            "links": {
+                "border-fw": {}
+            },
+            "priority": "1",
+            "replicas": 2,
+            "type": "lxd"
+        },
         "server-fw": {
             "agents": [
                 "drone"

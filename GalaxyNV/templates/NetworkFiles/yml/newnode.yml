@@ -1,10 +1,11 @@
 nodes:
-  fff:
+  hpostname:
     image: admin-fw
     type: lxd
-    priority: 0
+    priority: '1'
+    hostname: thishsouldbehostname
     links:
       border-fw: {}
     agents:
     - drone
-    replicas: 1
+    replicas: 2

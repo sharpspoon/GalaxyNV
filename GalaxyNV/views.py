@@ -213,13 +213,15 @@ def demojson():
 ############
 # Commands #
 ############
-@app.route('/addnode', methods =["GET", "POST"])
+@app.route('/addnode', methods =["POST"])
 def addnode():
     node_name = request.form.get("nodeName")
     node_link = request.form.get("nodeLink")
     image_name = request.form.get("imageName")
     number_of_nodes = request.form.get("numberOfNodes")
-    networkfiles.add_node(node_name, node_link, image_name, number_of_nodes)
+    hostname = request.form.get("hostname")
+    priority = request.form.get("priority")
+    networkfiles.add_node(node_name, node_link, image_name, number_of_nodes, hostname, priority)
     graphiframe()
     networkfiles.load_nodes_to_edit()
     return graph()
