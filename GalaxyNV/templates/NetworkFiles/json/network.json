@@ -65,6 +65,19 @@
             "priority": 0,
             "type": "lxd"
         },
+        "pritest": {
+            "agents": [
+                "drone"
+            ],
+            "hostname": "asdf",
+            "image": "admin-fw",
+            "links": {
+                "border-fw": {}
+            },
+            "priority": 2,
+            "replicas": 1,
+            "type": "lxd"
+        },
         "server-fw": {
             "agents": [
                 "drone"
@@ -102,6 +115,19 @@
                 "server0-br": {}
             },
             "priority": 70,
+            "type": "lxd"
+        },
+        "test1": {
+            "agents": [
+                "drone"
+            ],
+            "hostname": "asdf",
+            "image": "admin-fw",
+            "links": {
+                "border-fw": {}
+            },
+            "priority": "2",
+            "replicas": 1,
             "type": "lxd"
         },
         "user-fw": {

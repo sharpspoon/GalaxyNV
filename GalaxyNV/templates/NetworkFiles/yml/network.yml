@@ -104,6 +104,26 @@ nodes:
     - user
     - drone
     replicas: 20
+  test1:
+    image: admin-fw
+    type: lxd
+    priority: '2'
+    hostname: asdf
+    links:
+      border-fw: {}
+    agents:
+    - drone
+    replicas: 1
+  pritest:
+    image: admin-fw
+    type: lxd
+    priority: 2
+    hostname: asdf
+    links:
+      border-fw: {}
+    agents:
+    - drone
+    replicas: 1
 links:
   control-br:
     type: lxd
