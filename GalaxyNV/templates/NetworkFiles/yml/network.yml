@@ -9,7 +9,6 @@ nodes:
       upstream-br: {}
     agents:
     - drone
-    replicas: '0'
   user-fw:
     image: user-fw
     type: lxd
@@ -22,7 +21,6 @@ nodes:
       user200-br: {}
     agents:
     - drone
-    replicas: '0'
   server-fw:
     image: server-fw
     type: lxd
@@ -33,7 +31,6 @@ nodes:
       server0-br: {}
     agents:
     - drone
-    replicas: '0'
   admin-fw:
     image: admin-fw
     type: lxd
@@ -44,7 +41,6 @@ nodes:
       admin0-br: {}
     agents:
     - drone
-    replicas: '0'
   admin0:
     image: admin0
     priority: 60
@@ -55,7 +51,6 @@ nodes:
     agents:
     - admin
     - drone
-    replicas: '0'
   server-http:
     hostname: downloadmoreram
     image: server-http
@@ -66,7 +61,6 @@ nodes:
       server0-br: {}
     agents:
     - drone
-    replicas: '0'
   server-https:
     hostname: downloadmoresecurity
     image: server-https
@@ -77,7 +71,6 @@ nodes:
       server0-br: {}
     agents:
     - drone
-    replicas: '0'
   user0:
     image: user0
     type: lxd
@@ -88,7 +81,7 @@ nodes:
     agents:
     - user
     - drone
-    replicas: 1
+    replicas: 3
   user1:
     image: user1
     type: lxd
@@ -99,64 +92,18 @@ nodes:
     agents:
     - user
     - drone
-    replicas: 0
-  user20012:
+    replicas: 3
+  user200:
     image: user200
     type: lxd
     priority: 100
     links:
-      control-br: {}
+      admin0: {}
+      user1: {}
     agents:
     - user
     - drone
-    replicas: 3
-  asdfffff:
-    image: server-fw
-    type: lxd
-    priority: 0
-    links:
-      asdf: {}
-    agents:
-    - drone
-    replicas: 1
-  test1:
-    image: admin-fw
-    type: lxd
-    priority: 0
-    links:
-      border-fw: {}
-    agents:
-    - drone
-    replicas: 1
-  test2:
-    image: admin-fw
-    type: lxd
-    priority: 0
-    links:
-      test1: {}
-    agents:
-    - drone
-    replicas: 1
-  hostnametest:
-    image: admin-fw
-    type: lxd
-    priority: nice
-    hostname: '2'
-    links:
-      border-fw: {}
-    agents:
-    - drone
-    replicas: 1
-  hpostname:
-    image: admin-fw
-    type: lxd
-    priority: '1'
-    hostname: thishsouldbehostname
-    links:
-      border-fw: {}
-    agents:
-    - drone
-    replicas: 2
+    replicas: 20
 links:
   control-br:
     type: lxd
