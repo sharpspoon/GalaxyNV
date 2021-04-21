@@ -208,7 +208,7 @@ def add_node(node_name, node_link, image_name, number_of_nodes, hostname, priori
                 node_name:{
                     'image':image_name,
                     'type':'lxd',
-                    'priority':priority,
+                    'priority':int(priority),
                     'hostname':hostname,
                     'links':{
                         node_link:{}},
