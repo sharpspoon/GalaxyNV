@@ -37,7 +37,6 @@
                 "dmz-br": {}
             },
             "priority": 0,
-            "replicas": "0",
             "type": "lxd"
         },
         "admin0": {
@@ -51,19 +50,6 @@
                 "control-br": {}
             },
             "priority": 60,
-            "replicas": "0",
-            "type": "lxd"
-        },
-        "asdfffff": {
-            "agents": [
-                "drone"
-            ],
-            "image": "server-fw",
-            "links": {
-                "asdf": {}
-            },
-            "priority": 0,
-            "replicas": 1,
             "type": "lxd"
         },
         "border-fw": {
@@ -77,33 +63,6 @@
                 "upstream-br": {}
             },
             "priority": 0,
-            "replicas": "0",
-            "type": "lxd"
-        },
-        "hostnametest": {
-            "agents": [
-                "drone"
-            ],
-            "hostname": "2",
-            "image": "admin-fw",
-            "links": {
-                "border-fw": {}
-            },
-            "priority": "nice",
-            "replicas": 1,
-            "type": "lxd"
-        },
-        "hpostname": {
-            "agents": [
-                "drone"
-            ],
-            "hostname": "thishsouldbehostname",
-            "image": "admin-fw",
-            "links": {
-                "border-fw": {}
-            },
-            "priority": "1",
-            "replicas": 2,
             "type": "lxd"
         },
         "server-fw": {
@@ -117,7 +76,6 @@
                 "server0-br": {}
             },
             "priority": 0,
-            "replicas": "0",
             "type": "lxd"
         },
         "server-http": {
@@ -131,7 +89,6 @@
                 "server0-br": {}
             },
             "priority": 70,
-            "replicas": "0",
             "type": "lxd"
         },
         "server-https": {
@@ -145,31 +102,6 @@
                 "server0-br": {}
             },
             "priority": 70,
-            "replicas": "0",
-            "type": "lxd"
-        },
-        "test1": {
-            "agents": [
-                "drone"
-            ],
-            "image": "admin-fw",
-            "links": {
-                "border-fw": {}
-            },
-            "priority": 0,
-            "replicas": 1,
-            "type": "lxd"
-        },
-        "test2": {
-            "agents": [
-                "drone"
-            ],
-            "image": "admin-fw",
-            "links": {
-                "test1": {}
-            },
-            "priority": 0,
-            "replicas": 1,
             "type": "lxd"
         },
         "user-fw": {
@@ -185,7 +117,6 @@
                 "user200-br": {}
             },
             "priority": 0,
-            "replicas": "0",
             "type": "lxd"
         },
         "user0": {
@@ -199,7 +130,7 @@
                 "user0-br": {}
             },
             "priority": 80,
-            "replicas": 1,
+            "replicas": 3,
             "type": "lxd"
         },
         "user1": {
@@ -213,20 +144,21 @@
                 "user1-br": {}
             },
             "priority": 90,
-            "replicas": 0,
+            "replicas": 3,
             "type": "lxd"
         },
-        "user20012": {
+        "user200": {
             "agents": [
                 "user",
                 "drone"
             ],
             "image": "user200",
             "links": {
-                "control-br": {}
+                "admin0": {},
+                "user1": {}
             },
             "priority": 100,
-            "replicas": 3,
+            "replicas": 20,
             "type": "lxd"
         }
     }

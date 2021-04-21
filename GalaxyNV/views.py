@@ -243,12 +243,18 @@ def editnodes():
         except:
             current_node_replicas=0
         new_node_replicas = request.form.get("replicas_"+n)
+
         for l in data1["nodes"][n]["links"]:
             delete_link_name = request.form.get("delete_"+n+"_"+l)
             if delete_link_name:
                 if globals.DEBUG==True:
                     print ('Deleting the link: '+n+' ---> '+l)
                 networkfiles.remove_node_link(n, l)
+
+            link_name = request.form.get("Link_"+n+"_"+l)
+            if link_name != l:
+                networkfiles.change_node_link(n, l, link_name)
+                print ("link changed")
 
         #If the var is true, remove the node and do not do any of the below
         if delete_node_name:

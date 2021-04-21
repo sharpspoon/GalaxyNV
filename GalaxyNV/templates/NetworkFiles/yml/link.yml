@@ -1,0 +1,4 @@
+nodes:
+  user200:
+    links:
+      user1: {}
