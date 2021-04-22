@@ -1,11 +1,11 @@
 nodes:
-  pritest:
+  testing:
     image: admin-fw
     type: lxd
-    priority: 2
+    priority: 1
     hostname: asdf
     links:
       border-fw: {}
     agents:
     - drone
-    replicas: 1
+    replicas: 2

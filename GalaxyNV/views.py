@@ -158,7 +158,7 @@ def demoiframe():
 
 @app.route('/graphiframe')
 def graphiframe():
-    networkfiles.graph()
+    #networkfiles.graph()
     return render_template(
         'PyvisGraph.html'
     )
@@ -234,15 +234,25 @@ def editnodes():
 
     #Iterate through the list of nodes
     for n in data1["nodes"]:
-
         #Set each form element value to a var
         new_node_name=request.form.get(n)
+        new_node_replicas = request.form.get(n+"_replicas")
+        new_node_hostname = request.form.get(n+"_hostname")
+        new_node_priority = request.form.get(n+"_priority")
         delete_node_name = request.form.get("delete_"+n)
         try:
             current_node_replicas=data1["nodes"][n]["replicas"]
         except:
             current_node_replicas=0
-        new_node_replicas = request.form.get("replicas_"+n)
+        try:
+            current_node_hostname=data1["nodes"][n]["hostname"]
+        except:
+            current_node_hostname=""
+        try:
+            current_node_priority=data1["nodes"][n]["priority"]
+        except:
+            current_node_priority=0
+        
 
         for l in data1["nodes"][n]["links"]:
             delete_link_name = request.form.get("delete_"+n+"_"+l)
@@ -258,33 +268,25 @@ def editnodes():
 
         #If the var is true, remove the node and do not do any of the below
         if delete_node_name:
-            if globals.DEBUG==True:
-                print ('Deleting the node "'+n+'" and ignoring any other changes to this node. Moving on to next node...')
             networkfiles.remove_node(n)
+        #If this is true, then that means the node name changed, so use the new node name
+        elif (new_node_name != n):
+           networkfiles.change_node_name(n, new_node_name)
+           if (new_node_hostname != current_node_hostname):
+                networkfiles.change_node_hostname(new_node_name, new_node_hostname)
+           if (int(new_node_replicas) != int(current_node_replicas)):
+                networkfiles.change_node_replicas(new_node_name, new_node_replicas)
+           if (int(new_node_priority) != int(current_node_priority)):
+                networkfiles.change_node_priority(new_node_name, new_node_priority)
+        else:
+           if (new_node_hostname != current_node_hostname):
+                networkfiles.change_node_hostname(n, new_node_hostname)
+           if (int(new_node_replicas) != int(current_node_replicas)):
+                networkfiles.change_node_replicas(n, new_node_replicas)
+           if (int(new_node_priority) != int(current_node_priority)):
+                networkfiles.change_node_priority(n, new_node_priority)
 
-        #Check if the name of the node has changed
-        elif (new_node_name != n) and (int(new_node_replicas) != int(current_node_replicas)):
-            networkfiles.change_node_name(n, new_node_name)
-            if globals.DEBUG==True:
-                print ('new_node_name='+str(new_node_name))
-                print ('n='+str(n))
-                print ('new_node_replicas='+str(new_node_replicas))
-                print ('current_node_replicas='+str(current_node_replicas))
-            networkfiles.change_node_replicas(new_node_name,current_node_replicas, new_node_replicas)
-
-        elif new_node_name != n:
-            if globals.DEBUG==True:
-                print ('new_node_name='+str(new_node_name))
-                print ('n='+str(n))
-            networkfiles.change_node_name(n, new_node_name)
-
-        #Check if the replicas of the node has changed
-        elif int(new_node_replicas) != int(current_node_replicas):
-            if globals.DEBUG==True:
-                print ('new_node_replicas='+str(new_node_replicas))
-                print ('current_node_replicas='+str(current_node_replicas))
-            networkfiles.change_node_replicas(n,current_node_replicas, int(new_node_replicas))
-
+    networkfiles.graph()
     graphiframe()
     networkfiles.load_nodes_to_edit()
     return graph()

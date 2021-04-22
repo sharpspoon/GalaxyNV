@@ -1,36 +1,4 @@
 nodes:
-  border-fw:
-    image: border-fw
-    type: lxd
-    priority: 0
-    links:
-      control-br: {}
-      dmz-br: {}
-      upstream-br: {}
-    agents:
-    - drone
-  user-fw:
-    image: user-fw
-    type: lxd
-    priority: 0
-    links:
-      control-br: {}
-      dmz-br: {}
-      user0-br: {}
-      user1-br: {}
-      user200-br: {}
-    agents:
-    - drone
-  server-fw:
-    image: server-fw
-    type: lxd
-    priority: 0
-    links:
-      control-br: {}
-      dmz-br: {}
-      server0-br: {}
-    agents:
-    - drone
   admin-fw:
     image: admin-fw
     type: lxd
@@ -57,8 +25,8 @@ nodes:
     type: lxd
     priority: 70
     links:
-      control-br: {}
-      server0-br: {}
+      server-https: {}
+      user200: {}
     agents:
     - drone
   server-https:
@@ -67,7 +35,7 @@ nodes:
     type: lxd
     priority: 70
     links:
-      control-br: {}
+      border-fw: {}
       server0-br: {}
     agents:
     - drone
@@ -76,8 +44,7 @@ nodes:
     type: lxd
     priority: 80
     links:
-      control-br: {}
-      user0-br: {}
+      user200: {}
     agents:
     - user
     - drone
@@ -87,8 +54,8 @@ nodes:
     type: lxd
     priority: 90
     links:
-      control-br: {}
-      user1-br: {}
+      server0-br: {}
+      user200: {}
     agents:
     - user
     - drone
@@ -98,32 +65,57 @@ nodes:
     type: lxd
     priority: 100
     links:
-      admin0: {}
-      user1: {}
+      user200-br: {}
+      server-fw: {}
     agents:
     - user
     - drone
-    replicas: 20
-  test1:
+    replicas: 5
+  testing:
     image: admin-fw
+    type: lxd
+    priority: 1
+    hostname: asdf
+    links: {}
+    agents:
+    - drone
+    replicas: '1'
+  border-fw:
+    image: border-fw
     type: lxd
     priority: '2'
-    hostname: asdf
     links:
-      border-fw: {}
+      control-br: {}
+      dmz-br: {}
+      upstream-br: {}
     agents:
     - drone
-    replicas: 1
-  pritest:
-    image: admin-fw
+    hostname: ''
+    replicas: '2'
+  user-fw:
+    image: user-fw
     type: lxd
-    priority: 2
-    hostname: asdf
+    priority: 0
     links:
-      border-fw: {}
+      control-br: {}
+      dmz-br: {}
+      user0-br: {}
+      user1-br: {}
+      user200-br: {}
     agents:
     - drone
-    replicas: 1
+  server-fw:
+    image: server-fw
+    type: lxd
+    priority: '2'
+    links:
+      control-br: {}
+      dmz-br: {}
+      server0-br: {}
+    agents:
+    - drone
+    hostname: sdfg
+    replicas: '1'
 links:
   control-br:
     type: lxd
