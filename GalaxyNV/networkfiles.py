@@ -283,9 +283,9 @@ def build_add_link_page_scripts():
             
             if "-" in n:
                 n2=n.replace('-', '')
-                script+='''function addLinkTo_'''+n2+'''Function() {document.getElementById("jsAddLinkTo_'''+n2+'''").innerHTML = '<select class="form-select" aria-label="Default select example">'''+link_list()+'''</select>';}'''
+                script+='''function addLinkTo_'''+n2+'''Function() {document.getElementById("jsAddLinkTo_'''+n2+'''").innerHTML = '<select class="form-select" name="new_'''+n+'''_link">'''+link_list()+'''</select>';}'''
             else:
-                script+='''function addLinkTo_'''+n+'''Function() {document.getElementById("jsAddLinkTo_'''+n+'''").innerHTML = '<select class="form-select" aria-label="Default select example">'''+link_list()+'''</select>';}'''
+                script+='''function addLinkTo_'''+n+'''Function() {document.getElementById("jsAddLinkTo_'''+n+'''").innerHTML = '<select class="form-select" name="new_'''+n+'''_link">'''+link_list()+'''</select>';}'''
         script+='''</script>'''
         return script
     except:
@@ -341,8 +341,6 @@ def load_nodes_to_edit():
         return ("Failed to open network.json file. Are you sure it is named correctly?")
 
 def change_node_name(n, new_node_name):
-    #if request.method=="GET":
-
     with open(globals.network_yml_file) as networkfile:
         data1 = yaml.load(networkfile, Loader=yaml.FullLoader)
 
@@ -430,5 +428,28 @@ def change_node_link(n, old_node_link, new_node_link):
     with open(globals.network_yml_file, 'w') as outfile:
         yaml.dump(conf, outfile, default_flow_style=False, sort_keys=False)
     
+    loadfiles()
+    return convert()
+
+def add_node_link(n, new_node_link):
+    with open(globals.network_yml_file) as networkfile:
+        data1 = yaml.load(networkfile, Loader=yaml.FullLoader)
+
+    d={ 'nodes': {
+        n:{
+            'links':{
+                new_node_link:{}}}}}
+
+    with open(globals.yml_dir+'/link.yml', 'w') as outfile:
+        yaml.dump(d, outfile, default_flow_style=False, sort_keys=False)
+
+    with open(globals.network_yml_file, 'w') as outfile:
+        yaml.dump(data1, outfile, default_flow_style=False, sort_keys=False)
+
+    conf = hiyapyco.load(globals.network_yml_file, globals.yml_dir+'/link.yml', method=hiyapyco.METHOD_MERGE, interpolate=True, failonmissingfiles=True, usedefaultyamlloader=True)
+
+    with open(globals.network_yml_file, 'w') as outfile:
+        yaml.dump(conf, outfile, default_flow_style=False, sort_keys=False)
+
     loadfiles()
     return convert()

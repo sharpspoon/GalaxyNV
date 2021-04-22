@@ -1,4 +1,4 @@
 nodes:
-  user0:
+  user1:
     links:
-      user200: {}
+      admin-fw: {}

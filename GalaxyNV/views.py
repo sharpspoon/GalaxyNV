@@ -264,7 +264,13 @@ def editnodes():
             link_name = request.form.get("Link_"+n+"_"+l)
             if link_name != l:
                 networkfiles.change_node_link(n, l, link_name)
-                print ("link changed")
+        try:
+            new_node_link=request.form.get("new_"+n+"_link")
+        except:
+            new_node_link=False
+
+        if new_node_link:
+            networkfiles.add_node_link(n, new_node_link)
 
         #If the var is true, remove the node and do not do any of the below
         if delete_node_name:

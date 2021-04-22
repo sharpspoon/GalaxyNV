@@ -39,14 +39,16 @@
             "priority": 0,
             "type": "lxd"
         },
-        "admin0": {
+        "admin0aa": {
             "agents": [
                 "admin",
                 "drone"
             ],
+            "hostname": "asdf",
             "image": "admin0",
             "links": {
                 "admin0-br": {},
+                "border-fw": {},
                 "control-br": {}
             },
             "priority": 60,
@@ -56,29 +58,14 @@
             "agents": [
                 "drone"
             ],
-            "hostname": "",
+            "hostname": "aasdf",
             "image": "border-fw",
             "links": {
+                "border-fw": {},
                 "control-br": {},
-                "dmz-br": {},
                 "upstream-br": {}
             },
-            "priority": "2",
-            "replicas": "2",
-            "type": "lxd"
-        },
-        "server-fw": {
-            "agents": [
-                "drone"
-            ],
-            "hostname": "sdfg",
-            "image": "server-fw",
-            "links": {
-                "control-br": {},
-                "dmz-br": {},
-                "server0-br": {}
-            },
-            "priority": "2",
+            "priority": 0,
             "replicas": "1",
             "type": "lxd"
         },
@@ -89,17 +76,17 @@
             "hostname": "downloadmoreram",
             "image": "server-http",
             "links": {
-                "server-https": {},
-                "user200": {}
+                "control-br": {},
+                "server0-br": {}
             },
             "priority": 70,
             "type": "lxd"
         },
-        "server-https": {
+        "server-httpsf": {
             "agents": [
                 "drone"
             ],
-            "hostname": "downloadmoresecurity",
+            "hostname": "downloadmoresfecurity",
             "image": "server-https",
             "links": {
                 "border-fw": {},
@@ -108,40 +95,17 @@
             "priority": 70,
             "type": "lxd"
         },
-        "testing": {
-            "agents": [
-                "drone"
-            ],
-            "hostname": "asdf",
-            "image": "admin-fw",
-            "links": {},
-            "priority": 1,
-            "replicas": "1",
-            "type": "lxd"
-        },
-        "user-fw": {
-            "agents": [
-                "drone"
-            ],
-            "image": "user-fw",
-            "links": {
-                "control-br": {},
-                "dmz-br": {},
-                "user0-br": {},
-                "user1-br": {},
-                "user200-br": {}
-            },
-            "priority": 0,
-            "type": "lxd"
-        },
         "user0": {
             "agents": [
                 "user",
                 "drone"
             ],
+            "hostname": "asdf",
             "image": "user0",
             "links": {
-                "user200": {}
+                "border-fw": {},
+                "control-br": {},
+                "user0-br": {}
             },
             "priority": 80,
             "replicas": 3,
@@ -152,10 +116,11 @@
                 "user",
                 "drone"
             ],
+            "hostname": "asdf",
             "image": "user1",
             "links": {
-                "server0-br": {},
-                "user200": {}
+                "admin-fw": {},
+                "user1-br": {}
             },
             "priority": 90,
             "replicas": 3,
@@ -166,9 +131,10 @@
                 "user",
                 "drone"
             ],
+            "hostname": "asdf",
             "image": "user200",
             "links": {
-                "server-fw": {},
+                "control-br": {},
                 "user200-br": {}
             },
             "priority": 100,
