@@ -1,4 +1,4 @@
 nodes:
-  user200:
+  user0:
     links:
-      user1: {}
+      user200: {}

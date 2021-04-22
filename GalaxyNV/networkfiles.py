@@ -73,8 +73,8 @@ def graph():
 
     #Open the network.json file and begin to parse it
     try:
-        with open(globals.network_json_file, 'r') as networkfile:
-            parsed = json.loads(networkfile.read())
+        with open(globals.network_yml_file) as networkfile:
+            parsed = yaml.load(networkfile, Loader=yaml.FullLoader)
 
             #Create empty node list
             nodes = []
@@ -87,16 +87,9 @@ def graph():
                 if n != "control-br":
                     nodes.append(n)
     except:
-        return ('failed to access json file')
-
+        return ('failed to access yaml file')
     #Begin to iterate through the nodes list and create the nodes on the graph
-    for node in parsed["links"]:
-        #Check to make sure that the control-br is NOT being used
-        if node != "control-br":
-            net.add_node(node, label=node, shape='image', image=r'img_server', size=25)
-
-
-    for node in parsed["nodes"]:
+    for node in nodes:
         #Check to make sure that the control-br is NOT being used
         if node != "control-br":
             #Add the firewall image to the node
@@ -108,12 +101,16 @@ def graph():
                 net.add_node(node, label=node, shape='image', image=r'img_database', size=25)
             if "admin" in node:
                 net.add_node(node, label=node, shape='image', image=r'img_computer', size=25)
+            if "-br" in node:
+                net.add_node(node, label=node, shape='image', image=r'img_server', size=25)
             else:
                 net.add_node(node, label=node, shape='image', image=r'img_laptop', size=25)
 
-            for link in parsed["nodes"][node]["links"]:
-                if(link in nodes):
-                    net.add_edge(node, link)
+    for node in parsed["nodes"]:
+        for link in parsed["nodes"][node]["links"]:
+            #print("node="+node+" link="+link)
+            if(link in nodes):
+                net.add_edge(node, link)
 
     #Iterate through the nodes again and add any replicas and replica links
     for node in parsed["nodes"]:
@@ -263,6 +260,8 @@ def link_list():
     link_list=""
     for n in data1["nodes"]:
         link_list+='''<option value="'''+n+'''">'''+n+'''</option>'''
+    for n in data1["links"]:
+        link_list+='''<option value="'''+n+'''">'''+n+'''</option>'''
     return link_list
 
 def image_list():
@@ -336,7 +335,7 @@ def load_nodes_to_edit():
                 else:
                     links+='''<button type="button" class="btn btn-outline-success btn-sm" id="id_addLinkTo_'''+n+'''" name="addLinkTo_'''+n+'''" data-bs-toggle="tooltip" data-bs-placement="top" title="Add link to '''+n+'''" onclick="addLinkTo_'''+n+'''Function()">Add Link</button>'''
                 
-                nodes+=(r'''<tr><th scope="row"><input type="text" class="form-control" id="nodeNameId" name="'''+n+'''" aria-describedby="nodeHelp" value="'''+str(n)+r'''" required></th><td>'''+str(links)+r'''</td><td><input type="text" class="form-control" id="numberOfNodesId" name="hostname_'''+hostname+'''" value="'''+hostname+'''"></td><td><input type="number" class="form-control" id="numberOfNodesId" name="priority_'''+str(priority)+'''" value="'''+str(priority)+'''"></td><td><input type="number" class="form-control" id="numberOfNodesId" name="replicas_'''+str(n)+'''" value="'''+str(replicas)+'''"></td><td><input type="checkbox" class="btn-check form-control" id="id_delete_'''+n+'''" name="delete_'''+n+'''" autocomplete="off""><label class="btn btn-outline-danger" for="id_delete_'''+n+'''">X</label></td></tr>''')
+                nodes+=(r'''<tr><th scope="row"><input type="text" class="form-control" id="nodeNameId" name="'''+n+'''" aria-describedby="nodeHelp" value="'''+str(n)+r'''" required></th><td>'''+str(links)+r'''</td><td><input type="text" class="form-control" id="hostnameId" name="'''+n+'''_hostname" value="'''+hostname+'''"></td><td><input type="number" class="form-control" id="priorityId" name="'''+n+'''_priority" value="'''+str(priority)+'''"></td><td><input type="number" class="form-control" id="numberOfNodesId" name="'''+n+'''_replicas" value="'''+str(replicas)+'''"></td><td><input type="checkbox" class="btn-check form-control" id="id_delete_'''+n+'''" name="delete_'''+n+'''" autocomplete="off""><label class="btn btn-outline-danger" for="id_delete_'''+n+'''">X</label></td></tr>''')
             return nodes
     except:
         return ("Failed to open network.json file. Are you sure it is named correctly?")
@@ -356,9 +355,31 @@ def change_node_name(n, new_node_name):
     loadfiles()
     return convert()
 
-def change_node_replicas(n, current_node_replicas, new_node_replicas):
-    #if request.method=="GET":
+def change_node_hostname(n, new_node_hostname):
+    with open(globals.network_yml_file) as networkfile:
+        data1 = yaml.load(networkfile, Loader=yaml.FullLoader)
 
+    data1["nodes"][n]["hostname"]=new_node_hostname
+
+    with open(globals.network_yml_file, 'w') as outfile:
+        yaml.dump(data1, outfile, default_flow_style=False, sort_keys=False)
+
+    loadfiles()
+    return convert()
+
+def change_node_priority(n, new_node_priority):
+    with open(globals.network_yml_file) as networkfile:
+        data1 = yaml.load(networkfile, Loader=yaml.FullLoader)
+
+    data1["nodes"][n]["priority"]=new_node_priority
+
+    with open(globals.network_yml_file, 'w') as outfile:
+        yaml.dump(data1, outfile, default_flow_style=False, sort_keys=False)
+
+    loadfiles()
+    return convert()
+
+def change_node_replicas(n, new_node_replicas):
     with open(globals.network_yml_file) as networkfile:
         data1 = yaml.load(networkfile, Loader=yaml.FullLoader)
 
