@@ -2,108 +2,86 @@ nodes:
   border-fw:
     image: border-fw
     type: lxd
-    priority: 0
+    priority: 1
     links:
-      control-br: {}
-      dmz-br: {}
-      upstream-br: {}
+      border-fw: {}
     agents:
     - drone
+    hostname: sdfgd
+    replicas: 3
   user-fw:
     image: user-fw
     type: lxd
     priority: 0
     links:
-      control-br: {}
-      dmz-br: {}
-      user0-br: {}
-      user1-br: {}
-      user200-br: {}
+      border-fw: {}
     agents:
     - drone
-  server-fw:
-    image: server-fw
-    type: lxd
-    priority: 0
-    links:
-      control-br: {}
-      dmz-br: {}
-      server0-br: {}
-    agents:
-    - drone
+    hostname: sdfgggh
+    replicas: 1
   admin-fw:
-    image: admin-fw
+    image: server-https
     type: lxd
-    priority: 0
+    priority: 2
     links:
-      control-br: {}
-      dmz-br: {}
-      admin0-br: {}
+      border-fw: {}
     agents:
     - drone
+    hostname: sdfgggg
+    replicas: 1
   admin0:
     image: admin0
     priority: 60
     type: lxd
     links:
-      control-br: {}
-      admin0-br: {}
+      border-fw: {}
     agents:
     - admin
     - drone
-  server-http:
-    hostname: downloadmoreram
-    image: server-http
-    type: lxd
-    priority: 70
-    links:
-      control-br: {}
-      server0-br: {}
-    agents:
-    - drone
+    hostname: fff
+    replicas: 1
   server-https:
     hostname: downloadmoresecurity
     image: server-https
     type: lxd
     priority: 70
     links:
-      control-br: {}
-      server0-br: {}
+      border-fw: {}
     agents:
     - drone
-  user0:
+    replicas: 1
+  server-fwsss:
+    image: server-fw
+    type: lxd
+    priority: 2
+    links:
+      border-fw: {}
+    agents:
+    - drone
+    hostname: sdfsdfggghbh
+    replicas: 1
+  server-httpsss:
+    hostname: downloadmoreram
+    image: server-http
+    type: lxd
+    priority: 70
+    links:
+      border-fw: {}
+    agents:
+    - drone
+    replicas: 1
+  user0sss:
     image: user0
     type: lxd
     priority: 80
     links:
-      control-br: {}
-      user0-br: {}
-    agents:
-    - user
-    - drone
-    replicas: 3
-  user1:
-    image: user1
-    type: lxd
-    priority: 90
-    links:
-      control-br: {}
-      user1-br: {}
-    agents:
-    - user
-    - drone
-    replicas: 4
-  user200:
-    image: user200
-    type: lxd
-    priority: 100
-    links:
-      control-br: {}
-      user200-br: {}
+      border-fw: {}
+      server0-br: {}
     agents:
     - user
     - drone
     replicas: 5
+    hostname: ffff
 links:
   control-br:
     type: lxd
