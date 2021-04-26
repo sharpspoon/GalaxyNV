@@ -239,6 +239,7 @@ def editnodes():
         new_node_name=request.form.get(n)
         new_node_replicas = request.form.get(n+"_replicas")
         new_node_hostname = request.form.get(n+"_hostname")
+        new_node_image = request.form.get(n+"_image")
         new_node_priority = request.form.get(n+"_priority")
         delete_node_name = request.form.get("delete_"+n)
         try:
@@ -249,6 +250,10 @@ def editnodes():
             current_node_hostname=data1["nodes"][n]["hostname"]
         except:
             current_node_hostname=""
+        try:
+            current_node_image=data1["nodes"][n]["image"]
+        except:
+            current_node_image=""
         try:
             current_node_priority=data1["nodes"][n]["priority"]
         except:
@@ -282,17 +287,22 @@ def editnodes():
            networkfiles.change_node_name(n, new_node_name)
            if (new_node_hostname != current_node_hostname):
                 networkfiles.change_node_hostname(new_node_name, new_node_hostname)
+           if (new_node_image != current_node_image):
+                networkfiles.change_node_image(new_node_name, new_node_image)
+
            if (int(new_node_replicas) != int(current_node_replicas)):
                 networkfiles.change_node_replicas(new_node_name, int(new_node_replicas))
            if (int(new_node_priority) != int(current_node_priority)):
                 networkfiles.change_node_priority(new_node_name, int(new_node_priority))
         else:
            if (new_node_hostname != current_node_hostname):
-                networkfiles.change_node_hostname(n, new_node_hostname)
+               networkfiles.change_node_hostname(n, new_node_hostname)
+           if (new_node_image != current_node_image):
+               networkfiles.change_node_image(new_node_name, new_node_image)
            if (int(new_node_replicas) != int(current_node_replicas)):
-                networkfiles.change_node_replicas(n, int(new_node_replicas))
+               networkfiles.change_node_replicas(n, int(new_node_replicas))
            if (int(new_node_priority) != int(current_node_priority)):
-                networkfiles.change_node_priority(n, int(new_node_priority))
+               networkfiles.change_node_priority(n, int(new_node_priority))
 
     networkfiles.graph()
     graphiframe()
