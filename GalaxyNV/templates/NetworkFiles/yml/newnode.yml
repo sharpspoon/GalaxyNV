@@ -1,9 +1,9 @@
 nodes:
-  imagetest:
+  testing:
     image: admin-fw
     type: lxd
-    priority: 1
-    hostname: sdfg
+    priority: 11
+    hostname: asdf
     links:
       border-fw: {}
     agents:

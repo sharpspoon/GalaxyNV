@@ -30,13 +30,13 @@
             "agents": [
                 "drone"
             ],
-            "image": "admin-fw",
+            "hostname": "sdfgggg",
+            "image": "server-https",
             "links": {
-                "admin0-br": {},
-                "control-br": {},
-                "dmz-br": {}
+                "border-fw": {}
             },
-            "priority": 0,
+            "priority": 2,
+            "replicas": 1,
             "type": "lxd"
         },
         "admin0": {
@@ -44,51 +44,39 @@
                 "admin",
                 "drone"
             ],
+            "hostname": "fff",
             "image": "admin0",
             "links": {
-                "admin0-br": {},
-                "control-br": {}
+                "border-fw": {}
             },
             "priority": 60,
+            "replicas": 1,
             "type": "lxd"
         },
         "border-fw": {
             "agents": [
                 "drone"
             ],
+            "hostname": "sdfgd",
             "image": "border-fw",
             "links": {
-                "control-br": {},
-                "dmz-br": {},
-                "upstream-br": {}
+                "border-fw": {}
             },
-            "priority": 0,
+            "priority": 1,
+            "replicas": 3,
             "type": "lxd"
         },
-        "server-fw": {
+        "server-fwsss": {
             "agents": [
                 "drone"
             ],
+            "hostname": "sdfsdfggghbh",
             "image": "server-fw",
             "links": {
-                "control-br": {},
-                "dmz-br": {},
-                "server0-br": {}
+                "border-fw": {}
             },
-            "priority": 0,
-            "type": "lxd"
-        },
-        "server-http": {
-            "agents": [
-                "drone"
-            ],
-            "hostname": "downloadmoreram",
-            "image": "server-http",
-            "links": {
-                "control-br": {},
-                "server0-br": {}
-            },
-            "priority": 70,
+            "priority": 2,
+            "replicas": 1,
             "type": "lxd"
         },
         "server-https": {
@@ -98,66 +86,50 @@
             "hostname": "downloadmoresecurity",
             "image": "server-https",
             "links": {
-                "control-br": {},
-                "server0-br": {}
+                "border-fw": {}
             },
             "priority": 70,
+            "replicas": 1,
+            "type": "lxd"
+        },
+        "server-httpsss": {
+            "agents": [
+                "drone"
+            ],
+            "hostname": "downloadmoreram",
+            "image": "server-http",
+            "links": {
+                "border-fw": {}
+            },
+            "priority": 70,
+            "replicas": 1,
             "type": "lxd"
         },
         "user-fw": {
             "agents": [
                 "drone"
             ],
+            "hostname": "sdfgggh",
             "image": "user-fw",
             "links": {
-                "control-br": {},
-                "dmz-br": {},
-                "user0-br": {},
-                "user1-br": {},
-                "user200-br": {}
+                "border-fw": {}
             },
             "priority": 0,
+            "replicas": 1,
             "type": "lxd"
         },
-        "user0": {
+        "user0sss": {
             "agents": [
                 "user",
                 "drone"
             ],
+            "hostname": "ffff",
             "image": "user0",
             "links": {
-                "control-br": {},
-                "user0-br": {}
+                "border-fw": {},
+                "server0-br": {}
             },
             "priority": 80,
-            "replicas": 3,
-            "type": "lxd"
-        },
-        "user1": {
-            "agents": [
-                "user",
-                "drone"
-            ],
-            "image": "user1",
-            "links": {
-                "control-br": {},
-                "user1-br": {}
-            },
-            "priority": 90,
-            "replicas": 4,
-            "type": "lxd"
-        },
-        "user200": {
-            "agents": [
-                "user",
-                "drone"
-            ],
-            "image": "user200",
-            "links": {
-                "control-br": {},
-                "user200-br": {}
-            },
-            "priority": 100,
             "replicas": 5,
             "type": "lxd"
         }
