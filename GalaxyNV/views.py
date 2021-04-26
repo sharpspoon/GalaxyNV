@@ -277,20 +277,21 @@ def editnodes():
             networkfiles.remove_node(n)
         #If this is true, then that means the node name changed, so use the new node name
         elif (new_node_name != n):
+
            networkfiles.change_node_name(n, new_node_name)
            if (new_node_hostname != current_node_hostname):
                 networkfiles.change_node_hostname(new_node_name, new_node_hostname)
            if (int(new_node_replicas) != int(current_node_replicas)):
-                networkfiles.change_node_replicas(new_node_name, new_node_replicas)
+                networkfiles.change_node_replicas(new_node_name, int(new_node_replicas))
            if (int(new_node_priority) != int(current_node_priority)):
-                networkfiles.change_node_priority(new_node_name, new_node_priority)
+                networkfiles.change_node_priority(new_node_name, int(new_node_priority))
         else:
            if (new_node_hostname != current_node_hostname):
                 networkfiles.change_node_hostname(n, new_node_hostname)
            if (int(new_node_replicas) != int(current_node_replicas)):
-                networkfiles.change_node_replicas(n, new_node_replicas)
+                networkfiles.change_node_replicas(n, int(new_node_replicas))
            if (int(new_node_priority) != int(current_node_priority)):
-                networkfiles.change_node_priority(n, new_node_priority)
+                networkfiles.change_node_priority(n, int(new_node_priority))
 
     networkfiles.graph()
     graphiframe()

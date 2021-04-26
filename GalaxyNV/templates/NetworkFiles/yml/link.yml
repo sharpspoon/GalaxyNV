@@ -1,4 +1,4 @@
 nodes:
-  user1:
+  newNode:
     links:
-      admin-fw: {}
+      admin0-br: {}

@@ -1,5 +1,5 @@
 nodes:
-  testing:
+  asdf:
     image: admin-fw
     type: lxd
     priority: 1
@@ -8,4 +8,4 @@ nodes:
       border-fw: {}
     agents:
     - drone
-    replicas: 2
+    replicas: 1
