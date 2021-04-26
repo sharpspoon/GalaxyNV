@@ -118,7 +118,7 @@ def graph():
             try:
                 replica_count = parsed["nodes"][node]["replicas"]
                 
-                for r in range(0, replica_count):
+                for r in range(0, int(replica_count)):
                     rep_label = node+'_'+str(r)
                     net.add_node(rep_label, label=rep_label, shape='image', image=r'img_laptop', size=15)
 

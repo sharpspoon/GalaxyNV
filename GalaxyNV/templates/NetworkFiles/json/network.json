@@ -30,43 +30,68 @@
             "agents": [
                 "drone"
             ],
+            "hostname": "asdf2",
             "image": "admin-fw",
             "links": {
-                "admin0-br": {},
                 "control-br": {},
                 "dmz-br": {}
             },
-            "priority": 0,
+            "priority": "1000",
             "type": "lxd"
         },
-        "admin0aa": {
+        "admin0": {
             "agents": [
                 "admin",
                 "drone"
             ],
-            "hostname": "asdf",
+            "hostname": "asdf3",
             "image": "admin0",
             "links": {
-                "admin0-br": {},
-                "border-fw": {},
-                "control-br": {}
+                "border-fw": {}
             },
-            "priority": 60,
+            "priority": "800",
+            "type": "lxd"
+        },
+        "asdf": {
+            "agents": [
+                "drone"
+            ],
+            "hostname": "asdf",
+            "image": "admin-fw",
+            "links": {
+                "border-fw": {}
+            },
+            "priority": 3,
+            "replicas": 2,
             "type": "lxd"
         },
         "border-fw": {
             "agents": [
                 "drone"
             ],
-            "hostname": "aasdf",
+            "hostname": "asdf",
             "image": "border-fw",
             "links": {
-                "border-fw": {},
                 "control-br": {},
+                "dmz-br": {},
                 "upstream-br": {}
             },
-            "priority": 0,
-            "replicas": "1",
+            "priority": "10",
+            "replicas": "2",
+            "type": "lxd"
+        },
+        "newNode": {
+            "agents": [
+                "drone"
+            ],
+            "hostname": "awesome",
+            "image": "thursdayMeeting",
+            "links": {
+                "admin0": {},
+                "admin0-br": {}
+            },
+            "priority": 100,
+            "replicas": "10",
             "type": "lxd"
         },
         "server-http": {
@@ -76,23 +101,39 @@
             "hostname": "downloadmoreram",
             "image": "server-http",
             "links": {
-                "control-br": {},
-                "server0-br": {}
+                "border-fw": {}
+            },
+            "priority": 70,
+            "replicas": "5",
+            "type": "lxd"
+        },
+        "server-https": {
+            "agents": [
+                "drone"
+            ],
+            "hostname": "downloadmoresecurity",
+            "image": "server-https",
+            "links": {
+                "border-fw": {}
             },
             "priority": 70,
             "type": "lxd"
         },
-        "server-httpsf": {
+        "user-fw": {
             "agents": [
                 "drone"
             ],
-            "hostname": "downloadmoresfecurity",
-            "image": "server-https",
+            "hostname": "asdf1",
+            "image": "user-fw",
             "links": {
-                "border-fw": {},
-                "server0-br": {}
+                "control-br": {},
+                "dmz-br": {},
+                "user0-br": {},
+                "user1-br": {},
+                "user200-br": {}
             },
-            "priority": 70,
+            "priority": "100",
+            "replicas": "3",
             "type": "lxd"
         },
         "user0": {
@@ -100,15 +141,14 @@
                 "user",
                 "drone"
             ],
-            "hostname": "asdf",
+            "hostname": "asdf4",
             "image": "user0",
             "links": {
-                "border-fw": {},
-                "control-br": {},
-                "user0-br": {}
+                "admin-fw": {},
+                "border-fw": {}
             },
             "priority": 80,
-            "replicas": 3,
+            "replicas": "6",
             "type": "lxd"
         },
         "user1": {
@@ -116,14 +156,13 @@
                 "user",
                 "drone"
             ],
-            "hostname": "asdf",
+            "hostname": "asdf5",
             "image": "user1",
             "links": {
-                "admin-fw": {},
-                "user1-br": {}
+                "border-fw": {}
             },
             "priority": 90,
-            "replicas": 3,
+            "replicas": "3",
             "type": "lxd"
         },
         "user200": {
@@ -131,14 +170,13 @@
                 "user",
                 "drone"
             ],
-            "hostname": "asdf",
+            "hostname": "asdf6",
             "image": "user200",
             "links": {
-                "control-br": {},
-                "user200-br": {}
+                "border-fw": {}
             },
             "priority": 100,
-            "replicas": 5,
+            "replicas": "6",
             "type": "lxd"
         }
     }
