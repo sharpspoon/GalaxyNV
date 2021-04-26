@@ -350,7 +350,7 @@ def load_nodes_to_edit():
                 <input type="text" class="form-control" id="nodeNameId" name="'''+n+'''" aria-describedby="nodeHelp" value="'''+str(n)+r'''" required></th>
                 <td>'''+str(links)+r'''</td>
                 <td><input type="text" class="form-control" id="hostnameId" name="'''+n+'''_hostname" value="'''+hostname+'''"></td>
-                <td><select class="form-select" id="imageId" name="'''+image+'''_image" value="'''+image+'''">'''+image_list()+'''<option selected>'''+image+'''</option></select></td>
+                <td><select class="form-select" id="imageId" name="'''+n+'''_image" value="'''+image+'''">'''+image_list()+'''<option selected>'''+image+'''</option></select></td>
                 <td><input type="number" class="form-control" id="priorityId" name="'''+n+'''_priority" value="'''+str(priority)+'''"></td>
                 <td><input type="number" class="form-control" id="numberOfNodesId" name="'''+n+'''_replicas" value="'''+str(replicas)+'''"></td>
                 <td><input type="checkbox" class="btn-check form-control" id="id_delete_'''+n+'''" name="delete_'''+n+'''" autocomplete="off""><label class="btn btn-outline-danger" for="id_delete_'''+n+'''">X</label></td>
@@ -377,6 +377,18 @@ def change_node_hostname(n, new_node_hostname):
         data1 = yaml.load(networkfile, Loader=yaml.FullLoader)
 
     data1["nodes"][n]["hostname"]=new_node_hostname
+
+    with open(globals.network_yml_file, 'w') as outfile:
+        yaml.dump(data1, outfile, default_flow_style=False, sort_keys=False)
+
+    loadfiles()
+    return convert()
+
+def change_node_image(n, new_node_image):
+    with open(globals.network_yml_file) as networkfile:
+        data1 = yaml.load(networkfile, Loader=yaml.FullLoader)
+
+    data1["nodes"][n]["image"]=new_node_image
 
     with open(globals.network_yml_file, 'w') as outfile:
         yaml.dump(data1, outfile, default_flow_style=False, sort_keys=False)
