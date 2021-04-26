@@ -112,6 +112,7 @@ def networkyaml():
 #Pyvis graph html page
 @app.route('/graph')
 def graph():
+    networkfiles.graph()
     return render_template(
         'graph.html',
         year=datetime.now().year,

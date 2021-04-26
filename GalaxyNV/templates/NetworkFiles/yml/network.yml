@@ -2,19 +2,17 @@ nodes:
   border-fw:
     image: border-fw
     type: lxd
-    priority: '10'
+    priority: 0
     links:
       control-br: {}
       dmz-br: {}
       upstream-br: {}
     agents:
     - drone
-    hostname: asdf
-    replicas: '2'
   user-fw:
     image: user-fw
     type: lxd
-    priority: '100'
+    priority: 0
     links:
       control-br: {}
       dmz-br: {}
@@ -23,45 +21,56 @@ nodes:
       user200-br: {}
     agents:
     - drone
-    hostname: asdf1
-    replicas: '3'
-  admin-fw:
-    image: admin-fw
+  server-fw:
+    image: server-fw
     type: lxd
-    priority: '1000'
+    priority: 0
     links:
       control-br: {}
       dmz-br: {}
+      server0-br: {}
     agents:
     - drone
-    hostname: asdf2
+  admin-fw:
+    image: admin-fw
+    type: lxd
+    priority: 0
+    links:
+      control-br: {}
+      dmz-br: {}
+      admin0-br: {}
+    agents:
+    - drone
   admin0:
     image: admin0
-    priority: '800'
+    priority: 1
     type: lxd
     links:
-      border-fw: {}
+      control-br: {}
+      admin0-br: {}
     agents:
     - admin
     - drone
-    hostname: asdf3
+    hostname: f
+    replicas: 1
   server-http:
     hostname: downloadmoreram
     image: server-http
     type: lxd
     priority: 70
     links:
-      border-fw: {}
+      control-br: {}
+      server0-br: {}
     agents:
     - drone
-    replicas: '5'
   server-https:
     hostname: downloadmoresecurity
     image: server-https
     type: lxd
     priority: 70
     links:
-      border-fw: {}
+      control-br: {}
+      server0-br: {}
     agents:
     - drone
   user0:
@@ -69,56 +78,47 @@ nodes:
     type: lxd
     priority: 80
     links:
-      admin-fw: {}
-      border-fw: {}
+      control-br: {}
+      user0-br: {}
     agents:
     - user
     - drone
-    replicas: '6'
-    hostname: asdf4
+    replicas: 3
+    hostname: f
   user1:
     image: user1
     type: lxd
     priority: 90
     links:
-      border-fw: {}
+      control-br: {}
+      user1-br: {}
     agents:
     - user
     - drone
-    replicas: '3'
-    hostname: asdf5
+    replicas: 3
+    hostname: fasdf
   user200:
     image: user200
     type: lxd
     priority: 100
     links:
-      border-fw: {}
+      control-br: {}
+      user200-br: {}
     agents:
     - user
     - drone
-    replicas: '6'
-    hostname: asdf6
-  newNode:
-    image: thursdayMeeting
-    type: lxd
-    priority: 100
-    hostname: awesome
-    links:
-      admin0: {}
-      admin0-br: {}
-    agents:
-    - drone
-    replicas: '10'
-  asdf:
+    replicas: 9
+    hostname: afsd
+  imagetest:
     image: admin-fw
     type: lxd
-    priority: 3
-    hostname: asdf
+    priority: 1
+    hostname: sdfg
     links:
       border-fw: {}
     agents:
     - drone
-    replicas: 2
+    replicas: 1
 links:
   control-br:
     type: lxd
