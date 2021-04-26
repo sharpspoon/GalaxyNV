@@ -1,4 +1,4 @@
 nodes:
-  newNode:
+  user200:
     links:
-      admin0-br: {}
+      server0-br: {}

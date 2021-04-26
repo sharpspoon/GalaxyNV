@@ -314,6 +314,11 @@ def load_nodes_to_edit():
                 except:
                     hostname=""
 
+                try:
+                    image=data1["nodes"][n]["image"]
+                except:
+                    image=""
+
                 #Check if there is a '-' in the node name. If there is, remove it for the javascript function.
                 if "-" in n:
                     n2=n.replace('-', '')
@@ -325,7 +330,11 @@ def load_nodes_to_edit():
 
                     links+='<table>'
                     for l in data1["nodes"][n]["links"]:
-                        links+=(r'''<tr><td><select class="form-select" name="Link_'''+n+'''_'''+l+'''" aria-label="Link List"><option selected>'''+str(l)+'''</option>'''+link_list()+'''</select></td><td><input type="checkbox" class="btn-check form-control" id="id_delete_'''+n+'''_'''+str(l)+'''" name="delete_'''+n+'''_'''+str(l)+'''" autocomplete="off"><label class="btn btn-outline-danger" for="id_delete_'''+n+'''_'''+str(l)+'''">X</label></td></tr>''')
+                        links+=(r'''<tr>
+                        <td>
+                        <select class="form-select" name="Link_'''+n+'''_'''+l+'''" aria-label="Link List">
+                        <option selected>'''+str(l)+'''</option>'''+link_list()+'''</select>
+                        </td><td><input type="checkbox" class="btn-check form-control" id="id_delete_'''+n+'''_'''+str(l)+'''" name="delete_'''+n+'''_'''+str(l)+'''" autocomplete="off"><label class="btn btn-outline-danger" for="id_delete_'''+n+'''_'''+str(l)+'''">X</label></td></tr>''')
                     links+='</table>'
 
                 #Check if there is a '-' in the node name. If there is, remove it for the javascript function.
@@ -335,7 +344,17 @@ def load_nodes_to_edit():
                 else:
                     links+='''<button type="button" class="btn btn-outline-success btn-sm" id="id_addLinkTo_'''+n+'''" name="addLinkTo_'''+n+'''" data-bs-toggle="tooltip" data-bs-placement="top" title="Add link to '''+n+'''" onclick="addLinkTo_'''+n+'''Function()">Add Link</button>'''
                 
-                nodes+=(r'''<tr><th scope="row"><input type="text" class="form-control" id="nodeNameId" name="'''+n+'''" aria-describedby="nodeHelp" value="'''+str(n)+r'''" required></th><td>'''+str(links)+r'''</td><td><input type="text" class="form-control" id="hostnameId" name="'''+n+'''_hostname" value="'''+hostname+'''"></td><td><input type="number" class="form-control" id="priorityId" name="'''+n+'''_priority" value="'''+str(priority)+'''"></td><td><input type="number" class="form-control" id="numberOfNodesId" name="'''+n+'''_replicas" value="'''+str(replicas)+'''"></td><td><input type="checkbox" class="btn-check form-control" id="id_delete_'''+n+'''" name="delete_'''+n+'''" autocomplete="off""><label class="btn btn-outline-danger" for="id_delete_'''+n+'''">X</label></td></tr>''')
+                nodes+=(r'''
+                <tr>
+                <th scope="row">
+                <input type="text" class="form-control" id="nodeNameId" name="'''+n+'''" aria-describedby="nodeHelp" value="'''+str(n)+r'''" required></th>
+                <td>'''+str(links)+r'''</td>
+                <td><input type="text" class="form-control" id="hostnameId" name="'''+n+'''_hostname" value="'''+hostname+'''"></td>
+                <td><select class="form-select" id="imageId" name="'''+image+'''_image" value="'''+image+'''">'''+image_list()+'''<option selected>'''+image+'''</option></select></td>
+                <td><input type="number" class="form-control" id="priorityId" name="'''+n+'''_priority" value="'''+str(priority)+'''"></td>
+                <td><input type="number" class="form-control" id="numberOfNodesId" name="'''+n+'''_replicas" value="'''+str(replicas)+'''"></td>
+                <td><input type="checkbox" class="btn-check form-control" id="id_delete_'''+n+'''" name="delete_'''+n+'''" autocomplete="off""><label class="btn btn-outline-danger" for="id_delete_'''+n+'''">X</label></td>
+                </tr>''')
             return nodes
     except:
         return ("Failed to open network.json file. Are you sure it is named correctly?")
