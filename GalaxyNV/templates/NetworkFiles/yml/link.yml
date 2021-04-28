@@ -1,4 +1,4 @@
 nodes:
-  user0sss:
+  asdffff:
     links:
-      server0-br: {}
+      server-fw: {}
