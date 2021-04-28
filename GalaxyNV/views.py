@@ -281,7 +281,6 @@ def editnodes():
                networkfiles.change_node_replicas(n, int(new_node_replicas))
            if (int(new_node_priority) != int(current_node_priority)):
                networkfiles.change_node_priority(n, int(new_node_priority))
-
     networkfiles.graph()
     graphiframe()
     networkfiles.load_nodes_to_edit()
