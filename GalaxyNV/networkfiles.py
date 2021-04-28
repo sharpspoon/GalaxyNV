@@ -13,38 +13,31 @@ from pyvis.network import Network
 import hiyapyco
 
 def createfolders():
-    try:
-        #os.mkdir(globals.network_dir)
-        #os.mkdir(globals.yml_dir)
-        #os.mkdir(globals.json_dir)
-        #os.mkdir(globals.system_dir)
-        os.mkdir(globals.image_nodes_dir)
-    except:
-        print("Necessary folders already exists. Proceeding.")
+    if (globals.DEBUG==True):
+        try:
+            os.mkdir(globals.network_dir)
+            os.mkdir(globals.yml_dir)
+            os.mkdir(globals.json_dir)
+            os.mkdir(globals.system_dir)
+            os.mkdir(globals.image_nodes_dir)
+        except:
+            print("Necessary folders already exists. Proceeding.")
 
 def create_test_nodes():
-    try:
-        os.mkdir(globals.image_nodes_dir+"/admin-fw")
-        os.mkdir(globals.image_nodes_dir+"/admin0")
-        os.mkdir(globals.image_nodes_dir+"/border-fw")
-        os.mkdir(globals.image_nodes_dir+"/server-fw")
-        os.mkdir(globals.image_nodes_dir+"/server-http")
-        os.mkdir(globals.image_nodes_dir+"/server-https")
-        os.mkdir(globals.image_nodes_dir+"/user-fw")
-        os.mkdir(globals.image_nodes_dir+"/user0")
-        os.mkdir(globals.image_nodes_dir+"/user1")
-        os.mkdir(globals.image_nodes_dir+"/user200")
-    except:
-        print("all exist")
-
-def loadfiles():
-    try:
-        with open(globals.network_yml_file) as networkfile:
-            network_list = yaml.load(networkfile, Loader=yaml.FullLoader)
-
-        return (network_list)
-    except:
-        return("Failed to open network.yml file. Are you sure it is named correctly?")
+    if (globals.DEBUG==True):
+        try:
+            os.mkdir(globals.image_nodes_dir+"/admin-fw")
+            os.mkdir(globals.image_nodes_dir+"/admin0")
+            os.mkdir(globals.image_nodes_dir+"/border-fw")
+            os.mkdir(globals.image_nodes_dir+"/server-fw")
+            os.mkdir(globals.image_nodes_dir+"/server-http")
+            os.mkdir(globals.image_nodes_dir+"/server-https")
+            os.mkdir(globals.image_nodes_dir+"/user-fw")
+            os.mkdir(globals.image_nodes_dir+"/user0")
+            os.mkdir(globals.image_nodes_dir+"/user1")
+            os.mkdir(globals.image_nodes_dir+"/user200")
+        except:
+            print("All necessary demo folders already exist.")
 
 def convert():
     try:
@@ -108,7 +101,6 @@ def graph():
 
     for node in parsed["nodes"]:
         for link in parsed["nodes"][node]["links"]:
-            #print("node="+node+" link="+link)
             if(link in nodes):
                 net.add_edge(node, link)
 
@@ -129,7 +121,6 @@ def graph():
                 replica_count = 0
 
     net.show_buttons()
-    
     return net.save_graph(r'GalaxyNV\templates\PyvisGraph.html')
 
 
@@ -200,27 +191,16 @@ def create_d3jsonbridge():
     
 def add_node(node_name, node_link, image_name, number_of_nodes, hostname, priority):
     if request.method=="POST":
-        if node_link:
-            d={ 'nodes': {
-                node_name:{
-                    'image':image_name,
-                    'type':'lxd',
-                    'priority':int(priority),
-                    'hostname':hostname,
-                    'links':{
-                        node_link:{}},
-                    'agents':['drone'],
-                    'replicas':int(number_of_nodes)}}}
-        else:
-            d={ 'nodes': {
-                node_name:{
-                    'image':image_name,
-                    'type':'lxd',
-                    'priority':priority,
-                    'hostname':hostname,
-                    'links':{},
-                    'agents':['drone'],
-                    'replicas':int(number_of_nodes)}}}
+        d={ 'nodes': {
+            node_name:{
+                'image':image_name,
+                'type':'lxd',
+                'priority':int(priority),
+                'hostname':hostname,
+                'links':{
+                    node_link:{}},
+                'agents':['drone'],
+                'replicas':int(number_of_nodes)}}}
 
         with open(globals.yml_dir+'/newnode.yml', 'w') as outfile:
             yaml.dump(d, outfile, default_flow_style=False, sort_keys=False)
@@ -235,8 +215,6 @@ def add_node(node_name, node_link, image_name, number_of_nodes, hostname, priori
 
         with open(globals.network_yml_file, 'w') as outfile:
             yaml.dump(conf, outfile, default_flow_style=False, sort_keys=False)
-
-        loadfiles()
     return convert()
 
 def remove_node(node_name):
@@ -249,8 +227,6 @@ def remove_node(node_name):
 
         with open(globals.network_yml_file, 'w') as outfile:
             yaml.dump(data1, outfile, default_flow_style=False, sort_keys=False)
-
-        loadfiles()
     return convert()
 
 def link_list():
@@ -266,7 +242,6 @@ def link_list():
 
 def image_list():
     image_list=""
-    #print (os.listdir(globals.image_nodes_dir))
     for folder in (os.listdir(globals.image_nodes_dir)):
         image_list+='''<option value="'''+folder+'''">'''+folder+'''</option>'''
     return image_list
@@ -368,8 +343,6 @@ def change_node_name(n, new_node_name):
 
     with open(globals.network_yml_file, 'w') as outfile:
         yaml.dump(data1, outfile, default_flow_style=False, sort_keys=False)
-
-    loadfiles()
     return convert()
 
 def change_node_hostname(n, new_node_hostname):
@@ -380,8 +353,6 @@ def change_node_hostname(n, new_node_hostname):
 
     with open(globals.network_yml_file, 'w') as outfile:
         yaml.dump(data1, outfile, default_flow_style=False, sort_keys=False)
-
-    loadfiles()
     return convert()
 
 def change_node_image(n, new_node_image):
@@ -392,8 +363,6 @@ def change_node_image(n, new_node_image):
 
     with open(globals.network_yml_file, 'w') as outfile:
         yaml.dump(data1, outfile, default_flow_style=False, sort_keys=False)
-
-    loadfiles()
     return convert()
 
 def change_node_priority(n, new_node_priority):
@@ -404,8 +373,6 @@ def change_node_priority(n, new_node_priority):
 
     with open(globals.network_yml_file, 'w') as outfile:
         yaml.dump(data1, outfile, default_flow_style=False, sort_keys=False)
-
-    loadfiles()
     return convert()
 
 def change_node_replicas(n, new_node_replicas):
@@ -416,8 +383,6 @@ def change_node_replicas(n, new_node_replicas):
 
     with open(globals.network_yml_file, 'w') as outfile:
         yaml.dump(data1, outfile, default_flow_style=False, sort_keys=False)
-
-    loadfiles()
     return convert()
 
 def remove_node_link(node_name, node_link):
@@ -430,8 +395,6 @@ def remove_node_link(node_name, node_link):
 
         with open(globals.network_yml_file, 'w') as outfile:
             yaml.dump(data1, outfile, default_flow_style=False, sort_keys=False)
-
-        loadfiles()
     return convert()
 
 def change_node_link(n, old_node_link, new_node_link):
@@ -458,8 +421,6 @@ def change_node_link(n, old_node_link, new_node_link):
 
     with open(globals.network_yml_file, 'w') as outfile:
         yaml.dump(conf, outfile, default_flow_style=False, sort_keys=False)
-    
-    loadfiles()
     return convert()
 
 def add_node_link(n, new_node_link):
@@ -481,6 +442,4 @@ def add_node_link(n, new_node_link):
 
     with open(globals.network_yml_file, 'w') as outfile:
         yaml.dump(conf, outfile, default_flow_style=False, sort_keys=False)
-
-    loadfiles()
     return convert()

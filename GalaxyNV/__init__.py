@@ -12,7 +12,6 @@ import GalaxyNV.networkfiles
 app.templates_auto_reload=True
 
 networkfiles.createfolders()
-networkfiles.loadfiles()
 networkfiles.convert()
 networkfiles.create_test_nodes()
 networkfiles.image_list()
