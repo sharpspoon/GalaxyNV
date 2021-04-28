@@ -9,14 +9,12 @@ import yaml
 @app.route('/img_laptop')
 def img_laptop():
     return send_file(
-        r'static\img\laptop.png', mimetype='image/png'
-    )
+        r'static\img\laptop.png', mimetype='image/png')
 
 @app.route('/img_computer')
 def img_computer():
     return send_file(
-        r'static\img\computer.png', mimetype='image/png'
-    )
+        r'static\img\computer.png', mimetype='image/png')
 
 @app.route('/img_server')
 def img_server():
@@ -27,20 +25,17 @@ def img_server():
 @app.route('/img_database')
 def img_database():
     return send_file(
-        r'static\img\database.png', mimetype='image/png'
-    )
+        r'static\img\database.png', mimetype='image/png')
 
 @app.route('/img_security')
 def img_security():
     return send_file(
-        r'static\img\security.png', mimetype='image/png'
-    )
+        r'static\img\security.png', mimetype='image/png')
 
 @app.route('/img_firewall')
 def img_firewall():
     return send_file(
-        r'static\img\firewall.png', mimetype='image/png'
-    )
+        r'static\img\firewall.png', mimetype='image/png')
 
 #########
 # Pages #
@@ -56,8 +51,7 @@ def home():
         nodes=networkfiles.load_nodes_to_edit(),
         images=networkfiles.image_list(),
         js=networkfiles.build_add_link_page_scripts(),
-        links=networkfiles.link_list()
-    )
+        links=networkfiles.link_list())
 
 @app.route('/image')
 def image():
@@ -68,8 +62,7 @@ def image():
         nodes=networkfiles.load_nodes_to_edit(),
         images=networkfiles.image_list(),
         js=networkfiles.build_add_link_page_scripts(),
-        links=networkfiles.link_list()
-    )
+        links=networkfiles.link_list())
 
 @app.route('/contact')
 def contact():
@@ -81,8 +74,7 @@ def contact():
         nodes=networkfiles.load_nodes_to_edit(),
         images=networkfiles.image_list(),
         js=networkfiles.build_add_link_page_scripts(),
-        links=networkfiles.link_list()
-    )
+        links=networkfiles.link_list())
 
 @app.route('/history')
 def history():
@@ -93,8 +85,7 @@ def history():
         nodes=networkfiles.load_nodes_to_edit(),
         images=networkfiles.image_list(),
         js=networkfiles.build_add_link_page_scripts(),
-        links=networkfiles.link_list()
-    )
+        links=networkfiles.link_list())
 
 @app.route('/networkyaml')
 def networkyaml():
@@ -106,8 +97,7 @@ def networkyaml():
         nodes=networkfiles.load_nodes_to_edit(),
         images=networkfiles.image_list(),
         js=networkfiles.build_add_link_page_scripts(),
-        links=networkfiles.link_list()
-    )
+        links=networkfiles.link_list())
 
 #Pyvis graph html page
 @app.route('/graph')
@@ -119,8 +109,7 @@ def graph():
         nodes=networkfiles.load_nodes_to_edit(),
         images=networkfiles.image_list(),
         js=networkfiles.build_add_link_page_scripts(),
-        links=networkfiles.link_list()
-    )
+        links=networkfiles.link_list())
 
 #Force directed graph with no bridge display
 @app.route('/fdg')
@@ -132,8 +121,7 @@ def fdg():
         nodes=networkfiles.load_nodes_to_edit(),
         images=networkfiles.image_list(),
         js=networkfiles.build_add_link_page_scripts(),
-        links=networkfiles.link_list()
-    )
+        links=networkfiles.link_list())
 
 #Force directed graph with a bridge display
 @app.route('/fdgbridge')
@@ -145,8 +133,7 @@ def fdgbridge():
         nodes=networkfiles.load_nodes_to_edit(),
         images=networkfiles.image_list(),
         js=networkfiles.build_add_link_page_scripts(),
-        links=networkfiles.link_list()
-    )
+        links=networkfiles.link_list())
 
 ###########
 # Iframes #
@@ -154,29 +141,25 @@ def fdgbridge():
 @app.route('/demoiframe')
 def demoiframe():
     return render_template(
-        'Demo.html'
-    )
+        'Demo.html')
 
 @app.route('/graphiframe')
 def graphiframe():
     #networkfiles.graph()
     return render_template(
-        'PyvisGraph.html'
-    )
+        'PyvisGraph.html')
 
 #Force directed graph with no bridge display
 @app.route('/fdgiframe')
 def fdgiframe():
     return render_template(
-        'ForceDirectedGraph.html'
-    )
+        'ForceDirectedGraph.html')
 
 #Force directed graph with a bridge display
 @app.route('/fdgbridgeiframe')
 def fdgbridgeiframe():
     return render_template(
-        'ForceDirectedGraphBridge.html'
-    )
+        'ForceDirectedGraphBridge.html')
 
 ##############
 # Json Files #
@@ -184,32 +167,27 @@ def fdgbridgeiframe():
 @app.route('/d3json')
 def d3json():
     return render_template(
-        'NetworkFiles/json/d3.json'
-    )
+        'NetworkFiles/json/d3.json')
 
 @app.route('/d3jsonbridge')
 def d3jsonbridge():
     return render_template(
-        'NetworkFiles/json/d3bridge.json'
-    )
+        'NetworkFiles/json/d3bridge.json')
 
 @app.route('/json')
 def json():
     return render_template(
-        'network.json'
-    )
+        'network.json')
 
 @app.route('/jsonbridge')
 def jsonbridge():
     return render_template(
-        'networkbridge.json'
-    )
+        'networkbridge.json')
 
 @app.route('/demojson')
 def demojson():
     return render_template(
-        'NetworkFiles/json/demo.json'
-    )
+        'NetworkFiles/json/demo.json')
 
 ############
 # Commands #
